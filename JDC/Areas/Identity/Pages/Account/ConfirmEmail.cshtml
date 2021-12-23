@@ -1,0 +1,22 @@
+﻿@page
+@model ConfirmEmailModel
+@{
+    ViewData["Title"] = "Заявка подтверждена";
+}
+
+<div class="modal-dialog modal-confirm success_modal">
+    <div class="modal-content">
+        <div class="modal-header justify-content-center">
+            <div class="icon-box">
+                <i class="material-icons">&#xE876;</i>
+            </div>
+        </div>
+        <div class="modal-body text-center">
+            <h4>Заявка подтверждена!</h4>
+            <p>Ваша электронная почта была успешно подтверждена.</p>
+            <a class="btn btn-primary btn-lg px-4 mr-3" asp-controller="Home">
+                <span>На главную</span><i class="material-icons">&#xE5C8;</i>
+            </a>
+        </div>
+    </div>
+</div>
