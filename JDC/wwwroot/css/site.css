@@ -60,6 +60,9 @@ label {
     background-color: #f9fbfd !important;
 }
 
+.h-400px {
+    height: 400px !important;
+}
 
 /*
     Journal - scroll table
@@ -107,20 +110,20 @@ html {
     overflow-x: auto;
 }
 
-    .scroll-table::-webkit-scrollbar-thumb, html::-webkit-scrollbar {
-        height: 12px;
-        width: 12px;
-    }
+.scroll-table::-webkit-scrollbar-thumb, html::-webkit-scrollbar {
+    height: 12px;
+    width: 12px;
+}
 
-    .scroll-table::-webkit-scrollbar-thumb, html::-webkit-scrollbar-track {
-        background: hsla(0,0%,50.2%,.1);
-    }
+.scroll-table::-webkit-scrollbar-thumb, html::-webkit-scrollbar-track {
+    background: hsla(0,0%,50.2%,.1);
+}
 
-    .scroll-table::-webkit-scrollbar-thumb, html::-webkit-scrollbar-thumb {
-        background-color: rgba(41,148,99,.75);
-        border-radius: 5px;
-        border: 3px solid hsla(0,0%,50.2%,.1);
-    }
+.scroll-table::-webkit-scrollbar-thumb, html::-webkit-scrollbar-thumb {
+    background-color: rgba(41,148,99,.75);
+    border-radius: 5px;
+    border: 3px solid hsla(0,0%,50.2%,.1);
+}
 
 /* Carousel */
 .col-center {

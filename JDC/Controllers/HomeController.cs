@@ -15,6 +15,17 @@ namespace JDC.Controllers
             return this.View();
         }
 
+        public IActionResult Documentation()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        public IActionResult Contact()
+        {
+            return this.RedirectToAction("Documentation");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
