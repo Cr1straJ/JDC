@@ -44,7 +44,7 @@ namespace JDC.Areas.Account.Controllers
                 return this.NotFound($"Unable to load user with ID {this.userManager.GetUserId(this.User)}.");
             }
 
-            return this.View(await this.GetIndexInputModelAsync(user));
+            return this.View(await this.GetIndexModelAsync(user));
         }
 
         [HttpPost]
@@ -182,7 +182,7 @@ namespace JDC.Areas.Account.Controllers
                 return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(this.User)}'.");
             }
 
-            return this.View(await this.GetEmailInputModelAsync(user));
+            return this.View(await this.GetEmailModelAsync(user));
         }
 
         [HttpPost]
@@ -257,7 +257,53 @@ namespace JDC.Areas.Account.Controllers
             return this.View();
         }
 
-        private async Task<IndexModel> GetIndexInputModelAsync(User user)
+        public async Task<IActionResult> ChangePassword()
+        {
+            var user = await this.userManager.GetUserAsync(this.User);
+
+            if (user is null)
+            {
+                return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(this.User)}'.");
+            }
+
+            return this.View(new ChangePasswordModel());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangePassword(ChangePasswordModel changePasswordModel)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View();
+            }
+
+            var user = await this.userManager.GetUserAsync(this.User);
+
+            if (user is null)
+            {
+                return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(this.User)}'.");
+            }
+
+            var changePasswordResult = await this.userManager.ChangePasswordAsync(user, changePasswordModel.Input.OldPassword, changePasswordModel.Input.NewPassword);
+            
+            if (!changePasswordResult.Succeeded)
+            {
+                foreach (var error in changePasswordResult.Errors)
+                {
+                    this.ModelState.AddModelError(string.Empty, error.Description);
+                }
+
+                return this.View(changePasswordModel);
+            }
+
+            await this.signInManager.RefreshSignInAsync(user);
+            changePasswordModel.StatusMessage = "Your password has been changed.";
+
+            return this.View(new ChangePasswordModel());
+        }
+
+        private async Task<IndexModel> GetIndexModelAsync(User user)
         {
             if (user is null)
             {
@@ -280,7 +326,7 @@ namespace JDC.Areas.Account.Controllers
             return indexModel;
         }
 
-        private async Task<EmailModel> GetEmailInputModelAsync(User user)
+        private async Task<EmailModel> GetEmailModelAsync(User user)
         {
             var email = await this.userManager.GetEmailAsync(user);
 
