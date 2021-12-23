@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace JDC.DataAccess.Entities
+namespace JDC.Common.Entities
 {
     public class User : IdentityUser
     {
