@@ -1,22 +1,86 @@
 ﻿<ul class="navbar-nav">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <li class="nav-item">
+            <div class="search_container">
+                <form class="form-inline my-lg-0 position-relative">
+                    <input id="searchInput" type="text" placeholder="Поиск">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </form>
+
+                <div id="results" class="d-none">
+                    <div class="found_user">
+                        <div class="avatar circle_image">
+                            <img src="~/images/default_student_avatar.png" class="avatar_media" alt="Фото пользователя">
+                        </div>
+
+                        <a class="text_content" asp-area="" asp-action="Index" asp-route-id="5"><b>Ivanov Ivan</b> ~ Student at "Bobruisk State Forestry College"</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item d-flex align-items-center">
+            <div class="btn-group" style="display: block;">
+                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: .5rem; cursor: pointer; font-size: 25px;">
+                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" title="Перейти в профиль" asp-area="Identity" asp-page="/Account/Manage/Index">
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        Мой аккаунт
+                    </a>
+
+                    <form class="dropdown-item form-inline p-0" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button style="padding: .25rem 1.5rem;" type="submit" class="none_button clearfix-btn text-left w-100 logout_button">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            Выйти
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="btn btn-primary px-3 mr-3" asp-area="Identity" asp-page="/Account/Login">Войти</a>
+        </li>
+    }
+</ul>
+
 @if (User.Identity.IsAuthenticated)
 {
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-    </li>
-    <li class="nav-item">
-        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-        </form>
-    </li>
+    <script>
+        let searchInput = $('#searchInput');
+        searchInput.onblur = ToggleVisibility;
+        searchInput.onfocus = ToggleVisibility;
+
+        searchInput.oninput = function () {
+            var name = searchInput.value.trim();
+
+            if (name.length == 0) {
+                return;
+            }
+
+            $.ajax({
+                type: 'GET',
+                url: '/Students/GetMatchUsers',
+                data: { name: name },
+                dataType: 'json',
+                success: function (respons) {
+                    GenerateSearchList(respons);
+                },
+            })
+        }
+
+        function GenerateSearchList(users) {
+            console.log(users);
+        }
+
+        function ToggleVisibility() {
+            document.getElementById('darkenedLayer').classList.toggle('d-none');
+            document.getElementById('results').classList.toggle('d-none');
+        }
+    </script>
 }
-else
-{
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </li>
-}
-</ul>

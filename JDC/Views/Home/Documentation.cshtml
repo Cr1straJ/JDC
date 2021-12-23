@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Документация";
+}
+
+<div class="row">
+    <div class="col-12 py-7 py-lg-9 px-lg-7">
+        <h1 class="mb-1">Введение</h1>
+
+        <p class="text-gray-700">
+          Это руководство поможет вам начать работу с JDC! Все самое важное - авторизация, управление, и иные возможности - описано здесь, но если у вас возникнут вопросы, всегда можно обратиться с помощью <a id="gotocontact" href="#contact">формы обратной связи</a>. 
+        </p>
+
+        <hr class="bg-gray-300 my-6">            
+
+        <h3 class="fw-bold" id="devSetup">
+          Для администрации
+        </h3>
+
+        <p class="text-gray-700">
+          Чтобы начать работу, вам нужно сделать следующее:
+        </p>
+
+        <ol class="text-gray-700 pl-4">
+          <li><strong>Подать заявку на получение доступа к сервису.</strong> Получить его довольно легко, просто посетите страницу <a asp-area="Identity" asp-page="/Account/Register">регистрации</a> и заполните необходимые поля. Убедитесь, что у вас имеется доступ к электронной почте учреждения, поскольку JDC использует электронную почту для подтверждения заявки. </li>
+        </ol>
+      </div>
+</div>
+
+<div id="contact" class="row justify-content-center">
+    <div class="col-5 d-flex align-items-center">
+        <img class="h-400px m-auto" src="~/images/documentation/contact.svg" alt=""/>
+    </div>
+    <div class="col-5">
+        <h2>Свяжитесь с нами</h2>
+        <p>Для получения помощи свяжитесь с нами напрямую или заполните форму, и мы оперативно свяжемся с вами.</p>
+        <form method="post" asp-action="Contact">
+            <label class="other_info">Ваше имя*</label>
+            <input class="form-control mb-4" />
+            <label class="other_info">Email*</label>
+            <input class="form-control mb-4" />
+            <label class="other_info">Сообщение*</label>
+            <textarea class="form-control mb-4" rows="3"></textarea>
+            <button type="submit" class="mb-5 btn btn-primary btn-lg px-4 mr-3">Отправить сообщение</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#gotocontact").click(function () {
+            elementClick = $(this).attr("href");
+            destination = $(elementClick).offset().top;
+            $("body,html").animate({ scrollTop: destination }, 800);
+        });
+    });
+</script>
