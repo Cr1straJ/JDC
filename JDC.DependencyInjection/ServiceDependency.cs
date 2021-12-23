@@ -1,5 +1,5 @@
-﻿using JDC.DataAccess.Data;
-using JDC.DataAccess.Entities;
+﻿using JDC.Common.Entities;
+using JDC.DataAccess.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;

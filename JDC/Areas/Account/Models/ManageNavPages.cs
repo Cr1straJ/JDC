@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace JDC.Areas.Account.Views.Manage
+namespace JDC.Areas.Account.Models
 {
     public static class ManageNavPages
     {

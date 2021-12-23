@@ -17,6 +17,7 @@
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
+        <ProjectReference Include="..\JDC.BusinessLogic\JDC.BusinessLogic.csproj" />
         <ProjectReference Include="..\JDC.DataAccess\JDC.DataAccess.csproj" />
     </ItemGroup>
 </Project>
