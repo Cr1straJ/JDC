@@ -21,6 +21,11 @@
       "provider": "cdnjs",
       "library": "microsoft-signalr@6.0.0",
       "destination": "wwwroot/js/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "wow@1.1.2",
+      "destination": "wwwroot/lib/wow-js/"
     }
   ]
 }
