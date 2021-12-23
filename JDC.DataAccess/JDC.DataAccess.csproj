@@ -16,4 +16,7 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\JDC.Common\JDC.Common.csproj" />
+    </ItemGroup>
 </Project>

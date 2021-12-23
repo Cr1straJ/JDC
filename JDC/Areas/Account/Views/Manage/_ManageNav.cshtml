@@ -1,0 +1,30 @@
+﻿<ul class="nav nav-pills flex-column">
+    <li class="nav-item">
+        <a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-action="Index">
+            <i class="fa fa-address-card" aria-hidden="true"></i>
+            <span class="caption">Личные данные</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-action="ChangePassword">
+            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+            <span class="caption">Изменение пароля</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-action="Email">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <span class="caption">Электронная почта</span>
+        </a>
+    </li>
+
+
+    <li class="nav-item">
+        <a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-action="PersonalData">
+            <i class="fa fa-archive" aria-hidden="true"></i>
+            <span class="caption">Архив</span>
+        </a>
+    </li>
+</ul>
