@@ -5,7 +5,7 @@
 /*-----------------------------------------------------------------------------------*/
 $(window).on('load', function () {
     $('#preloader-block').css('display', 'none');
-    //new WOW().init();   will be needed for animations in the future
+    new WOW().init();
 });
 
 
@@ -72,7 +72,7 @@ $('.list_chats_item').on('click', function () {
     this.classList.add("selected");
 
     if (selectedChat != -1) {
-        let currentChat = document.getElementById(`chat${selectedChat}`);
+        let currentChat = $(`#chat${selectedChat}`);
         currentChat.classList.remove("selected");
     }
 
