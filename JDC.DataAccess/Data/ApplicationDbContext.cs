@@ -10,5 +10,9 @@ namespace JDC.DataAccess.Data
             : base(options)
         {
         }
+
+        public DbSet<Institution> Institutions { get; set; }
+
+        public DbSet<Group> Groups { get; set; }
     }
 }

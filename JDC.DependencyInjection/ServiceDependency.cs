@@ -1,5 +1,9 @@
-﻿using JDC.Common.Entities;
+﻿using JDC.BusinessLogic.Interfaces;
+using JDC.BusinessLogic.Services;
+using JDC.Common.Entities;
 using JDC.DataAccess.Data;
+using JDC.DataAccess.Interfaces;
+using JDC.DataAccess.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +14,9 @@ namespace JDC.DependencyInjection
     {
         public static void AddDependencies(this IServiceCollection services)
         {
+            services.AddTransient<IGroupService, GroupService>();
+
+            services.AddTransient<IGroupRepository, GroupRepository>();
         }
 
         public static void AddIdentity(this IServiceCollection services)
