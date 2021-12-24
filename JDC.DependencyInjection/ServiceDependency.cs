@@ -1,5 +1,9 @@
-﻿using JDC.Common.Entities;
+﻿using JDC.BusinessLogic.Interfaces;
+using JDC.BusinessLogic.Services;
+using JDC.Common.Entities;
+using JDC.Common.Interfaces;
 using JDC.DataAccess.Data;
+using JDC.DataAccess.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +14,11 @@ namespace JDC.DependencyInjection
     {
         public static void AddDependencies(this IServiceCollection services)
         {
+            services.AddTransient<IEmailSender, EmailSender>();
+
+            services.AddTransient<IRegistrationRequestRepository, RegistrationRequestRepository>();
+
+            services.AddTransient<IRegistrationRequestService, RegistrationRequestService>();
         }
 
         public static void AddIdentity(this IServiceCollection services)

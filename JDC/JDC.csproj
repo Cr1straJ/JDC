@@ -24,4 +24,7 @@
     <ItemGroup>
         <ProjectReference Include="..\JDC.DependencyInjection\JDC.DependencyInjection.csproj" />
     </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Areas\Account\Views\Auth\" />
+    </ItemGroup>
 </Project>

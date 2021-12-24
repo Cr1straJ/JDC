@@ -10,5 +10,12 @@ namespace JDC.DataAccess.Data
             : base(options)
         {
         }
+
+        public DbSet<RegistrationRequest> RegistrationRequests { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
     }
 }
