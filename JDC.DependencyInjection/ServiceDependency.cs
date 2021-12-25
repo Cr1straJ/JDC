@@ -1,8 +1,8 @@
-﻿using JDC.BusinessLogic.Interfaces;
+using JDC.BusinessLogic.Interfaces;
 using JDC.BusinessLogic.Services;
 using JDC.Common.Entities;
-using JDC.Common.Interfaces;
 using JDC.DataAccess.Data;
+using JDC.DataAccess.Interfaces;
 using JDC.DataAccess.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -14,11 +14,19 @@ namespace JDC.DependencyInjection
     {
         public static void AddDependencies(this IServiceCollection services)
         {
-            services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IGroupService, GroupService>();
+            services.AddTransient<IGroupRepository, GroupRepository>();
 
-            services.AddTransient<IRegistrationRequestRepository, RegistrationRequestRepository>();
+            services.AddTransient<ITeacherService, TeacherService>();
+            services.AddTransient<ITeacherRepository, TeacherRepository>();
 
+            services.AddTransient<ISpecialityService, SpecialityService>();
+            services.AddTransient<ISpecialityRepository, SpecialityRepository>();
+          
             services.AddTransient<IRegistrationRequestService, RegistrationRequestService>();
+            services.AddTransient<IRegistrationRequestRepository, RegistrationRequestRepository>();
+          
+            services.AddTransient<IEmailSender, EmailSender>();
         }
 
         public static void AddIdentity(this IServiceCollection services)
