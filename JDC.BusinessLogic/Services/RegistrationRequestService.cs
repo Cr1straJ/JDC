@@ -25,7 +25,7 @@ namespace JDC.BusinessLogic.Services
 
         public async Task Delete(RegistrationRequest registrationRequest)
         {
-            await this.Delete(registrationRequest);
+            await this.registrationRequestRepository.Delete(registrationRequest);
         }
 
         public async Task<IEnumerable<RegistrationRequest>> GetAll()
