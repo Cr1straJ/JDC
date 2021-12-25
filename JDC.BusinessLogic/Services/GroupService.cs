@@ -15,6 +15,11 @@ namespace JDC.BusinessLogic.Services
             this.groupRepository = groupRepository;
         }
 
+        public async Task Add(Group group)
+        {
+            await this.groupRepository.Add(group);
+        }
+
         public async Task<List<Group>> GetInstitutionGroups(int? id)
         {
             return id.HasValue ? await this.groupRepository.GetInstitutionGroups(id.Value) : null;

@@ -16,6 +16,12 @@ namespace JDC.DataAccess.Repositories
             this.context = context;
         }
 
+        public async Task Add(Group group)
+        {
+            await this.context.Groups.AddAsync(group);
+            await this.context.SaveChangesAsync();
+        }
+
         public Task<List<Group>> GetInstitutionGroups(int id)
         {
             return Task.Factory.StartNew(() =>

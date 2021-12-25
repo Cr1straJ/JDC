@@ -7,5 +7,7 @@ namespace JDC.DataAccess.Interfaces
     public interface IGroupRepository
     {
         Task<List<Group>> GetInstitutionGroups(int id);
+
+        Task Add(Group group);
     }
 }

@@ -7,5 +7,7 @@ namespace JDC.BusinessLogic.Interfaces
     public interface IGroupService
     {
         Task<List<Group>> GetInstitutionGroups(int? id);
+
+        Task Add(Group group);
     }
 }
