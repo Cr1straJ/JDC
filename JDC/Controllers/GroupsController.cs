@@ -79,5 +79,41 @@ namespace JDC.Controllers
 
             return this.View(group);
         }
+
+        public async Task<IActionResult> Edit(int? id)
+        {
+            var group = this.groupService.GetById(id);
+
+            if (group is null)
+            {
+                return this.View("Error");
+            }
+
+            var currentUser = await this.userManager.GetUserAsync(this.User);
+
+            this.ViewData["Specialities"] = new SelectList(await this.specialityService.GetInstitutionSpecialities(currentUser.InstitutionId));
+            this.ViewData["Teachers"] = new SelectList(await this.teacherService.GetInstitutionTeachers(currentUser.InstitutionId), "Id", "User.ShortName");
+
+            return this.View(group);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit([Bind("Name,TeacherId")] Group group)
+        {
+            if (this.ModelState.IsValid)
+            {
+                await this.groupService.Update(group);
+
+                return this.RedirectToAction(nameof(this.Index));
+            }
+
+            var currentUser = await this.userManager.GetUserAsync(this.User);
+
+            this.ViewData["Specialities"] = new SelectList(await this.specialityService.GetInstitutionSpecialities(currentUser.InstitutionId));
+            this.ViewData["Teachers"] = new SelectList(await this.teacherService.GetInstitutionTeachers(currentUser.InstitutionId), "Id", "User.ShortName");
+
+            return this.View(group);
+        }
     }
 }

@@ -22,12 +22,23 @@ namespace JDC.DataAccess.Repositories
             await this.context.SaveChangesAsync();
         }
 
+        public async Task<Group> GetById(int id)
+        {
+            return await this.context.Groups.FindAsync(id);
+        }
+
         public Task<List<Group>> GetInstitutionGroups(int id)
         {
             return Task.Factory.StartNew(() =>
             {
                 return this.context.Groups.Where(group => group.InstitutionId == id).ToList();
             });
+        }
+
+        public async Task Update(Group group)
+        {
+            this.context.Groups.Update(group);
+            await this.context.SaveChangesAsync();
         }
     }
 }

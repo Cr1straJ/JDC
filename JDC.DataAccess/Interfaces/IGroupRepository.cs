@@ -8,6 +8,10 @@ namespace JDC.DataAccess.Interfaces
     {
         Task<List<Group>> GetInstitutionGroups(int id);
 
+        Task<Group> GetById(int id);
+
+        Task Update(Group group);
+
         Task Add(Group group);
     }
 }
