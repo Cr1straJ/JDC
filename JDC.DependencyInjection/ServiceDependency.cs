@@ -15,8 +15,10 @@ namespace JDC.DependencyInjection
         public static void AddDependencies(this IServiceCollection services)
         {
             services.AddTransient<IGroupService, GroupService>();
-
             services.AddTransient<IGroupRepository, GroupRepository>();
+
+            services.AddTransient<ISpecialityService, SpecialityService>();
+            services.AddTransient<ISpecialityRepository, SpecialityRepository>();
         }
 
         public static void AddIdentity(this IServiceCollection services)

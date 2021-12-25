@@ -12,7 +12,13 @@ namespace JDC.Common.Entities
 
         public Institution Institution { get; set; }
 
+        public int TeacherId { get; set; }
+
         public Teacher Teacher { get; set; }
+
+        public int SpecialityId { get; set; }
+
+        public Speciality Speciality { get; set; }
 
         public List<Student> Students { get; set; }
     }
