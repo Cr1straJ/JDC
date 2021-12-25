@@ -1,4 +1,4 @@
-﻿using JDC.Common.Entities;
+using JDC.Common.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,5 +18,12 @@ namespace JDC.DataAccess.Data
         public DbSet<Teacher> Teachers { get; set; }
 
         public DbSet<Group> Groups { get; set; }
+
+        public DbSet<RegistrationRequest> RegistrationRequests { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
     }
 }

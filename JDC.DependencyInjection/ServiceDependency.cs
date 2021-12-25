@@ -1,4 +1,4 @@
-﻿using JDC.BusinessLogic.Interfaces;
+using JDC.BusinessLogic.Interfaces;
 using JDC.BusinessLogic.Services;
 using JDC.Common.Entities;
 using JDC.DataAccess.Data;
@@ -22,6 +22,11 @@ namespace JDC.DependencyInjection
 
             services.AddTransient<ISpecialityService, SpecialityService>();
             services.AddTransient<ISpecialityRepository, SpecialityRepository>();
+          
+            services.AddTransient<IRegistrationRequestService, RegistrationRequestService>();
+            services.AddTransient<IRegistrationRequestRepository, RegistrationRequestRepository>();
+          
+            services.AddTransient<IEmailSender, EmailSender>();
         }
 
         public static void AddIdentity(this IServiceCollection services)

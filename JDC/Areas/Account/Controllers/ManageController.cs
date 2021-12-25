@@ -78,8 +78,9 @@ namespace JDC.Areas.Account.Controllers
             user.LastName = indexModel.Input.LastName;
             user.FirstName = indexModel.Input.FirstName;
             user.MiddleName = indexModel.Input.MiddleName;
-            user.Sex = indexModel.Input.Sex.Equals("Мужской", StringComparison.Ordinal);
-
+            //user.Sex = indexModel.Input.Sex.Equals("Мужской", StringComparison.Ordinal);
+            //FIXE
+            user.Sex = indexModel.Input.Sex;
             await this.userManager.UpdateAsync(user);
             await this.signInManager.RefreshSignInAsync(user);
             indexModel.StatusMessage = "Your profile has been updated";
