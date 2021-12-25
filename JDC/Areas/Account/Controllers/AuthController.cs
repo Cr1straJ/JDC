@@ -12,21 +12,18 @@ namespace JDC.Areas.Identity.Controllers
 {
     public class AuthController : Controller
     {
-        private readonly ILogger<AuthController> logger;
         private readonly IConfiguration configuration;
         private readonly IEmailSender emailSender;
         private readonly IRegistrationRequestService registrationRequestService;
         private readonly SignInManager<User> signInManager;
 
         public AuthController(
-            ILogger<AuthController> logger, 
             IConfiguration configuration, 
             IEmailSender emailSender, 
             IRegistrationRequestService registrationRequestService, 
             SignInManager<User> signInManager)
         {
             this.configuration = configuration;
-            this.logger = logger;
             this.emailSender = emailSender;
             this.registrationRequestService = registrationRequestService;
             this.signInManager = signInManager;
@@ -37,7 +34,8 @@ namespace JDC.Areas.Identity.Controllers
             return this.View();
         }
 
-        public async Task<IActionResult> Registration(RegistrationModel registrationModel)
+        [HttpPost]
+        public async Task<IActionResult> Register(RegistrationModel registrationModel)
         {
 
             if (this.ModelState.IsValid)
@@ -48,13 +46,13 @@ namespace JDC.Areas.Identity.Controllers
                 await this.registrationRequestService.Create(registrationRequest);
 
                 await this.emailSender.SendEmailAsync(registrationModel.DirectorName, registrationModel.Email, "Подтверждение регистрации учреждения", $"Ваш код: {confirmationCode}", this.configuration);
-                this.logger.LogInformation("The letter is sent");
                 return this.RedirectToAction("RegisterConfirmation", new { id = registrationRequest.ID, email = registrationModel.Email });
             }
 
             return this.View(registrationModel);
         }
 
+        [HttpPost]
         public async Task<IActionResult> Login(LoginModel inputLogin)
         {
             if (this.ModelState.IsValid)
@@ -65,7 +63,6 @@ namespace JDC.Areas.Identity.Controllers
 
                 if (result.Succeeded)
                 {
-                    this.logger.LogInformation("User logged in.");
                     User user = await this.signInManager.UserManager.FindByNameAsync(inputLogin.UserName);
 
                     if (await this.signInManager.UserManager.IsInRoleAsync(user, "Director"))
@@ -78,8 +75,7 @@ namespace JDC.Areas.Identity.Controllers
 
                 if (result.IsLockedOut)
                 {
-                    this.logger.LogWarning("User account locked out.");
-                    return this.RedirectToPage("./Lockout");
+                    //Redirect to lockout
                 }
                 else
                 {
