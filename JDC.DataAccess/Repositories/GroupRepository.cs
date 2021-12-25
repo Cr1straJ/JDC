@@ -22,6 +22,12 @@ namespace JDC.DataAccess.Repositories
             await this.context.SaveChangesAsync();
         }
 
+        public async Task Delete(Group group)
+        {
+            this.context.Groups.Remove(group);
+            await this.context.SaveChangesAsync();
+        }
+
         public async Task<Group> GetById(int id)
         {
             return await this.context.Groups.FindAsync(id);

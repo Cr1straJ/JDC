@@ -20,6 +20,11 @@ namespace JDC.BusinessLogic.Services
             await this.groupRepository.Add(group);
         }
 
+        public async Task Delete(Group group)
+        {
+            await this.groupRepository.Delete(group);
+        }
+
         public async Task<Group> GetById(int? id)
         {
             return id.HasValue ? await this.groupRepository.GetById(id.Value) : null;

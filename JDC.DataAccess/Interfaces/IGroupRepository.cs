@@ -12,6 +12,8 @@ namespace JDC.DataAccess.Interfaces
 
         Task Update(Group group);
 
+        Task Delete(Group group);
+
         Task Add(Group group);
     }
 }

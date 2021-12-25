@@ -115,5 +115,33 @@ namespace JDC.Controllers
 
             return this.View(group);
         }
+
+        public IActionResult Delete(int? id)
+        {
+            var group = this.groupService.GetById(id);
+
+            if (group is null)
+            {
+                return this.View("Error");
+            }
+
+            return this.View(group);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var group = await this.groupService.GetById(id);
+
+            if (group is null)
+            {
+                return this.View("Error");
+            }
+
+            await this.groupService.Delete(group);
+
+            return this.RedirectToAction(nameof(this.Index));
+        }
     }
 }
