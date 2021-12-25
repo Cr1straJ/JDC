@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using JDC.Common.Entities;
 using JDC.Common.Interfaces;
@@ -30,9 +28,12 @@ namespace JDC.DataAccess.Repositories
             await this.context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<RegistrationRequest>> GetAll()
+        public Task<IEnumerable<RegistrationRequest>> GetAll()
         {
-            return this.context.RegistrationRequests.ToList();
+            return Task.Factory.StartNew(() =>
+            {
+                return this.context.RegistrationRequests.AsEnumerable();
+            });
         }
 
         public async Task<RegistrationRequest> GetById(int id)
