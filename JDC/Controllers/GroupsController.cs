@@ -143,5 +143,17 @@ namespace JDC.Controllers
 
             return this.RedirectToAction(nameof(this.Index));
         }
+
+        public IActionResult Details(int? id)
+        {
+            var group = this.groupService.GetById(id);
+
+            if (group is null)
+            {
+                return this.View("Error");
+            }
+
+            return this.View(group);
+        }
     }
 }
