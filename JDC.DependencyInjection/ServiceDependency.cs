@@ -1,17 +1,32 @@
-using JDC.BusinessLogic.Interfaces;
+﻿using JDC.BusinessLogic.Interfaces;
+using JDC.BusinessLogic.Models;
 using JDC.BusinessLogic.Services;
 using JDC.Common.Entities;
+using JDC.Common.Interfaces;
 using JDC.DataAccess.Data;
 using JDC.DataAccess.Interfaces;
 using JDC.DataAccess.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace JDC.DependencyInjection
 {
     public static class ServiceDependency
     {
+        public static void AddConfigurstionSettings(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddSingleton(new SmtpClientSettings()
+            {
+                Email = configuration.GetSection("Smtp:Email").Value,
+                Password = configuration.GetSection("Smtp:Password").Value,
+                Name = configuration.GetSection("Smtp:Name").Value,
+                Host = configuration.GetSection("Smtp:Host").Value,
+                Port = int.Parse(configuration.GetSection("Smtp:Port").Value),
+            });
+        }
+
         public static void AddDependencies(this IServiceCollection services)
         {
             services.AddTransient<IGroupService, GroupService>();
