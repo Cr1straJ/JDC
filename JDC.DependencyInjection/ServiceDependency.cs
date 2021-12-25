@@ -17,6 +17,9 @@ namespace JDC.DependencyInjection
             services.AddTransient<IGroupService, GroupService>();
             services.AddTransient<IGroupRepository, GroupRepository>();
 
+            services.AddTransient<ITeacherService, TeacherService>();
+            services.AddTransient<ITeacherRepository, TeacherRepository>();
+
             services.AddTransient<ISpecialityService, SpecialityService>();
             services.AddTransient<ISpecialityRepository, SpecialityRepository>();
         }

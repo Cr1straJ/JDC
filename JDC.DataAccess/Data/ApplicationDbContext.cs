@@ -13,8 +13,10 @@ namespace JDC.DataAccess.Data
 
         public DbSet<Institution> Institutions { get; set; }
 
-        public DbSet<Group> Groups { get; set; }
-
         public DbSet<Speciality> Specialities { get; set; }
+
+        public DbSet<Teacher> Teachers { get; set; }
+
+        public DbSet<Group> Groups { get; set; }
     }
 }
