@@ -21,5 +21,7 @@ namespace JDC.Common.Entities
         public Speciality Speciality { get; set; }
 
         public List<Student> Students { get; set; }
+
+        public List<Lesson> Lessons { get; set; }
     }
 }
