@@ -18,6 +18,7 @@ $('#setGradeModal').on('show.bs.modal', function (event) {
     button = $(event.relatedTarget);
     var title = button.data('title');
     var modal = $(this);
+    console.log(group.students.find(student => student.id == button.data('studentid')).grades);
     modal.find('.modal-title').text(title);
 })
 
@@ -29,19 +30,23 @@ $('#setGradeModal').on('hide.bs.modal', function () {
 
 $('#setGradeButton').on('click', function () {
     button.html($('#grade').val());
+    let grade = {};
 
-    if ($('#comment').val().trim().length > 0) {
-        button.css('background-color', 'rgba(255, 0, 0, 0.1)');
+    let comment = $('#comment').val().trim();
+    if (comment.length > 0) {
+        grade.Comment = comment;
+        button.css('background-color', 'rgba(255, 0, 0, 0.4)');
     }
 
     if ($('#absent').prop('checked')) {
-        button.css('background-color', 'lightyellow');
+        grade.IsAbsent = true;
+        button.css('background-color', 'rgba(255, 255, 0, 0.4)');
     }
 
     let studentId = button.data('studentid');
     let value = $('#grade').val();
 
-    if (!isNaN($('#grade').val())) {
+    if (value.length > 0 && !isNaN(value)) {
         let studentGrades = group.students.find(student => student.id == studentId).grades;
         studentGrades.push({ value: +value });
         let average = studentGrades.reduce((accumulate, value) => accumulate + value.value, 0) / studentGrades.length;
@@ -82,4 +87,9 @@ $('.list_chats_item').on('click', function () {
 $('body').on('input', '.input_number', function () {
     this.value = this.value.substring(0, 4);
     this.value = this.value.replace(/[^0-9]/g, '');
+});
+
+$('#hideJournalButton').on('click', function () {
+    $('#hideableTable').toggleClass('d-none');
+    $('.hide-button-icon').toggleClass('d-none');
 });

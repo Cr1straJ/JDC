@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Threading.Tasks;
 using JDC.BusinessLogic.Interfaces;
 using JDC.Common.Entities;
@@ -11,18 +13,21 @@ namespace JDC.Controllers
     public class GroupsController : Controller
     {
         private readonly IGroupService groupService;
+        private readonly IGradeService gradeService;
         private readonly ITeacherService teacherService;
         private readonly ISpecialityService specialityService;
         private readonly UserManager<User> userManager;
 
         public GroupsController(
-            UserManager<User> userManager, 
+            UserManager<User> userManager,
             IGroupService groupService,
+            IGradeService gradeService,
             ITeacherService teacherService,
             ISpecialityService specialityService)
         {
             this.userManager = userManager;
             this.groupService = groupService;
+            this.gradeService = gradeService;
             this.teacherService = teacherService;
             this.specialityService = specialityService;
         }
@@ -59,7 +64,7 @@ namespace JDC.Controllers
 
             this.ViewData["Specialities"] = new SelectList(await this.specialityService.GetInstitutionSpecialities(currentUser.InstitutionId));
             this.ViewData["Teachers"] = new SelectList(await this.teacherService.GetInstitutionTeachers(currentUser.InstitutionId), "Id", "User.ShortName");
-            
+
             return this.View();
         }
 
@@ -154,6 +159,65 @@ namespace JDC.Controllers
             }
 
             return this.View(group);
+        }
+
+        public IActionResult Journal(int? groupId, int? lessonId)
+        {
+            this.ViewData["LessonID"] = lessonId;
+
+            if (groupId == -1)
+            {
+                return this.View(new Group()
+                {
+                    Id = 1,
+                    Name = "PO-2",
+                    Students = new List<Student>()
+                    {
+                        new Student()
+                        {
+                            Id = 0,
+                            User = new User() { FirstName = "Захар", LastName = "Кошин", MiddleName = "Михайлович" },
+                            Grades = new List<Grade>(),
+                        },
+                        new Student()
+                        {
+                            Id = 1,
+                            User = new User() { FirstName = "Иван", LastName = "Иванов" },
+                            Grades = new List<Grade>(),
+                        },
+                        new Student()
+                        {
+                            Id = 2,
+                            User = new User() { FirstName = "Сергей", LastName = "Сидоров" },
+                            Grades = new List<Grade>(),
+                        },
+                        new Student()
+                        {
+                            Id = 3,
+                            User = new User() { FirstName = "Пётр", LastName = "Петров" },
+                            Grades = new List<Grade>(),
+                        },
+                    },
+                    Lessons = new List<Lesson>() { new Lesson() { Id = 0, Title = "Математика" } },
+                });
+            }
+
+            return this.View(this.groupService.GetById(groupId));
+        }
+
+        [HttpPost]
+        public void SetGrade(int studentId, int lessonId, double value, string date)
+        {
+            DateTime billingDate = DateTime.ParseExact(date, "ddMMyyyy", CultureInfo.InvariantCulture);
+            Grade grade = new Grade() 
+            { 
+                StudentId = studentId, 
+                LessonId = lessonId, 
+                Value = value, 
+                BillingDate = billingDate,
+            };
+
+            this.gradeService.Add(grade);
         }
     }
 }

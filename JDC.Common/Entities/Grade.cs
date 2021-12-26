@@ -18,6 +18,10 @@ namespace JDC.Common.Entities
 
         public double Value { get; set; }
 
+        public string Comment { get; set; }
+
+        public bool IsAbsent { get; set; }
+
         public DateTime BillingDate { get; set; } = DateTime.Now;
 
         public override int GetHashCode()
