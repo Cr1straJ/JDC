@@ -1,4 +1,4 @@
-using JDC.Common.Entities;
+﻿using JDC.Common.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +16,8 @@ namespace JDC.DataAccess.Data
         public DbSet<Speciality> Specialities { get; set; }
 
         public DbSet<Teacher> Teachers { get; set; }
+
+        public DbSet<Grade> Grades { get; set; }
 
         public DbSet<Group> Groups { get; set; }
 

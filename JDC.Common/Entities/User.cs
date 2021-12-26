@@ -24,7 +24,10 @@ namespace JDC.Common.Entities
         public string ShortName => $"{this.LastName} {this.FirstName?.ToUpper()[0]}. {this.MiddleName?.ToUpper()[0]}.";
 
         [NotMapped]
-        public string LongName => $"{this.LastName} {this.FirstName} {this.MiddleName}";
+        public string FullName => $"{this.LastName} {this.FirstName} {this.MiddleName}";
+
+        [NotMapped]
+        public string LongName => $"{this.LastName} {this.FirstName}";
 
         public bool IsEqualsName(string name)
             => name.Split(' ', System.StringSplitOptions.RemoveEmptyEntries).Any(word => this.IsContainsText(word));
