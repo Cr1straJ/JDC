@@ -15,15 +15,15 @@ namespace JDC.DependencyInjection
 {
     public static class ServiceDependency
     {
-        public static void AddConfigurstionSettings(this IServiceCollection services, IConfiguration configuration)
+        public static void AddConfigurationSettings(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton(new SmtpClientSettings()
             {
-                Email = configuration.GetSection("Smtp:Email").Value,
-                Password = configuration.GetSection("Smtp:Password").Value,
-                Name = configuration.GetSection("Smtp:Name").Value,
-                Host = configuration.GetSection("Smtp:Host").Value,
-                Port = int.Parse(configuration.GetSection("Smtp:Port").Value),
+                Email = configuration["SmtpClient:Email"],
+                Password = configuration["SmtpClient:Password"],
+                Name = configuration["SmtpClient:Name"],
+                Host = configuration["SmtpClient:Host"],
+                Port = int.Parse(configuration["SmtpClient:Port"]),
             });
         }
 
@@ -37,10 +37,10 @@ namespace JDC.DependencyInjection
 
             services.AddTransient<ISpecialityService, SpecialityService>();
             services.AddTransient<ISpecialityRepository, SpecialityRepository>();
-          
+
             services.AddTransient<IRegistrationRequestService, RegistrationRequestService>();
             services.AddTransient<IRegistrationRequestRepository, RegistrationRequestRepository>();
-          
+
             services.AddTransient<IEmailSender, EmailSender>();
         }
 

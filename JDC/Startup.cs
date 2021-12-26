@@ -20,7 +20,7 @@ namespace JDC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDatabase(this.Configuration.GetConnectionString("DefaultConnection"));
-            services.AddConfigurstionSettings(this.Configuration);
+            services.AddConfigurationSettings(this.Configuration);
             services.AddDependencies();
             services.AddIdentity();
 
