@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using JDC.Common.Entities;
 using JDC.Common.Enums;
 
 namespace JDC.Common.Entities
@@ -9,6 +8,8 @@ namespace JDC.Common.Entities
         public int Id { get; set; }
 
         public string Theme { get; set; }
+
+        public string Homework { get; set; }
 
         public LessonDuration LessonDuration { get; set; } = LessonDuration.TwoHours;
 

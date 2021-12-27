@@ -14,6 +14,10 @@ namespace JDC.Common.Entities
 
         public StudyDay StudyDay { get; set; }
 
+        public int TeacherId { get; set; }
+
+        public Teacher Teacher { get; set; }
+
         public int LessonId { get; set; }
 
         public double Value { get; set; }
