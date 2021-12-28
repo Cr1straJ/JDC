@@ -10,7 +10,7 @@ namespace JDC.Common.Interfaces
 {
     public interface IGradesRepository
     {
-        Grade GetById(int? id);
+        Task<Grade> GetById(int? id);
 
         IEnumerable<Grade> GetAll();
 

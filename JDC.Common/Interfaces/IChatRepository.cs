@@ -10,7 +10,7 @@ namespace JDC.Common.Interfaces
 {
     public interface IChatRepository
     {
-        ChatGroup GetById(int? id);
+        Task<ChatGroup> GetById(int? id);
 
         IEnumerable<ChatGroup> GetAll();
 
@@ -24,6 +24,6 @@ namespace JDC.Common.Interfaces
 
         void RemoveRange(IEnumerable<ChatGroup> entities);
 
-        void Update(Grade entity);
+        void Update(ChatGroup entity);
     }
 }

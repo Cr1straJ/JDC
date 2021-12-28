@@ -10,7 +10,7 @@ namespace JDC.Common.Interfaces
 {
     public interface IMessageRepository
     {
-        Message GetById(int? id);
+        Task<Message> GetById(int? id);
 
         IEnumerable<Message> GetAll();
 

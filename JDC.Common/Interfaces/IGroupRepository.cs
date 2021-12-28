@@ -10,7 +10,7 @@ namespace JDC.Common.Interfaces
 {
     public interface IGroupRepository
     {
-        StudentGroup GetById(int? id);
+        Task<StudentGroup> GetById(int? id);
 
         IEnumerable<StudentGroup> GetAll();
 
@@ -24,6 +24,6 @@ namespace JDC.Common.Interfaces
 
         void RemoveRange(IEnumerable<StudentGroup> entities);
 
-        void Update(Grade entity);
+        void Update(StudentGroup entity);
     }
 }

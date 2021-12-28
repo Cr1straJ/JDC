@@ -10,7 +10,7 @@ namespace JDC.Common.Interfaces
 {
     public interface ITeacherRepository
     {
-        Teacher GetById(int? id);
+        Task<Teacher> GetById(int? id);
 
         IEnumerable<Teacher> GetAll();
 

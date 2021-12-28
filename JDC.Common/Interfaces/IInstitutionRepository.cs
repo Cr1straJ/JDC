@@ -10,7 +10,7 @@ namespace JDC.Common.Interfaces
 {
     public interface IInstitutionRepository
     {
-        EInstitution GetById(int? id);
+        Task<EInstitution> GetById(int? id);
 
         IEnumerable<EInstitution> GetAll();
 

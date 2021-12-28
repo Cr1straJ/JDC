@@ -10,20 +10,20 @@ namespace JDC.Common.Interfaces
 {
     public interface ISudentRepository
     {
-        StudentGroup GetById(int? id);
+        Task<Student> GetById(int? id);
 
-        IEnumerable<StudentGroup> GetAll();
+        IEnumerable<Student> GetAll();
 
-        IEnumerable<StudentGroup> Find(Expression<Func<StudentGroup, bool>> expression);
+        IEnumerable<Student> Find(Expression<Func<Student, bool>> expression);
 
-        void Add(StudentGroup entity);
+        void Add(Student entity);
 
-        void AddRange(IEnumerable<StudentGroup> entities);
+        void AddRange(IEnumerable<Student> entities);
 
-        void Remove(StudentGroup entity);
+        void Remove(Student entity);
 
-        void RemoveRange(IEnumerable<StudentGroup> entities);
+        void RemoveRange(IEnumerable<Student> entities);
 
-        void Update(StudentGroup entity);
+        void Update(Student entity);
     }
 }
