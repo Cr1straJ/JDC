@@ -23,5 +23,16 @@ namespace JDC.DataAccess.Repositories
             await this.context.Grades.AddAsync(grade);
             await this.context.SaveChangesAsync();
         }
+
+        public async Task<Grade> GetById(int id)
+        {
+            return await this.context.Grades.FindAsync(id);
+        }
+
+        public async Task Update(Grade grade)
+        {
+            this.context.Grades.Update(grade);
+            await this.context.SaveChangesAsync();
+        }
     }
 }

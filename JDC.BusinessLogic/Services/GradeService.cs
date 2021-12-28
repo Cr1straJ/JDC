@@ -18,5 +18,15 @@ namespace JDC.BusinessLogic.Services
         {
             await this.gradeRepository.Add(grade);
         }
+
+        public async Task<Grade> GetById(int id)
+        {
+            return await this.gradeRepository.GetById(id);
+        }
+
+        public async Task Update(Grade grade)
+        {
+            await this.gradeRepository.Update(grade);
+        }
     }
 }

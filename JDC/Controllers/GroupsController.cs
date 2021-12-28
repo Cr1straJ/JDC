@@ -206,7 +206,7 @@ namespace JDC.Controllers
         }
 
         [HttpPost]
-        public void SetGrade(int studentId, int lessonId, double value, string date)
+        public async Task<int> SetGrade(int studentId, int lessonId, double value, string date)
         {
             DateTime billingDate = DateTime.ParseExact(date, "ddMMyyyy", CultureInfo.InvariantCulture);
             Grade grade = new Grade() 
@@ -217,7 +217,18 @@ namespace JDC.Controllers
                 BillingDate = billingDate,
             };
 
-            this.gradeService.Add(grade);
+            await this.gradeService.Add(grade);
+
+            return grade.Id;
+        }
+
+        [HttpPost]
+        public async Task UpdateGrade(int gradeId, double value)
+        {
+            Grade grade = await this.gradeService.GetById(gradeId);
+            grade.Value = value;
+
+            await this.gradeService.Update(grade);
         }
     }
 }
