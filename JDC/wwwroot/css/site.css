@@ -1432,3 +1432,7 @@ border-radius: 25px;*/
 .w-13 {
     width: 13px;
 }
+
+.back-lightgray {
+    background-color: rgba(125, 125, 125, 0.1);
+}
