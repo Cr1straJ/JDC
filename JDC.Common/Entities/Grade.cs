@@ -20,7 +20,7 @@ namespace JDC.Common.Entities
 
         public int LessonId { get; set; }
 
-        public double Value { get; set; }
+        public double? Value { get; set; }
 
         public string Comment { get; set; }
 

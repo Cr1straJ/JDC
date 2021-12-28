@@ -47,7 +47,9 @@ $('#setGradeButton').on('click', function () {
     let studentId = button.data('studentid');
     let comment = $('#comment').val().trim();
     let isAbsent = $('#absent').prop('checked');
-    var studentGrades = group.students.find(student => student.id == studentId).grades;
+    var studentGrades = group.students
+        .find(student => student.id == studentId).grades
+        .filter(grade => grade.lessonId == lessonId);
 
     button.html(value);
     button.css('background-color', 'transparent');

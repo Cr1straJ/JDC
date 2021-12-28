@@ -4,9 +4,18 @@
     ViewData["Title"] = "Таблица Учащихся";
     DateTime currentDate = new DateTime(DateTime.Now.Year, 9, 1);
     int countdDay = DateTime.DaysInMonth(currentDate.Year, currentDate.Month);
+    Func<IEnumerable<Grade>, string> getAverage = (grades) =>
+    {
+        double? average = grades.Where(grade => grade.Value is not null && grade.LessonId == ViewBag.LessonId)
+            .Average(grade => grade.Value);
+
+        return average.HasValue ? average.ToString() : "-";
+    };
 }
 
-<h3 style="margin: 0 -15px 25px -15px;" id="viewtitle" data-groupdId="@Model.Id" data-lessonId="@ViewData["LessonID"]">Группа: @(Model.Name), дисциплина: @(Model.Lessons[0].Title) </h3>
+<h3 style="margin: 10px -15px 25px -15px;" id="viewtitle" data-groupdId="@Model.Id" data-lessonId="@ViewData["LessonID"]">
+    Группа: @(Model.Name), дисциплина: <select id="speciality" asp-items="@(new SelectList(Model.Lessons, "Id", "Title"))"></select>
+</h3>
 
 @if (Model.Students.Count == 0)
 {
@@ -53,7 +62,7 @@ else
                                @(Model.Students[i].User.LongName)
                            </td>
                            <td id="@(Model.Students[i].Id)average">
-                               @(Model.Students[i].Grades.Count == 0 ? "-" : Model.Students[i].Grades.Average(grade => grade.Value))
+                               @(getAverage(Model.Students[i].Grades))
                            </td>
                        </tr>
                    }
@@ -80,10 +89,9 @@ else
                     {
                         <th>
                             @currentDate.ToString("ddd"), @(j)
-                            <button type="button" class="w-13 btn border-0 p-0 text-white position-relative">
+                            <button type="button" class="w-13 btn border-0 p-0 text-white position-relative" data-date="@currentDate.ToString("ddMMyyyy")">
                                 <i class="doc-icon fa fa-file-text-o" aria-hidden="true"></i>
                             </button>
-                            
                         </th>
                     }
                 </tr>
@@ -101,7 +109,7 @@ else
                         {
                              <td class="cell">
                                 @{
-                                    Grade grade = Model.Students[i].Grades.Where(grade => grade.BillingDate.Equals(currentDate)).FirstOrDefault();
+                                    Grade grade = Model.Students[i].Grades.Where(grade => grade.BillingDate.Equals(currentDate) && grade.LessonId == ViewBag.LessonId).FirstOrDefault();
                                     
                                     if (grade is not null)
                                     {
@@ -159,4 +167,14 @@ else
 
 <script type="text/javascript">
     let group = JSON.parse('@Json.Serialize(@Model)');
+    let lessonId = @ViewBag.LessonId;
+
+    $(window).on('load', function () {
+        $("#speciality").val(@ViewBag.LessonId);
+    });
+
+    $('#speciality').change(function () {
+        var url = '@Html.Raw(Url.Action("Journal", "Groups", new { groupId = -1, lessonId = "__lesson__" }))';
+        window.location.href = url.replace('__lesson__', $("#speciality").val());
+    });
 </script>

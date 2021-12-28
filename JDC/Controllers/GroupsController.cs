@@ -163,7 +163,7 @@ namespace JDC.Controllers
 
         public IActionResult Journal(int? groupId, int? lessonId)
         {
-            this.ViewData["LessonID"] = lessonId;
+            this.ViewData["LessonId"] = lessonId;
 
             if (groupId == -1)
             {
@@ -177,7 +177,12 @@ namespace JDC.Controllers
                         {
                             Id = 0,
                             User = new User() { FirstName = "Захар", LastName = "Кошин", MiddleName = "Михайлович" },
-                            Grades = new List<Grade>(),
+                            Grades = new List<Grade>() 
+                            {
+                                new Grade() { Id = 0, Value = 6, BillingDate = new DateTime(DateTime.Now.Year, 9, 1), LessonId = 0 },
+                                new Grade() { Id = 1, Value = 4, BillingDate = new DateTime(DateTime.Now.Year, 9, 2), LessonId = 1 },
+                                new Grade() { Id = 2, Value = 9, BillingDate = new DateTime(DateTime.Now.Year, 9, 4), LessonId = 0 },
+                            },
                         },
                         new Student()
                         {
@@ -198,7 +203,11 @@ namespace JDC.Controllers
                             Grades = new List<Grade>(),
                         },
                     },
-                    Lessons = new List<Lesson>() { new Lesson() { Id = 0, Title = "Математика" } },
+                    Lessons = new List<Lesson>()
+                    {
+                        new Lesson() { Id = 0, Title = "Математика" },
+                        new Lesson() { Id = 1, Title = "Физика" },
+                    },
                 });
             }
 
@@ -209,11 +218,11 @@ namespace JDC.Controllers
         public async Task<int> SetGrade(int studentId, int lessonId, double value, string date)
         {
             DateTime billingDate = DateTime.ParseExact(date, "ddMMyyyy", CultureInfo.InvariantCulture);
-            Grade grade = new Grade() 
-            { 
-                StudentId = studentId, 
-                LessonId = lessonId, 
-                Value = value, 
+            Grade grade = new Grade()
+            {
+                StudentId = studentId,
+                LessonId = lessonId,
+                Value = value,
                 BillingDate = billingDate,
             };
 
