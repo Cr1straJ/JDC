@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Threading.Tasks;
 using JDC.BusinessLogic.Interfaces;
 using JDC.Common.Entities;
+using JDC.Common.Enums;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -14,6 +15,7 @@ namespace JDC.Controllers
     {
         private readonly IGroupService groupService;
         private readonly IGradeService gradeService;
+        private readonly ILessonService lessonService;
         private readonly ITeacherService teacherService;
         private readonly ISpecialityService specialityService;
         private readonly UserManager<User> userManager;
@@ -22,12 +24,14 @@ namespace JDC.Controllers
             UserManager<User> userManager,
             IGroupService groupService,
             IGradeService gradeService,
+            ILessonService lessonService,
             ITeacherService teacherService,
             ISpecialityService specialityService)
         {
             this.userManager = userManager;
             this.groupService = groupService;
             this.gradeService = gradeService;
+            this.lessonService = lessonService;
             this.teacherService = teacherService;
             this.specialityService = specialityService;
         }
@@ -76,7 +80,7 @@ namespace JDC.Controllers
 
             if (this.ModelState.IsValid)
             {
-                group.InstitutionId = currentUser.InstitutionId;
+                group.InstitutionId = currentUser.InstitutionId.Value;
                 await this.groupService.Add(group);
 
                 return this.RedirectToAction(nameof(this.Index));
@@ -163,7 +167,14 @@ namespace JDC.Controllers
 
         public IActionResult Journal(int? groupId, int? lessonId)
         {
-            this.ViewData["LessonId"] = lessonId;
+            this.ViewData["DisciplineId"] = lessonId;
+            Lesson lesson = new Lesson() 
+            { 
+                Id = 0, 
+                Homework = "№123, №126", 
+                Theme = "§ 1.2. Корень n-ой степени",
+                Date = new DateTime(DateTime.Now.Year, 9, 1), 
+            };
 
             if (groupId == -1)
             {
@@ -177,36 +188,41 @@ namespace JDC.Controllers
                         {
                             Id = 0,
                             User = new User() { FirstName = "Захар", LastName = "Кошин", MiddleName = "Михайлович" },
-                            Grades = new List<Grade>() 
+                            Grades = new List<Grade>()
                             {
-                                new Grade() { Id = 0, Value = 6, BillingDate = new DateTime(DateTime.Now.Year, 9, 1), LessonId = 0 },
+                                new Grade() { Id = 0, Value = 6, BillingDate = new DateTime(DateTime.Now.Year, 9, 1), Lesson = lesson },
                                 new Grade() { Id = 1, Value = 4, BillingDate = new DateTime(DateTime.Now.Year, 9, 2), LessonId = 1 },
-                                new Grade() { Id = 2, Value = 9, BillingDate = new DateTime(DateTime.Now.Year, 9, 4), LessonId = 0 },
+                                new Grade() { Id = 2, Value = 9, BillingDate = new DateTime(DateTime.Now.Year, 9, 4), Lesson = lesson },
                             },
                         },
                         new Student()
                         {
                             Id = 1,
                             User = new User() { FirstName = "Иван", LastName = "Иванов" },
-                            Grades = new List<Grade>(),
                         },
                         new Student()
                         {
                             Id = 2,
                             User = new User() { FirstName = "Сергей", LastName = "Сидоров" },
-                            Grades = new List<Grade>(),
                         },
                         new Student()
                         {
                             Id = 3,
                             User = new User() { FirstName = "Пётр", LastName = "Петров" },
-                            Grades = new List<Grade>(),
                         },
                     },
-                    Lessons = new List<Lesson>()
+                    Disciplines = new List<Discipline>()
                     {
-                        new Lesson() { Id = 0, Title = "Математика" },
-                        new Lesson() { Id = 1, Title = "Физика" },
+                        new Discipline() 
+                        {
+                            Id = 0,
+                            Title = "Математика",
+                            Lessons = new List<Lesson>() 
+                            {
+                               lesson,
+                            },
+                        },
+                        new Discipline() { Id = 1, Title = "Физика" },
                     },
                 });
             }
@@ -238,6 +254,21 @@ namespace JDC.Controllers
             grade.Value = value;
 
             await this.gradeService.Update(grade);
+        }
+
+        [HttpPost]
+        public async Task CreateLesson(string theme, string homework, int lessonDuration, int disciplineId)
+        {
+            Lesson lesson = new Lesson()
+            {
+                Date = DateTime.Now,
+                Theme = theme,
+                Homework = homework,
+                LessonDuration = (LessonDuration)lessonDuration,
+                DisciplineId = disciplineId,
+            };
+
+            await this.lessonService.Create(lesson);
         }
     }
 }

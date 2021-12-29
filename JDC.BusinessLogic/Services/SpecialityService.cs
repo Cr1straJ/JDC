@@ -15,9 +15,9 @@ namespace JDC.BusinessLogic.Services
             this.specialityRepository = specialityRepository;
         }
 
-        public async Task<List<Speciality>> GetInstitutionSpecialities(int id)
+        public async Task<List<Speciality>> GetInstitutionSpecialities(int? id)
         {
-            return await this.specialityRepository.GetInstitutionSpecialities(id);
+            return id.HasValue ? await this.specialityRepository.GetInstitutionSpecialities(id.Value) : null;
         }
     }
 }

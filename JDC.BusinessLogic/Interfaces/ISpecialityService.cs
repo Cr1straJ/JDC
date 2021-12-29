@@ -6,6 +6,6 @@ namespace JDC.BusinessLogic.Interfaces
 {
     public interface ISpecialityService
     {
-        Task<List<Speciality>> GetInstitutionSpecialities(int id);
+        Task<List<Speciality>> GetInstitutionSpecialities(int? id);
     }
 }

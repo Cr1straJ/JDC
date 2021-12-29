@@ -15,9 +15,9 @@ namespace JDC.BusinessLogic.Services
             this.teacherRepository = teacherRepository;
         }
 
-        public async Task<List<Teacher>> GetInstitutionTeachers(int id)
+        public async Task<List<Teacher>> GetInstitutionTeachers(int? id)
         {
-            return await this.teacherRepository.GetInstitutionTeachers(id);
+            return id.HasValue ? await this.teacherRepository.GetInstitutionTeachers(id.Value) : null;
         }
     }
 }

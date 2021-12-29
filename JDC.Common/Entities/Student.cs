@@ -22,6 +22,6 @@ namespace JDC.Common.Entities
 
         public User User { get; set; }
 
-        public List<Grade> Grades { get; set; }
+        public List<Grade> Grades { get; set; } = new List<Grade>();
     }
 }
