@@ -16,7 +16,7 @@ namespace JDC.Common.Entities
 
         public string Sex { get; set; }
 
-        public int InstitutionId { get; set; }
+        public int? InstitutionId { get; set; }
 
         public Institution Institution { get; set; }
 

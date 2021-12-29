@@ -22,6 +22,6 @@ namespace JDC.Common.Entities
 
         public List<Student> Students { get; set; }
 
-        public List<Lesson> Lessons { get; set; }
+        public List<Discipline> Disciplines { get; set; }
     }
 }

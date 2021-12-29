@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using JDC.Common.Enums;
 
 namespace JDC.Common.Entities
 {
@@ -6,12 +8,18 @@ namespace JDC.Common.Entities
     {
         public int Id { get; set; }
 
-        public string Title { get; set; }
+        public string Theme { get; set; }
 
-        public int GroupId { get; set; }
+        public DateTime Date { get; set; }
 
-        public Group Group { get; set; }
+        public string Homework { get; set; }
 
-        public List<StudyDay> StudyDays { get; set; }
+        public LessonDuration LessonDuration { get; set; } = LessonDuration.TwoHours;
+
+        public int DisciplineId { get; set; }
+
+        public Discipline Discipline { get; set; }
+
+        public List<Grade> Grades { get; set; }
     }
 }
