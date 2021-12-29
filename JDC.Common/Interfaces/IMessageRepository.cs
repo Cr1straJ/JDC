@@ -16,14 +16,14 @@ namespace JDC.Common.Interfaces
 
         IEnumerable<Message> Find(Expression<Func<Message, bool>> expression);
 
-        void Add(Message entity);
+        Task Add(Message entity);
 
-        void AddRange(IEnumerable<Message> entities);
+        Task AddRange(IEnumerable<Message> entities);
 
-        void Remove(Message entity);
+        Task Remove(Message entity);
 
-        void RemoveRange(IEnumerable<Message> entities);
+        Task RemoveRange(IEnumerable<Message> entities);
 
-        void Update(Message entity);
+        Task Update(Message entity);
     }
 }

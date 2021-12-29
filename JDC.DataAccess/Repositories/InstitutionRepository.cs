@@ -19,13 +19,13 @@ namespace JDC.DataAccess.Repositories
             this.context = context;
         }
 
-        public async void Add(EInstitution entity)
+        public async Task Add(EInstitution entity)
         {
             await this.context.EInstitutions.AddAsync(entity);
             await this.context.SaveChangesAsync();
         }
 
-        public async void AddRange(IEnumerable<EInstitution> entities)
+        public async Task AddRange(IEnumerable<EInstitution> entities)
         {
             await this.context.EInstitutions.AddRangeAsync(entities);
             await this.context.SaveChangesAsync();
@@ -46,19 +46,19 @@ namespace JDC.DataAccess.Repositories
             return await this.context.EInstitutions.FindAsync(id);
         }
 
-        public async void Remove(EInstitution entity)
+        public async Task Remove(EInstitution entity)
         {
             this.context.EInstitutions.Remove(entity);
             await this.context.SaveChangesAsync();
         }
 
-        public async void RemoveRange(IEnumerable<EInstitution> entities)
+        public async Task RemoveRange(IEnumerable<EInstitution> entities)
         {
             this.context.EInstitutions.RemoveRange(entities);
             await this.context.SaveChangesAsync();
         }
 
-        public async void Update(EInstitution entity)
+        public async Task Update(EInstitution entity)
         {
             this.context.EInstitutions.Update(entity);
             await this.context.SaveChangesAsync();

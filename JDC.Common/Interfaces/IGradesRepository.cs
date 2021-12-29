@@ -16,14 +16,14 @@ namespace JDC.Common.Interfaces
 
         IEnumerable<Grade> Find(Expression<Func<Grade, bool>> expression);
 
-        void Add(Grade entity);
+        Task Add(Grade entity);
 
-        void AddRange(IEnumerable<Grade> entities);
+        Task AddRange(IEnumerable<Grade> entities);
 
-        void Remove(Grade entity);
+        Task Remove(Grade entity);
 
-        void RemoveRange(IEnumerable<Grade> entities);
+        Task RemoveRange(IEnumerable<Grade> entities);
 
-        void Update(Grade entity);
+        Task Update(Grade entity);
     }
 }

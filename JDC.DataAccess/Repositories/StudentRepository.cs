@@ -10,22 +10,22 @@ using JDC.DataAccess.Data;
 
 namespace JDC.DataAccess.Repositories
 {
-    public class StudenRepository : ISudentRepository
+    public class StudentRepository : IStudentRepository
     {
         private readonly ApplicationDbContext context;
 
-        public StudenRepository(ApplicationDbContext context)
+        public StudentRepository(ApplicationDbContext context)
         {
             this.context = context;
         }
 
-        public async void Add(Student entity)
+        public async Task Add(Student entity)
         {
             await this.context.Students.AddAsync(entity);
             await this.context.SaveChangesAsync();
         }
 
-        public async void AddRange(IEnumerable<Student> entities)
+        public async Task AddRange(IEnumerable<Student> entities)
         {
             await this.context.Students.AddRangeAsync(entities);
             await this.context.SaveChangesAsync();
@@ -46,19 +46,19 @@ namespace JDC.DataAccess.Repositories
             return await this.context.Students.FindAsync(id);
         }
 
-        public async void Remove(Student entity)
+        public async Task Remove(Student entity)
         {
             this.context.Students.Remove(entity);
             await this.context.SaveChangesAsync();
         }
 
-        public async void RemoveRange(IEnumerable<Student> entities)
+        public async Task RemoveRange(IEnumerable<Student> entities)
         {
             this.context.Students.RemoveRange(entities);
             await this.context.SaveChangesAsync();
         }
 
-        public async void Update(Student entity)
+        public async Task Update(Student entity)
         {
             this.context.Students.Update(entity);
             await this.context.SaveChangesAsync();

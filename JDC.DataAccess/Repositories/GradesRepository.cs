@@ -19,13 +19,13 @@ namespace JDC.DataAccess.Repositories
             this.context = context;
         }
 
-        public async void Add(Grade entity)
+        public async Task Add(Grade entity)
         {
             await this.context.Grades.AddAsync(entity);
             await this.context.SaveChangesAsync();
         }
 
-        public async void AddRange(IEnumerable<Grade> entities)
+        public async Task AddRange(IEnumerable<Grade> entities)
         {
             await this.context.Grades.AddRangeAsync(entities);
             await this.context.SaveChangesAsync();
@@ -46,19 +46,19 @@ namespace JDC.DataAccess.Repositories
             return await this.context.Grades.FindAsync(id);
         }
 
-        public async void Remove(Grade entity)
+        public async Task Remove(Grade entity)
         {
             this.context.Grades.Remove(entity);
             await this.context.SaveChangesAsync();
         }
 
-        public async void RemoveRange(IEnumerable<Grade> entities)
+        public async Task RemoveRange(IEnumerable<Grade> entities)
         {
             this.context.Grades.RemoveRange(entities);
             await this.context.SaveChangesAsync();
         }
 
-        public async void Update(Grade entity)
+        public async Task Update(Grade entity)
         {
             this.context.Grades.Update(entity);
             await this.context.SaveChangesAsync();

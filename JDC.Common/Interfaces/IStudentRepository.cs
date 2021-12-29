@@ -8,7 +8,7 @@ using JDC.Common.Entities;
 
 namespace JDC.Common.Interfaces
 {
-    public interface ISudentRepository
+    public interface IStudentRepository
     {
         Task<Student> GetById(int? id);
 
@@ -16,14 +16,14 @@ namespace JDC.Common.Interfaces
 
         IEnumerable<Student> Find(Expression<Func<Student, bool>> expression);
 
-        void Add(Student entity);
+        Task Add(Student entity);
 
-        void AddRange(IEnumerable<Student> entities);
+        Task AddRange(IEnumerable<Student> entities);
 
-        void Remove(Student entity);
+        Task Remove(Student entity);
 
-        void RemoveRange(IEnumerable<Student> entities);
+        Task RemoveRange(IEnumerable<Student> entities);
 
-        void Update(Student entity);
+        Task Update(Student entity);
     }
 }

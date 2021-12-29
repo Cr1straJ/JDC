@@ -16,14 +16,14 @@ namespace JDC.Common.Interfaces
 
         IEnumerable<StudentGroup> Find(Expression<Func<StudentGroup, bool>> expression);
 
-        void Add(StudentGroup entity);
+        Task Add(StudentGroup entity);
 
-        void AddRange(IEnumerable<StudentGroup> entities);
+        Task AddRange(IEnumerable<StudentGroup> entities);
 
-        void Remove(StudentGroup entity);
+        Task Remove(StudentGroup entity);
 
-        void RemoveRange(IEnumerable<StudentGroup> entities);
+        Task RemoveRange(IEnumerable<StudentGroup> entities);
 
-        void Update(StudentGroup entity);
+        Task Update(StudentGroup entity);
     }
 }

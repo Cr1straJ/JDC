@@ -16,14 +16,14 @@ namespace JDC.BusinessLogic.Interfaces
 
         IEnumerable<ChatGroup> Find(Expression<Func<ChatGroup, bool>> expression);
 
-        void Add(ChatGroup entity);
+        Task Add(ChatGroup entity);
 
-        void AddRange(IEnumerable<ChatGroup> entities);
+        Task AddRange(IEnumerable<ChatGroup> entities);
 
-        void Remove(ChatGroup entity);
+        Task Remove(ChatGroup entity);
 
-        void RemoveRange(IEnumerable<ChatGroup> entities);
+        Task RemoveRange(IEnumerable<ChatGroup> entities);
 
-        void Update(ChatGroup entity);
+        Task Update(ChatGroup entity);
     }
 }

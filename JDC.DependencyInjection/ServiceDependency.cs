@@ -17,8 +17,22 @@ namespace JDC.DependencyInjection
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddTransient<IRegistrationRequestRepository, RegistrationRequestRepository>();
+            services.AddTransient<IChatRepository, ChatRepository>();
+            services.AddTransient<IGradesRepository, GradesRepository>();
+            services.AddTransient<IGroupRepository, GroupRepository>();
+            services.AddTransient<IInstitutionRepository, InstitutionRepository>();
+            services.AddTransient<IMessageRepository, MessageRepository>();
+            services.AddTransient<IStudentRepository, StudentRepository>();
+            services.AddTransient<ITeacherRepository, TeacherRepository>();
 
             services.AddTransient<IRegistrationRequestService, RegistrationRequestService>();
+            services.AddTransient<IChatService, ChatService>();
+            services.AddTransient<IGradesService, GradesService>();
+            services.AddTransient<IGroupService, GroupService>();
+            services.AddTransient<IInstitutionService, InstitutionService>();
+            services.AddTransient<IMessageService, MessageService>();
+            services.AddTransient<IStudentService, StudentService>();
+            services.AddTransient<ITeacherService, TeacherService>();
         }
 
         public static void AddIdentity(this IServiceCollection services)

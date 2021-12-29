@@ -19,13 +19,13 @@ namespace JDC.DataAccess.Repositories
             this.context = context;
         }
 
-        public async void Add(ChatGroup entity)
+        public async Task Add(ChatGroup entity)
         {
             await this.context.ChatGroups.AddAsync(entity);
             await this.context.SaveChangesAsync();
         }
 
-        public async void AddRange(IEnumerable<ChatGroup> entities)
+        public async Task AddRange(IEnumerable<ChatGroup> entities)
         {
             await this.context.ChatGroups.AddRangeAsync(entities);
             await this.context.SaveChangesAsync();
@@ -46,19 +46,19 @@ namespace JDC.DataAccess.Repositories
             return await this.context.ChatGroups.FindAsync(id);
         }
 
-        public async void Remove(ChatGroup entity)
+        public async Task Remove(ChatGroup entity)
         {
             this.context.ChatGroups.Remove(entity);
             await this.context.SaveChangesAsync();
         }
 
-        public async void RemoveRange(IEnumerable<ChatGroup> entities)
+        public async Task RemoveRange(IEnumerable<ChatGroup> entities)
         {
             this.context.ChatGroups.RemoveRange(entities);
             await this.context.SaveChangesAsync();
         }
 
-        public async void Update(ChatGroup entity)
+        public async Task Update(ChatGroup entity)
         {
             this.context.ChatGroups.Update(entity);
             await this.context.SaveChangesAsync();

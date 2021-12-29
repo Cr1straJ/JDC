@@ -16,14 +16,14 @@ namespace JDC.BusinessLogic.Interfaces
 
         IEnumerable<EInstitution> Find(Expression<Func<EInstitution, bool>> expression);
 
-        void Add(EInstitution entity);
+        Task Add(EInstitution entity);
 
-        void AddRange(IEnumerable<EInstitution> entities);
+        Task AddRange(IEnumerable<EInstitution> entities);
 
-        void Remove(EInstitution entity);
+        Task Remove(EInstitution entity);
 
-        void RemoveRange(IEnumerable<EInstitution> entities);
+        Task RemoveRange(IEnumerable<EInstitution> entities);
 
-        void Update(EInstitution entity);
+        Task Update(EInstitution entity);
     }
 }
