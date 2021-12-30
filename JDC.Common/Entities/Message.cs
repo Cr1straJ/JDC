@@ -23,7 +23,7 @@ namespace JDC.Common.Entities
 
         public int UserId { get; set; }
 
-        public AbstractUser User { get; set; }
+        public User User { get; set; }
 
         public RecipientType Recipent { get; set; } = RecipientType.Deafult;
 
@@ -31,6 +31,6 @@ namespace JDC.Common.Entities
 
         public DateTime SendingDate { get; set; }
 
-        public List<AbstractUser> Writed { get; set; }
+        public List<User> Writed { get; set; }
     }
 }
