@@ -20,7 +20,8 @@ namespace JDC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDatabase(this.Configuration.GetConnectionString("DefaultConnection"));
-
+            services.AddConfigurstionSettings(this.Configuration);
+            services.AddDependencies();
             services.AddIdentity();
 
             services.AddRazorPages();
@@ -39,6 +40,16 @@ namespace JDC
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
+            app.Use(async (context, next) =>
+            {
+                await next();
+                if (context.Response.StatusCode == 404)
+                {
+                    context.Request.Path = "/Home/Error";
+                    await next();
+                }
+            });
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

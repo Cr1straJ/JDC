@@ -1,21 +1,36 @@
 ﻿using JDC.BusinessLogic.Interfaces;
+using JDC.BusinessLogic.Models;
 using JDC.BusinessLogic.Services;
 using JDC.Common.Entities;
 using JDC.Common.Interfaces;
 using JDC.DataAccess.Data;
+using JDC.DataAccess.Interfaces;
 using JDC.DataAccess.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace JDC.DependencyInjection
 {
     public static class ServiceDependency
     {
+        public static void AddConfigurstionSettings(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddSingleton(new SmtpClientSettings()
+            {
+                Email = configuration.GetSection("Smtp:Email").Value,
+                Password = configuration.GetSection("Smtp:Password").Value,
+                Name = configuration.GetSection("Smtp:Name").Value,
+                Host = configuration.GetSection("Smtp:Host").Value,
+                Port = int.Parse(configuration.GetSection("Smtp:Port").Value),
+            });
+        }
+
         public static void AddDependencies(this IServiceCollection services)
         {
-            services.AddTransient<IEmailSender, EmailSender>();
-
+            services.AddTransient<IGroupService, GroupService>();
+            services.AddTransient<IGroupRepository, GroupRepository>();
             services.AddTransient<IRegistrationRequestRepository, RegistrationRequestRepository>();
             services.AddTransient<IChatRepository, ChatRepository>();
             services.AddTransient<IGradesRepository, GradesRepository>();
@@ -25,6 +40,9 @@ namespace JDC.DependencyInjection
             services.AddTransient<IStudentRepository, StudentRepository>();
             services.AddTransient<ITeacherRepository, TeacherRepository>();
 
+            services.AddTransient<ISpecialityService, SpecialityService>();
+            services.AddTransient<ISpecialityRepository, SpecialityRepository>();
+          
             services.AddTransient<IRegistrationRequestService, RegistrationRequestService>();
             services.AddTransient<IChatService, ChatService>();
             services.AddTransient<IGradesService, GradesService>();
@@ -33,6 +51,8 @@ namespace JDC.DependencyInjection
             services.AddTransient<IMessageService, MessageService>();
             services.AddTransient<IStudentService, StudentService>();
             services.AddTransient<ITeacherService, TeacherService>();
+
+            services.AddTransient<IEmailSender, EmailSender>();
         }
 
         public static void AddIdentity(this IServiceCollection services)

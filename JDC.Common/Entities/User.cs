@@ -16,6 +16,10 @@ namespace JDC.Common.Entities
 
         public string Sex { get; set; }
 
+        public int InstitutionId { get; set; }
+
+        public Institution Institution { get; set; }
+
         [NotMapped]
         public string ShortName => $"{this.LastName} {this.FirstName?.ToUpper()[0]}. {this.MiddleName?.ToUpper()[0]}.";
 

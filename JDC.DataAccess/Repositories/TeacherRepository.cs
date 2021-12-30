@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using JDC.Common.Entities;
 using JDC.Common.Interfaces;
 using JDC.DataAccess.Data;
+using JDC.DataAccess.Interfaces;
 
 namespace JDC.DataAccess.Repositories
 {
@@ -62,6 +63,14 @@ namespace JDC.DataAccess.Repositories
         {
             this.context.Teachers.Update(entity);
             await this.context.SaveChangesAsync();
+        }
+        
+        public Task<List<Teacher>> GetInstitutionTeachers(int id)
+        {
+            return Task.Factory.StartNew(() =>
+            {
+                return this.context.Teachers.Where(teacher => teacher.User.InstitutionId == id).ToList();
+            });
         }
     }
 }

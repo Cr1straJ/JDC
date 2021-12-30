@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -25,5 +25,7 @@ namespace JDC.BusinessLogic.Interfaces
         Task RemoveRange(IEnumerable<StudentGroup> entities);
 
         Task Update(StudentGroup entity);
+
+        Task<List<Group>> GetInstitutionGroups(int? id);
     }
 }

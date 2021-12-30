@@ -20,19 +20,16 @@ namespace JDC.Areas.Account.Controllers
     {
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
-        private readonly IConfiguration configuration;
         private readonly IEmailSender emailSender;
 
         public ManageController(
             UserManager<User> userManager, 
             SignInManager<User> signInManager,
-            IEmailSender emailSender,
-            IConfiguration configuration)
+            IEmailSender emailSender)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.emailSender = emailSender;
-            this.configuration = configuration;
         }
 
         public async Task<IActionResult> Index()
@@ -78,9 +75,8 @@ namespace JDC.Areas.Account.Controllers
             user.LastName = indexModel.Input.LastName;
             user.FirstName = indexModel.Input.FirstName;
             user.MiddleName = indexModel.Input.MiddleName;
-            //user.Sex = indexModel.Input.Sex.Equals("Мужской", StringComparison.Ordinal);
-            //FIXE
             user.Sex = indexModel.Input.Sex;
+
             await this.userManager.UpdateAsync(user);
             await this.signInManager.RefreshSignInAsync(user);
             indexModel.StatusMessage = "Your profile has been updated";
@@ -214,7 +210,7 @@ namespace JDC.Areas.Account.Controllers
                     values: new { userId, email = emailModel.Input.NewEmail, code },
                     protocol: this.Request.Scheme);
 
-                await this.emailSender.SendEmailAsync(user.ShortName, emailModel.Input.NewEmail, "Подтвердите свою электронную почту", $"Пожалуйста, подтвердите свою учетную запись, <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>нажав здесь</a>.", this.configuration);
+                await this.emailSender.SendEmailAsync(user.ShortName, emailModel.Input.NewEmail, "Подтвердите свою электронную почту", $"Пожалуйста, подтвердите свою учетную запись, <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>нажав здесь</a>.");
 
                 emailModel.StatusMessage = "Отправлена ссылка для подтверждения изменения электронной почты. Пожалуйста, проверьте свою электронную почту.";
 
@@ -252,7 +248,7 @@ namespace JDC.Areas.Account.Controllers
                 values: new { area = "Account", userId, code },
                 protocol: this.Request.Scheme);
 
-            await this.emailSender.SendEmailAsync(user.ShortName, email, "Подтвердите свою электронную почту", $"Пожалуйста, подтвердите свою учетную запись, <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>нажав здесь</a>.", this.configuration);
+            await this.emailSender.SendEmailAsync(user.ShortName, email, "Подтвердите свою электронную почту", $"Пожалуйста, подтвердите свою учетную запись, <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>нажав здесь</a>.");
             emailModel.StatusMessage = "Письмо с подтверждением отправлено. Пожалуйста, проверьте свою электронную почту.";
 
             return this.View();

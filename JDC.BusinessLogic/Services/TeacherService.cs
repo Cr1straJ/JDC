@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using JDC.BusinessLogic.Interfaces;
 using JDC.Common.Entities;
 using JDC.Common.Interfaces;
+using JDC.DataAccess.Interfaces;
+
 
 namespace JDC.BusinessLogic.Services
 {
@@ -57,6 +59,11 @@ namespace JDC.BusinessLogic.Services
         public async Task Update(Teacher entity)
         {
             await this.teacherRepository.Update(entity);
+        }
+        
+        public async Task<List<Teacher>> GetInstitutionTeachers(int id)
+        {
+            return await this.teacherRepository.GetInstitutionTeachers(id);
         }
     }
 }
