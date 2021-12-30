@@ -2,7 +2,6 @@
 using JDC.BusinessLogic.Models;
 using JDC.BusinessLogic.Services;
 using JDC.Common.Entities;
-using JDC.Common.Interfaces;
 using JDC.DataAccess.Data;
 using JDC.DataAccess.Interfaces;
 using JDC.DataAccess.Repositories;
@@ -34,7 +33,6 @@ namespace JDC.DependencyInjection
             services.AddTransient<IRegistrationRequestRepository, RegistrationRequestRepository>();
             services.AddTransient<IChatRepository, ChatRepository>();
             services.AddTransient<IGradesRepository, GradesRepository>();
-            services.AddTransient<IGroupRepository, GroupRepository>();
             services.AddTransient<IInstitutionRepository, InstitutionRepository>();
             services.AddTransient<IMessageRepository, MessageRepository>();
             services.AddTransient<IStudentRepository, StudentRepository>();

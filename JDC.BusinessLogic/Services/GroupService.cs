@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using JDC.BusinessLogic.Interfaces;
 using JDC.Common.Entities;
-using JDC.Common.Interfaces;
 using JDC.DataAccess.Interfaces;
 
 namespace JDC.BusinessLogic.Services
@@ -20,32 +19,32 @@ namespace JDC.BusinessLogic.Services
             this.groupRepository = groupRepository;
         }
 
-        public async Task Add(StudentGroup entity)
+        public async Task Add(Group entity)
         {
             await this.groupRepository.Add(entity);
         }
 
-        public async Task AddRange(IEnumerable<StudentGroup> entities)
+        public async Task AddRange(IEnumerable<Group> entities)
         {
             await this.groupRepository.AddRange(entities);
         }
 
-        public IEnumerable<StudentGroup> Find(Expression<Func<StudentGroup, bool>> expression)
+        public IEnumerable<Group> Find(Expression<Func<Group, bool>> expression)
         {
             return this.groupRepository.Find(expression);
         }
 
-        public IEnumerable<StudentGroup> GetAll()
+        public IEnumerable<Group> GetAll()
         {
             return this.groupRepository.GetAll();
         }
 
-        public async Task Remove(StudentGroup entity)
+        public async Task Remove(Group entity)
         {
             await this.groupRepository.Remove(entity);
         }
 
-        public async Task RemoveRange(IEnumerable<StudentGroup> entities)
+        public async Task RemoveRange(IEnumerable<Group> entities)
         {
             await this.groupRepository.RemoveRange(entities);
         }
@@ -58,6 +57,11 @@ namespace JDC.BusinessLogic.Services
         public async Task<List<Group>> GetInstitutionGroups(int? id)
         {
             return id.HasValue ? await this.groupRepository.GetInstitutionGroups(id.Value) : null;
+        }
+
+        public async Task Update(Group entity)
+        {
+            await this.groupRepository.Update(entity);
         }
     }
 }

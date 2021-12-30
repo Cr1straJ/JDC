@@ -5,8 +5,8 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using JDC.Common.Entities;
-using JDC.Common.Interfaces;
 using JDC.DataAccess.Data;
+using JDC.DataAccess.Interfaces;
 
 namespace JDC.DataAccess.Repositories
 {

@@ -139,7 +139,7 @@ namespace JDC.Controllers
                 return this.View("Error");
             }
 
-            await this.groupService.Delete(group);
+            await this.groupService.Remove(group);
 
             return this.RedirectToAction(nameof(this.Index));
         }

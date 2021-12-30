@@ -12,7 +12,7 @@ namespace JDC.Common.Entities
 
         public int StudentGroupId { get; set; }
 
-        public StudentGroup StudentGroup { get; set; }
+        public Group Group { get; set; }
 
         public List<StudyDay> StudyDays { get; set; }
     }

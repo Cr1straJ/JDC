@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using JDC.BusinessLogic.Interfaces;
 using JDC.Common.Entities;
-using JDC.Common.Interfaces;
+using JDC.DataAccess.Interfaces;
 
 namespace JDC.BusinessLogic.Services
 {
@@ -19,42 +19,42 @@ namespace JDC.BusinessLogic.Services
             this.institutionRepository = institutionRepository;
         }
 
-        public async Task Add(EInstitution entity)
+        public async Task Add(Institution entity)
         {
             await this.institutionRepository.Add(entity);
         }
 
-        public async Task AddRange(IEnumerable<EInstitution> entities)
+        public async Task AddRange(IEnumerable<Institution> entities)
         {
             await this.institutionRepository.AddRange(entities);
         }
 
-        public IEnumerable<EInstitution> Find(Expression<Func<EInstitution, bool>> expression)
+        public IEnumerable<Institution> Find(Expression<Func<Institution, bool>> expression)
         {
             return this.institutionRepository.Find(expression);
         }
 
-        public IEnumerable<EInstitution> GetAll()
+        public IEnumerable<Institution> GetAll()
         {
             return this.institutionRepository.GetAll();
         }
 
-        public async Task<EInstitution> GetById(int? id)
+        public async Task<Institution> GetById(int? id)
         {
             return await this.institutionRepository.GetById(id);
         }
 
-        public async Task Remove(EInstitution entity)
+        public async Task Remove(Institution entity)
         {
             await this.institutionRepository.Remove(entity);
         }
 
-        public async Task RemoveRange(IEnumerable<EInstitution> entities)
+        public async Task RemoveRange(IEnumerable<Institution> entities)
         {
             await this.institutionRepository.RemoveRange(entities);
         }
 
-        public async Task Update(EInstitution entity)
+        public async Task Update(Institution entity)
         {
             await this.institutionRepository.Update(entity);
         }

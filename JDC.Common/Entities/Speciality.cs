@@ -10,6 +10,6 @@
 
         public int InstitutionId { get; set; }
 
-        public EInstitution EInstitution { get; set; }
+        public Institution EInstitution { get; set; }
     }
 }

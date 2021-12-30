@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using JDC.Common.Entities;
 
-namespace JDC.BusinessLogic.Interfaces
+namespace JDC.DataAccess.Interfaces
 {
-    public interface IInstitutionService
+    public interface IInstitutionRepository
     {
         Task<Institution> GetById(int? id);
 

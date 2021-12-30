@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JDC.Common.Entities
@@ -20,7 +20,7 @@ namespace JDC.Common.Entities
 
         public int? GroupId { get; set; }
 
-        public StudentGroup Group { get; set; }
+        public Group Group { get; set; }
 
         public List<Grade> Grades { get; set; }
     }

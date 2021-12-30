@@ -5,8 +5,8 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using JDC.Common.Entities;
-using JDC.Common.Interfaces;
 using JDC.DataAccess.Data;
+using JDC.DataAccess.Interfaces;
 
 namespace JDC.DataAccess.Repositories
 {
@@ -19,48 +19,48 @@ namespace JDC.DataAccess.Repositories
             this.context = context;
         }
 
-        public async Task Add(EInstitution entity)
+        public async Task Add(Institution entity)
         {
-            await this.context.EInstitutions.AddAsync(entity);
+            await this.context.Institutions.AddAsync(entity);
             await this.context.SaveChangesAsync();
         }
 
-        public async Task AddRange(IEnumerable<EInstitution> entities)
+        public async Task AddRange(IEnumerable<Institution> entities)
         {
-            await this.context.EInstitutions.AddRangeAsync(entities);
+            await this.context.Institutions.AddRangeAsync(entities);
             await this.context.SaveChangesAsync();
         }
 
-        public IEnumerable<EInstitution> Find(Expression<Func<EInstitution, bool>> expression)
+        public IEnumerable<Institution> Find(Expression<Func<Institution, bool>> expression)
         {
-            return this.context.EInstitutions.Where(expression);
+            return this.context.Institutions.Where(expression);
         }
 
-        public IEnumerable<EInstitution> GetAll()
+        public IEnumerable<Institution> GetAll()
         {
-            return this.context.EInstitutions;
+            return this.context.Institutions;
         }
 
-        public async Task<EInstitution> GetById(int? id)
+        public async Task<Institution> GetById(int? id)
         {
-            return await this.context.EInstitutions.FindAsync(id);
+            return await this.context.Institutions.FindAsync(id);
         }
 
-        public async Task Remove(EInstitution entity)
+        public async Task Remove(Institution entity)
         {
-            this.context.EInstitutions.Remove(entity);
+            this.context.Institutions.Remove(entity);
             await this.context.SaveChangesAsync();
         }
 
-        public async Task RemoveRange(IEnumerable<EInstitution> entities)
+        public async Task RemoveRange(IEnumerable<Institution> entities)
         {
-            this.context.EInstitutions.RemoveRange(entities);
+            this.context.Institutions.RemoveRange(entities);
             await this.context.SaveChangesAsync();
         }
 
-        public async Task Update(EInstitution entity)
+        public async Task Update(Institution entity)
         {
-            this.context.EInstitutions.Update(entity);
+            this.context.Institutions.Update(entity);
             await this.context.SaveChangesAsync();
         }
     }

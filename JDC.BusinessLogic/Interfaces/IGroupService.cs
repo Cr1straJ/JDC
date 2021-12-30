@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -10,21 +10,21 @@ namespace JDC.BusinessLogic.Interfaces
 {
     public interface IGroupService
     {
-        Task<StudentGroup> GetById(int? id);
+        Task<Group> GetById(int? id);
 
-        IEnumerable<StudentGroup> GetAll();
+        IEnumerable<Group> GetAll();
 
-        IEnumerable<StudentGroup> Find(Expression<Func<StudentGroup, bool>> expression);
+        IEnumerable<Group> Find(Expression<Func<Group, bool>> expression);
 
-        Task Add(StudentGroup entity);
+        Task Add(Group entity);
 
-        Task AddRange(IEnumerable<StudentGroup> entities);
+        Task AddRange(IEnumerable<Group> entities);
 
-        Task Remove(StudentGroup entity);
+        Task Remove(Group entity);
 
-        Task RemoveRange(IEnumerable<StudentGroup> entities);
+        Task RemoveRange(IEnumerable<Group> entities);
 
-        Task Update(StudentGroup entity);
+        Task Update(Group entity);
 
         Task<List<Group>> GetInstitutionGroups(int? id);
     }

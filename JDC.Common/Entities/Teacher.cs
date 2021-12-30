@@ -1,9 +1,9 @@
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JDC.Common.Entities
 {
     [Table("Teachers")]
-    public class Teacher : AbstractUser
+    public class Teacher
     {
         public int Id { get; set; }
 
@@ -11,8 +11,8 @@ namespace JDC.Common.Entities
         
         public int? InstitutionId { get; set; }
 
-        public EInstitution Institution { get; set; }
+        public Institution Institution { get; set; }
 
-        public StudentGroup Group { get; set; }
+        public Group Group { get; set; }
     }
 }

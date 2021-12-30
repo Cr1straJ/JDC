@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using JDC.BusinessLogic.Interfaces;
 using JDC.Common.Entities;
-using JDC.Common.Interfaces;
+using JDC.DataAccess.Interfaces;
 
 namespace JDC.BusinessLogic.Services
 {
