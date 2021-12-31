@@ -1,4 +1,4 @@
-﻿namespace JDC.Common.Enums
+namespace JDC.Common.Enums
 {
     public enum LessonDuration
     {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using JDC.Common.Entities;
 
-namespace JDC.Common.Interfaces
+namespace JDC.DataAccess.Interfaces
 {
     public interface IRegistrationRequestRepository
     {

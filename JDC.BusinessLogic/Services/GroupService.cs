@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
 using System.Threading.Tasks;
 using JDC.BusinessLogic.Interfaces;
 using JDC.Common.Entities;
@@ -15,14 +19,34 @@ namespace JDC.BusinessLogic.Services
             this.groupRepository = groupRepository;
         }
 
-        public async Task Add(Group group)
+        public async Task Add(Group entity)
         {
-            await this.groupRepository.Add(group);
+            await this.groupRepository.Add(entity);
         }
 
-        public async Task Delete(Group group)
+        public async Task AddRange(IEnumerable<Group> entities)
         {
-            await this.groupRepository.Delete(group);
+            await this.groupRepository.AddRange(entities);
+        }
+
+        public IEnumerable<Group> Find(Expression<Func<Group, bool>> expression)
+        {
+            return this.groupRepository.Find(expression);
+        }
+
+        public IEnumerable<Group> GetAll()
+        {
+            return this.groupRepository.GetAll();
+        }
+
+        public async Task Remove(Group entity)
+        {
+            await this.groupRepository.Remove(entity);
+        }
+
+        public async Task RemoveRange(IEnumerable<Group> entities)
+        {
+            await this.groupRepository.RemoveRange(entities);
         }
 
         public async Task<Group> GetById(int? id)
@@ -35,9 +59,9 @@ namespace JDC.BusinessLogic.Services
             return id.HasValue ? await this.groupRepository.GetInstitutionGroups(id.Value) : null;
         }
 
-        public async Task Update(Group group)
+        public async Task Update(Group entity)
         {
-            await this.groupRepository.Update(group);
+            await this.groupRepository.Update(entity);
         }
     }
 }
