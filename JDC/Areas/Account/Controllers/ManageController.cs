@@ -37,7 +37,7 @@ namespace JDC.Areas.Account.Controllers
 
             if (user is null)
             {
-                return this.NotFound($"Unable to load user with ID {this.userManager.GetUserId(this.User)}.");
+                return this.View("Error");
             }
 
             return this.View(await this.GetIndexModelAsync(user));
@@ -51,7 +51,7 @@ namespace JDC.Areas.Account.Controllers
 
             if (user is null)
             {
-                return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(this.User)}'.");
+                return this.View("Error");
             }
 
             if (!this.ModelState.IsValid)
@@ -89,7 +89,7 @@ namespace JDC.Areas.Account.Controllers
 
             if (user is null)
             {
-                return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(this.User)}'.");
+                return this.View("Error");
             }
 
             return this.View();
@@ -101,7 +101,7 @@ namespace JDC.Areas.Account.Controllers
 
             if (user is null)
             {
-                return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(this.User)}'.");
+                return this.View("Error");
             }
 
             return this.View(new DeletePersonalDataModel() { RequirePassword = await this.userManager.HasPasswordAsync(user) });
@@ -115,7 +115,7 @@ namespace JDC.Areas.Account.Controllers
 
             if (user is null)
             {
-                return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(this.User)}'.");
+                return this.View("Error");
             }
 
             if (deletePersonalDataModel.RequirePassword)
@@ -128,11 +128,10 @@ namespace JDC.Areas.Account.Controllers
             }
 
             var result = await this.userManager.DeleteAsync(user);
-            var userId = await this.userManager.GetUserIdAsync(user);
 
             if (!result.Succeeded)
             {
-                throw new InvalidOperationException($"Unexpected error occurred deleting user with ID '{userId}'.");
+                throw new InvalidOperationException($"Unexpected error occurred deleting user with ID '{user.Id}'.");
             }
 
             await this.signInManager.SignOutAsync();
@@ -148,7 +147,7 @@ namespace JDC.Areas.Account.Controllers
 
             if (user is null)
             {
-                return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(this.User)}'.");
+                return this.View("Error");
             }
 
             var personalData = new Dictionary<string, string>();
@@ -175,7 +174,7 @@ namespace JDC.Areas.Account.Controllers
 
             if (user is null)
             {
-                return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(this.User)}'.");
+                return this.View("Error");
             }
 
             return this.View(await this.GetEmailModelAsync(user));
@@ -189,7 +188,7 @@ namespace JDC.Areas.Account.Controllers
 
             if (user is null)
             {
-                return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(this.User)}'.");
+                return this.View("Error");
             }
 
             if (!this.ModelState.IsValid)
@@ -229,7 +228,7 @@ namespace JDC.Areas.Account.Controllers
 
             if (user is null)
             {
-                return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(this.User)}'.");
+                return this.View("Error");
             }
 
             if (!this.ModelState.IsValid)
@@ -259,7 +258,7 @@ namespace JDC.Areas.Account.Controllers
 
             if (user is null)
             {
-                return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(this.User)}'.");
+                return this.View("Error");
             }
 
             return this.View(new ChangePasswordModel());
@@ -278,7 +277,7 @@ namespace JDC.Areas.Account.Controllers
 
             if (user is null)
             {
-                return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(this.User)}'.");
+                return this.View("Error");
             }
 
             var changePasswordResult = await this.userManager.ChangePasswordAsync(user, changePasswordModel.Input.OldPassword, changePasswordModel.Input.NewPassword);

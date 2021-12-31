@@ -44,8 +44,8 @@ namespace JDC.Areas.Identity.Controllers
                 RegistrationRequest registrationRequest = new RegistrationRequest(registrationModel.DirectorName, registrationModel.PhoneNumber, registrationModel.WebsiteLink, registrationModel.Email, confirmationCode);
 
                 await this.registrationRequestService.Create(registrationRequest);
-
                 await this.emailSender.SendEmailAsync(registrationModel.DirectorName, registrationModel.Email, "Подтверждение регистрации учреждения", $"Ваш код: {confirmationCode}");
+                
                 return this.RedirectToAction("RegisterConfirmation", new { id = registrationRequest.Id, email = registrationModel.Email });
             }
 
@@ -79,10 +79,10 @@ namespace JDC.Areas.Identity.Controllers
                 }
 
                 this.ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                
                 return this.View();
             }
 
-            // If we got this far, something failed, redisplay form
             return this.View(inputLogin);
         }
     }

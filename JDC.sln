@@ -10,6 +10,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JDC.DataAccess", "JDC.DataA
 		{9540D405-2414-4E54-B70A-B626655D1FBE} = {9540D405-2414-4E54-B70A-B626655D1FBE}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BB24865D-5FD9-4E51-A0D9-078A6E68CCCB}"
+	ProjectSection(SolutionItems) = preProject
+		README-RU.md = README-RU.md
+		README.md = README.md
+	EndProjectSection
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JDC.BusinessLogic", "JDC.BusinessLogic\JDC.BusinessLogic.csproj", "{772A0BDA-2A4F-472F-8F92-C75C02CDE102}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JDC.DependencyInjection", "JDC.DependencyInjection\JDC.DependencyInjection.csproj", "{7DA9A023-E5E5-44B1-B9B1-565518F9CF25}"

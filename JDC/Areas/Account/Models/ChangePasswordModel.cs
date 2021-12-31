@@ -13,7 +13,6 @@ namespace JDC.Areas.Account.Models
 
         public class InputModel
         {
-            [Required]
             [DataType(DataType.Password)]
             [Display(Name = "Текущий пароль")]
             public string OldPassword { get; set; }
