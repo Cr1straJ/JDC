@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 using JDC.BusinessLogic.Interfaces;
 using JDC.Common.Entities;
 using JDC.DataAccess.Interfaces;
-
 
 namespace JDC.BusinessLogic.Services
 {
@@ -24,7 +21,7 @@ namespace JDC.BusinessLogic.Services
         {
             return id.HasValue ? await this.teacherRepository.GetInstitutionTeachers(id.Value) : null;
         }
-        
+
         public async Task Add(Teacher entity)
         {
             await this.teacherRepository.Add(entity);

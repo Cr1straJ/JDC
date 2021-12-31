@@ -4,6 +4,11 @@
         <CodeAnalysisRuleSet>..\code-analysis.ruleset</CodeAnalysisRuleSet>
     </PropertyGroup>
     <ItemGroup>
+      <Compile Remove="Interfaces\**" />
+      <EmbeddedResource Remove="Interfaces\**" />
+      <None Remove="Interfaces\**" />
+    </ItemGroup>
+    <ItemGroup>
         <AdditionalFiles Include="..\code-analysis.ruleset" Link="Properties\code-analisys.ruleset" />
         <AdditionalFiles Include="..\stylecop.json" Link="Properties\stylecop.json" />
     </ItemGroup>
@@ -13,8 +18,5 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Interfaces\" />
     </ItemGroup>
 </Project>

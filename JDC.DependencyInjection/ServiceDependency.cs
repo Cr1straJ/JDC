@@ -1,4 +1,4 @@
-using JDC.BusinessLogic.Interfaces;
+﻿using JDC.BusinessLogic.Interfaces;
 using JDC.BusinessLogic.Models;
 using JDC.BusinessLogic.Services;
 using JDC.Common.Entities;
@@ -55,7 +55,7 @@ namespace JDC.DependencyInjection
             services.AddTransient<IMessageService, MessageService>();
             services.AddTransient<IMessageRepository, MessageRepository>();
             
-            services.AddTransient<IMStudentService, StudentService>();
+            services.AddTransient<IStudentService, StudentService>();
             services.AddTransient<IStudentRepository, StudentRepository>();
 
             services.AddTransient<IEmailSender, EmailSender>();
