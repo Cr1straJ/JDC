@@ -11,7 +11,6 @@ using JDC.Common.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.Configuration;
 
 namespace JDC.Areas.Account.Controllers
 {
@@ -23,7 +22,7 @@ namespace JDC.Areas.Account.Controllers
         private readonly IEmailSender emailSender;
 
         public ManageController(
-            UserManager<User> userManager, 
+            UserManager<User> userManager,
             SignInManager<User> signInManager,
             IEmailSender emailSender)
         {
@@ -283,7 +282,7 @@ namespace JDC.Areas.Account.Controllers
             }
 
             var changePasswordResult = await this.userManager.ChangePasswordAsync(user, changePasswordModel.Input.OldPassword, changePasswordModel.Input.NewPassword);
-            
+
             if (!changePasswordResult.Succeeded)
             {
                 foreach (var error in changePasswordResult.Errors)

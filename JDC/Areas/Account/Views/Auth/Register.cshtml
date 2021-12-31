@@ -1,5 +1,4 @@
-﻿@using JDC.Areas.Account.Models
-@model RegistrationModel
+﻿@model RegistrationModel
 @{
     ViewData["Title"] = "Регистрация";
 }
@@ -7,53 +6,43 @@
 <h1>@ViewData["Title"]</h1>
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-12 col-sm-8 col-md-7 col-lg-6 col-xl-4">
         <form asp-action="Register" method="post">
             <h4>Создание заявки на регистрацию учреждения образования.</h4>
             <hr />
-            <div asp-validation-summary="All" class="text-danger"></div>
+            <div asp-validation-summary="All" class="text-danger pl-3"></div>
 
-            <div class="row mt-3">
-                <div class="form-group col-md-6">
-                    <label class="other_info" asp-for="@Model.DirectorName"></label>
-                    <input asp-for="@Model.DirectorName" class="form-control" />
-                    <span asp-validation-for="@Model.DirectorName" class="text-danger"></span>
-                </div>
-                <div class="form-group col">
-                    <label class="other_info" asp-for="@Model.PhoneNumber"></label>
-                    <input asp-for="@Model.PhoneNumber" class="form-control" />
-                    <span asp-validation-for="@Model.PhoneNumber" class="text-danger"></span>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group col">
-                    <label class="other_info" asp-for="@Model.Email"></label>
-                    <input asp-for="@Model.Email" class="form-control" />
-                    <span asp-validation-for="@Model.Email" class="text-danger"></span>
-                </div>
-                <div class="form-group col">
-                    <label class="other_info" asp-for="@Model.WebsiteLink"></label>
-                    <input asp-for="@Model.WebsiteLink" class="form-control" />
-                    <span asp-validation-for="@Model.WebsiteLink" class="text-danger"></span>
-                </div>
+            <div class="form-group">
+                <label class="other_info" asp-for="@Model.DirectorName"></label>
+                <input asp-for="@Model.DirectorName" class="form-control" />
             </div>
 
             <div class="form-group">
-                <div class="custom-control custom-checkbox mr-sm-2">
-                    <input type="checkbox" class="custom-control-input" id="customControlAutosizing" asp-for="@Model.AcceptTermsOfAgreement">
-                    <label class="custom-control-label" for="customControlAutosizing" asp-for="@Model.AcceptTermsOfAgreement">@Html.DisplayNameFor(model => model.AcceptTermsOfAgreement)</label>
-                </div>
+                <label class="other_info" asp-for="@Model.PhoneNumber"></label>
+                <input asp-for="@Model.PhoneNumber" class="form-control" />
+            </div>
 
-                <span asp-validation-for="@Model.AcceptTermsOfAgreement" class="text-danger"></span>
+            <div class="form-group">
+                <label class="other_info" asp-for="@Model.Email"></label>
+                <input asp-for="@Model.Email" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label class="other_info" asp-for="@Model.WebsiteLink"></label>
+                <input asp-for="@Model.WebsiteLink" class="form-control" />
+            </div>
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customControlAutosizing" asp-for="@Model.AcceptTermsOfAgreement">
+                <label class="custom-control-label" for="customControlAutosizing" asp-for="@Model.AcceptTermsOfAgreement">@Html.DisplayNameFor(model => model.AcceptTermsOfAgreement)</label>
             </div>
 
             <div class="form-group">
                 <p>
-                    <a asp-page="./RegisterConfirmation" asp-route-id="-1">Уже вводили Email?</a>
+                    <a asp-action="RegisterConfirmation" asp-route-id="-1">Уже вводили Email?</a>
                 </p>
             </div>
-            <button type="submit" class="btn btn-primary">Отправить</button>
+            <button type="submit" class="btn btn-primary mb-3">Отправить</button>
         </form>
     </div>
 </div>

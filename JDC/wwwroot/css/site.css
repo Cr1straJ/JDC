@@ -12,6 +12,18 @@ html {
     font-size: 14px;
 }
 
+.bg-light {
+    background-color: #f9fbfd !important;
+}
+
+.bg-gradient-light-white {
+    background-image: linear-gradient(180deg,#f9fbfd 0,#fff);
+}
+
+.card-shadow {
+    box-shadow: 0 2rem 5rem rgba(22,28,45,.1),0 .5rem 1rem -.75rem rgba(22,28,45,.05) !important;
+}
+
 @media (min-width: 768px) {
     html {
         font-size: 16px;
@@ -37,6 +49,7 @@ label {
     width: 100%;
     white-space: nowrap;
     line-height: 60px;
+    max-height: 60px;
 }
 
 #preloader-block {

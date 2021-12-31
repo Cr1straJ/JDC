@@ -26,12 +26,12 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" title="Перейти в профиль" asp-area="Identity" asp-page="/Account/Manage/Index">
+                    <a class="dropdown-item" title="Перейти в профиль" asp-area="Account" asp-controller="Manage" asp-action="Index">
                         <i class="fa fa-user-circle" aria-hidden="true"></i>
                         Мой аккаунт
                     </a>
 
-                    <form class="dropdown-item form-inline p-0" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <form class="dropdown-item form-inline p-0" asp-area="Account" asp-controller="Auth" asp-action="Logout">
                         <button style="padding: .25rem 1.5rem;" type="submit" class="none_button clearfix-btn text-left w-100 logout_button">
                             <i class="fa fa-sign-out" aria-hidden="true"></i>
                             Выйти
@@ -44,7 +44,7 @@
     else
     {
         <li class="nav-item">
-            <a class="btn btn-primary px-3 mr-3" asp-area="Identity" asp-page="/Account/Login">Войти</a>
+            <a class="btn btn-primary px-3 mr-3" asp-area="Account" asp-controller="Auth" asp-action="Login">Войти</a>
         </li>
     }
 </ul>

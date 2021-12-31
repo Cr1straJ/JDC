@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace JDC.Areas.Identity.Controllers
 {
+    [Area("Account")]
     public class AuthController : Controller
     {
         private readonly IEmailSender emailSender;
@@ -29,6 +30,11 @@ namespace JDC.Areas.Identity.Controllers
             return this.View();
         }
 
+        public IActionResult Register()
+        {
+            return this.View(new RegistrationModel());
+        }
+
         [HttpPost]
         public async Task<IActionResult> Register(RegistrationModel registrationModel)
         {
@@ -46,6 +52,11 @@ namespace JDC.Areas.Identity.Controllers
             return this.View(registrationModel);
         }
 
+        public IActionResult Login()
+        {
+            return this.View(new LoginModel());
+        }
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel inputLogin)
         {
@@ -53,11 +64,11 @@ namespace JDC.Areas.Identity.Controllers
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await this.signInManager.PasswordSignInAsync(inputLogin.UserName, inputLogin.Password, inputLogin.RememberMe, lockoutOnFailure: false);
+                var result = await this.signInManager.PasswordSignInAsync(inputLogin.Username, inputLogin.Password, inputLogin.RememberMe, lockoutOnFailure: false);
 
                 if (result.Succeeded)
                 {
-                    User user = await this.signInManager.UserManager.FindByNameAsync(inputLogin.UserName);
+                    User user = await this.signInManager.UserManager.FindByNameAsync(inputLogin.Username);
 
                     if (await this.signInManager.UserManager.IsInRoleAsync(user, "Director"))
                     {
