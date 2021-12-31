@@ -10,6 +10,8 @@ namespace JDC.BusinessLogic.Interfaces
 {
     public interface ITeacherService
     {
+        Task<List<Teacher>> GetInstitutionTeachers(int? id);
+      
         Task<Teacher> GetById(int? id);
 
         IEnumerable<Teacher> GetAll();

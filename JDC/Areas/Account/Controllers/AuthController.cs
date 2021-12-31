@@ -40,7 +40,7 @@ namespace JDC.Areas.Identity.Controllers
                 await this.registrationRequestService.Create(registrationRequest);
 
                 await this.emailSender.SendEmailAsync(registrationModel.DirectorName, registrationModel.Email, "Подтверждение регистрации учреждения", $"Ваш код: {confirmationCode}");
-                return this.RedirectToAction("RegisterConfirmation", new { id = registrationRequest.ID, email = registrationModel.Email });
+                return this.RedirectToAction("RegisterConfirmation", new { id = registrationRequest.Id, email = registrationModel.Email });
             }
 
             return this.View(registrationModel);

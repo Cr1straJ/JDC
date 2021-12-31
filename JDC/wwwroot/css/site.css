@@ -22,6 +22,10 @@ html {
     min-height: 82vh;
 }
 
+.c-pointer {
+    cursor: pointer;
+}
+
 label {
     -moz-user-select: none;
     -ms-user-select: none;
@@ -72,7 +76,7 @@ table {
 }
 
 .journal-table td {
-    min-width: 58px;
+    min-width: 66px;
     padding: 12px 16px;
     border: 1px solid #e8e9eb;
 }
@@ -1385,4 +1389,54 @@ border-radius: 25px;*/
         fill: transparent;
         stroke-dashoffset: -200;
     }
+}
+
+.hide-journal-container {
+    padding: 0;
+    position: relative;
+}
+
+.hide-journal-container > .hide-journal-button {
+    position: absolute;
+    height: 25px;
+    width: 20px;
+    padding: 0;
+    top: 45%;
+    z-index: 10;
+    left: -10px;
+    border-radius: 8px;
+    color: white;
+    font-size: 21px;
+    line-height: 20px;
+    background-color: #007bff;
+}
+
+.hide-journal-container > .hide-journal-button {
+    position: absolute;
+    height: 25px;
+    width: 20px;
+    padding: 0;
+    top: 50%;
+    z-index: 10;
+    left: -10px;
+    border-radius: 8px;
+    color: white;
+    font-size: 21px;
+    line-height: 20px;
+    background-color: #007bff;
+    margin-top: 6px;
+}
+
+.doc-icon {
+    position: absolute;
+    top: -9px;
+    left: 0;
+}
+
+.w-13 {
+    width: 13px;
+}
+
+.back-lightgray {
+    background-color: rgba(125, 125, 125, 0.1);
 }

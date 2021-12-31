@@ -1,15 +1,11 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace JDC.Common.Entities
 {
-    [Table("Students")]
     public class Student
     {
         public int Id { get; set; }
       
-        public User User { get; set; }
-        
         public string City { get; set; }
 
         public string Street { get; set; }
@@ -22,6 +18,10 @@ namespace JDC.Common.Entities
 
         public Group Group { get; set; }
 
-        public List<Grade> Grades { get; set; }
+        public int UserId { get; set; }
+
+        public User User { get; set; }
+
+        public List<Grade> Grades { get; set; } = new List<Grade>();
     }
 }

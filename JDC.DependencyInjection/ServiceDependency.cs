@@ -1,4 +1,4 @@
-﻿using JDC.BusinessLogic.Interfaces;
+using JDC.BusinessLogic.Interfaces;
 using JDC.BusinessLogic.Models;
 using JDC.BusinessLogic.Services;
 using JDC.Common.Entities;
@@ -14,15 +14,15 @@ namespace JDC.DependencyInjection
 {
     public static class ServiceDependency
     {
-        public static void AddConfigurstionSettings(this IServiceCollection services, IConfiguration configuration)
+        public static void AddConfigurationSettings(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton(new SmtpClientSettings()
             {
-                Email = configuration.GetSection("Smtp:Email").Value,
-                Password = configuration.GetSection("Smtp:Password").Value,
-                Name = configuration.GetSection("Smtp:Name").Value,
-                Host = configuration.GetSection("Smtp:Host").Value,
-                Port = int.Parse(configuration.GetSection("Smtp:Port").Value),
+                Email = configuration["SmtpClient:Email"],
+                Password = configuration["SmtpClient:Password"],
+                Name = configuration["SmtpClient:Name"],
+                Host = configuration["SmtpClient:Host"],
+                Port = int.Parse(configuration["SmtpClient:Port"]),
             });
         }
 
@@ -30,25 +30,33 @@ namespace JDC.DependencyInjection
         {
             services.AddTransient<IGroupService, GroupService>();
             services.AddTransient<IGroupRepository, GroupRepository>();
-            services.AddTransient<IRegistrationRequestRepository, RegistrationRequestRepository>();
-            services.AddTransient<IChatRepository, ChatRepository>();
-            services.AddTransient<IGradesRepository, GradesRepository>();
-            services.AddTransient<IInstitutionRepository, InstitutionRepository>();
-            services.AddTransient<IMessageRepository, MessageRepository>();
-            services.AddTransient<IStudentRepository, StudentRepository>();
+
+            services.AddTransient<IGradeService, GradeService>();
+            services.AddTransient<IGradeRepository, GradeRepository>();
+
+            services.AddTransient<ILessonService, LessonService>();
+            services.AddTransient<ILessonRepository, LessonRepository>();
+
+            services.AddTransient<ITeacherService, TeacherService>();
             services.AddTransient<ITeacherRepository, TeacherRepository>();
 
             services.AddTransient<ISpecialityService, SpecialityService>();
             services.AddTransient<ISpecialityRepository, SpecialityRepository>();
-          
+
             services.AddTransient<IRegistrationRequestService, RegistrationRequestService>();
-            services.AddTransient<IChatService, ChatService>();
-            services.AddTransient<IGradesService, GradesService>();
-            services.AddTransient<IGroupService, GroupService>();
-            services.AddTransient<IInstitutionService, InstitutionService>();
+            services.AddTransient<IRegistrationRequestRepository, RegistrationRequestRepository>();
+
+            services.AddTransient<IChatService, ChatService>();            
+            services.AddTransient<IChatRepository, ChatRepository>();
+
+            services.AddTransient<IInstitutionService, InstitutionService>();    
+            services.AddTransient<IInstitutionRepository, InstitutionRepository>();                  
+            
             services.AddTransient<IMessageService, MessageService>();
-            services.AddTransient<IStudentService, StudentService>();
-            services.AddTransient<ITeacherService, TeacherService>();
+            services.AddTransient<IMessageRepository, MessageRepository>();
+            
+            services.AddTransient<IMStudentService, StudentService>();
+            services.AddTransient<IStudentRepository, StudentRepository>();
 
             services.AddTransient<IEmailSender, EmailSender>();
         }

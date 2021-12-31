@@ -1,9 +1,7 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations.Schema;
+using System;
 
 namespace JDC.Common.Entities
 {
-    [Table("Grades")]
     public class Grade
     {
         public int Id { get; set; }
@@ -12,13 +10,19 @@ namespace JDC.Common.Entities
 
         public Student Student { get; set; }
 
-        public int StudyDayId { get; set; }
-
-        public StudyDay StudyDay { get; set; }
-
         public int LessonId { get; set; }
 
-        public double Value { get; set; }
+        public Lesson Lesson { get; set; }
+
+        public int TeacherId { get; set; }
+
+        public Teacher Teacher { get; set; }
+
+        public double? Value { get; set; }
+
+        public string Comment { get; set; }
+
+        public bool IsAbsent { get; set; }
 
         public DateTime BillingDate { get; set; } = DateTime.Now;
 

@@ -1,0 +1,226 @@
+﻿@model Group
+
+@{
+    ViewData["Title"] = "Таблица Учащихся";
+    DateTime currentDate = new DateTime(DateTime.Now.Year, 9, 1);
+    int countdDay = DateTime.DaysInMonth(currentDate.Year, currentDate.Month);
+    Func<IEnumerable<Grade>, string> getAverage = (grades) =>
+    {
+        double? average = grades?.Where(grade => grade.Value is not null && grade.Lesson?.DisciplineId == ViewBag.DisciplineId)
+            .Average(grade => grade.Value);
+
+        return average.HasValue ? average.ToString() : "-";
+    };
+
+    Func<DateTime, string> getLessonContent = (date) =>
+    {
+        Lesson currentLesson = Model.Disciplines?.FirstOrDefault(discipline => discipline.Id == ViewBag.DisciplineId)?
+            .Lessons?.FirstOrDefault(lesson => lesson.Date == date);
+
+        return currentLesson is null ? "<b>Без информации</b>" : $"<b>Тема урока:</b> {currentLesson.Theme}<br/><b>Домашнее задание:</b> {currentLesson.Homework}<br/>";
+    };
+}
+
+<h3 style="margin: 10px -15px 25px -15px;">
+    Группа: @(Model.Name), дисциплина: <select id="discipline" asp-items="@(new SelectList(Model.Disciplines, "Id", "Title"))"></select>
+</h3>
+
+<a class="btn-floating btn-lg add-btn waves-effect" data-toggle="modal" data-target="#createLessonModal">
+    <i class="fa fa-plus" aria-hidden="true"></i>
+</a>
+
+@if (Model.Students.Count == 0)
+{
+    <div class="alert alert-warning" role="alert">
+         Упс, список студентов пуст.
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-auto" style="padding: 0;">  
+           <table class="journal-table" style="text-align: center; display: inline-block;">
+               <thead>
+                   <tr style="height: 50px; ">
+                       <th>№</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   @for (int i = 0; i < Model.Students.Count; i++)
+                   {
+                       <tr id="tr1@(i)">
+                           <td>
+                               <b>@(i + 1)</b>
+                           </td>
+                       </tr>
+                   }
+               </tbody>
+           </table>
+        </div>
+
+        <div id="hideableTable" class="col-auto" style="padding: 0;">  
+           <table class="journal-table" style="text-align: center; display: inline-block;">
+               <thead>
+                   <tr style="height: 50px; ">
+                       <th style="border-left: none;">Фамилия, имя</th>
+                       <th>Ср.балл</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   @for (int i = 0; i < Model.Students.Count; i++)
+                   {
+                        <tr id="tr2@(i)">
+                           <td>
+                               @(Model.Students[i].User.LongName)
+                           </td>
+                           <td id="@(Model.Students[i].Id)average">
+                               @(getAverage(Model.Students[i].Grades))
+                           </td>
+                        </tr>
+                   }
+               </tbody>
+           </table>
+        </div>
+
+        <div class="col-auto hide-journal-container">
+            <button id="hideJournalButton" type="button" class="btn hide-journal-button">
+                <i class="hide-button-icon fa fa-angle-double-left" aria-hidden="true"></i>
+                <i class="hide-button-icon d-none fa fa-angle-double-right" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <div id="gradeTable" class="col scroll-table" style="padding: 0;">
+            <table class="journal-table" style="text-align: center; display: inline-block;">
+            <thead>
+                <tr style="height: 25px;">
+                    <th style="border-left: none;" colspan="@(countdDay)">@currentDate.ToString("Y")</th>
+                </tr>
+
+                <tr style="height: 25px;">
+                    @for (int j = 1; j <= countdDay; j++, currentDate = currentDate.AddDays(1))
+                    {
+                    <th>
+                        @currentDate.ToString("ddd"), @(j)
+                        <a tabindex="0" class="w-13 c-pointer btn border-0 p-0 text-white position-relative" role="button" data-html="true" data-toggle="popover" data-trigger="focus" title="Информация урока" data-content="@(getLessonContent(currentDate))">
+                            <i class="doc-icon fa fa-file-text-o" aria-hidden="true"></i>
+                        </a>
+                    </th>
+                    }
+                </tr>
+            </thead>
+
+            <tbody>
+                @{ 
+                    currentDate = new DateTime(DateTime.Now.Year, 9, 1);
+                }
+
+                @for (int i = 0; i < Model.Students.Count; i++)
+                {
+                    <tr id="tr3@(i)">
+                        @for (int j = 1; j <= countdDay; j++, currentDate = currentDate.AddDays(1))
+                        {
+                             <td class="cell">
+                                @{
+                                    Grade grade = Model.Students[i]?.Grades?.FirstOrDefault(grade => grade.BillingDate.Equals(currentDate) && grade.Lesson?.DisciplineId == ViewBag.DisciplineId);
+                                    
+                                    if (grade is not null)
+                                    {
+                                        <button type="button" class="btn" data-toggle="modal" data-gradeid="@grade.Id" data-target="#setGradeModal" data-title="@($"{currentDate:dddd}, {currentDate:M}")" data-studentid="@(Model.Students[i].Id)" data-date="@currentDate.ToString("ddMMyyyy")">
+                                            @grade.Value
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button type="button" class="btn" data-toggle="modal" data-target="#setGradeModal" data-title="@($"{currentDate:dddd}, {currentDate:M}")" data-studentid="@(Model.Students[i].Id)" data-date="@currentDate.ToString("ddMMyyyy")"></button>
+                                    }
+                                }
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+        </div>
+    </div>
+}
+
+<div class="modal fade" id="setGradeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Сегодня</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="recipient-name" class="form-control-label">Оценка:</label>
+                    <input type="text" class="form-control" id="grade">
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="form-control-label">Замечания:</label>
+                    <textarea class="form-control" id="comment"></textarea>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input id="absent" class="form-check-input" type="checkbox" value="">
+                        Отсутствие на уроке
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <button id="setGradeButton" type="button" class="btn btn-primary">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="createLessonModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalTitle">Добавление урока</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="recipient-name" class="form-control-label">Тема:</label>
+                    <input type="text" class="form-control" id="theme">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="form-control-label">Длительность:</label>
+                    <select id="lessonDuration">
+                        <option value="0">Один час</option>
+                        <option value="1" selected>Пара</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="form-control-label">Домашнее задание:</label>
+                    <input type="text" class="form-control" id="homework">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <button id="createLessonButton" type="button" class="btn btn-primary">Добавить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    let group = JSON.parse('@Json.Serialize(@Model)');
+    let disciplineId = @ViewBag.DisciplineId;
+
+    $(window).on('load', function () { 
+        $("#discipline").val(disciplineId);
+    });
+
+    $('#discipline').change(function () {
+        var url = '@Html.Raw(Url.Action("Journal", "Groups", new { groupId = -1, lessonId = "__discipline__" }))';
+        window.location.href = url.replace('__discipline__', $("#discipline").val());
+    });
+</script>

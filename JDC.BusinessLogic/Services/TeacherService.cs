@@ -20,6 +20,11 @@ namespace JDC.BusinessLogic.Services
             this.teacherRepository = teacherRepository;
         }
 
+        public async Task<List<Teacher>> GetInstitutionTeachers(int? id)
+        {
+            return id.HasValue ? await this.teacherRepository.GetInstitutionTeachers(id.Value) : null;
+        }
+        
         public async Task Add(Teacher entity)
         {
             await this.teacherRepository.Add(entity);
@@ -58,11 +63,6 @@ namespace JDC.BusinessLogic.Services
         public async Task Update(Teacher entity)
         {
             await this.teacherRepository.Update(entity);
-        }
-        
-        public async Task<List<Teacher>> GetInstitutionTeachers(int id)
-        {
-            return await this.teacherRepository.GetInstitutionTeachers(id);
         }
     }
 }

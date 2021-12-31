@@ -22,5 +22,7 @@ namespace JDC.Common.Entities
         public List<Group> Groups { get; set; }
 
         public List<Student> Students { get; set; }
+
+        public List<Teacher> Teachers { get; set; }
     }
 }

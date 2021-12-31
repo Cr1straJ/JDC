@@ -8,62 +8,133 @@ $(window).on('load', function () {
     new WOW().init();
 });
 
+$(function () {
+    $('[data-toggle="popover"]').popover()
+});
 
 /*-----------------------------------------------------------------------------------*/
 /*	Modal for adding grade
 /*-----------------------------------------------------------------------------------*/
-var button, selectedChat = 1;
+var button, gradeId, selectedChat = 1;
 
 $('#setGradeModal').on('show.bs.modal', function (event) {
     button = $(event.relatedTarget);
+
+    gradeId = button.attr('data-gradeid');
+    if (!isNaN(gradeId)) {
+        let currentGrade = group.students
+            .find(student => student.id == button.data('studentid')).grades
+            .find(grade => grade.id == gradeId);
+
+        $('#grade').val(currentGrade.value);
+        $('#comment').val(currentGrade.Comment);
+
+        if (currentGrade.hasOwnProperty('IsAbsent') && currentGrade.IsAbsent) {
+            $('#absent').prop('checked', true);
+        }
+    }
+
     var title = button.data('title');
     var modal = $(this);
     modal.find('.modal-title').text(title);
-})
+});
 
 $('#setGradeModal').on('hide.bs.modal', function () {
     $('#grade').val('');
     $('#comment').val('');
-    $('#absent').prop('checked', false);    
-})
+    $('#absent').prop('checked', false);
+});
 
 $('#setGradeButton').on('click', function () {
-    button.html($('#grade').val());
-
-    if ($('#comment').val().trim().length > 0) {
-        button.css('background-color', 'rgba(255, 0, 0, 0.1)');
-    }
-
-    if ($('#absent').prop('checked')) {
-        button.css('background-color', 'lightyellow');
-    }
-
-    let studentId = button.data('studentid');
+    let grade = {};
     let value = $('#grade').val();
+    let studentId = button.data('studentid');
+    let comment = $('#comment').val().trim();
+    let isAbsent = $('#absent').prop('checked');
+    var studentGrades = group.students
+        .find(student => student.id == studentId).grades
+        .filter(grade => grade.lessonId == disciplineId);
 
-    if (!isNaN($('#grade').val())) {
-        let studentGrades = group.students.find(student => student.id == studentId).grades;
-        studentGrades.push({ value: +value });
-        let average = studentGrades.reduce((accumulate, value) => accumulate + value.value, 0) / studentGrades.length;
-        $(`#${studentId}average`).text(average);
+    button.html(value);
+    button.css('background-color', 'transparent');
 
-        $.ajax({
-            type: "POST",
-            url: "Students/SetGrade",
-            data: {
-                studentId: studentId,
-                lessonId: $('#viewtitle').data('lessonId'),
-                value: value,
-                date: button.data('date'),
-            },
-            dataType: "text",
-            success: function () {
-            },
-            error: function (req, status, error) {
-                console.log(error);
+    if (!isNaN(gradeId)) {
+        grade = studentGrades.find(grade => grade.id == gradeId);
+
+        if (comment.length == 0 && !isAbsent && value.length == 0) {
+            button.removeAttr('data-gradeid');
+            studentGrades = studentGrades.filter(function (grade) {
+                return grade.id != gradeId;
+            });
+            group.students.find(student => student.id == button.data('studentid')).grades = studentGrades;
+        }
+        else {
+            grade.Comment = comment;
+            if (comment.length > 0) {
+                button.css('background-color', 'rgba(255, 0, 0, 0.4)');
             }
-        });
+
+            grade.IsAbsent = isAbsent;
+            if (isAbsent) {
+                button.css('background-color', 'rgba(255, 255, 0, 0.4)');
+            }
+
+            grade.value = null;
+            if (value.length > 0 && !isNaN(value)) {
+                grade.value = +value;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "UpdateGrade",
+                data: {
+                    gradeId: gradeId,
+                    value: value
+                },
+                dataType: "text",
+                success: function (result) {
+                }
+            });
+        }
     }
+    else {
+        if (comment.length > 0) {
+            grade.Comment = comment;
+            button.css('background-color', 'rgba(255, 0, 0, 0.4)');
+        }
+
+        if ($('#absent').prop('checked')) {
+            grade.IsAbsent = true;
+            button.css('background-color', 'rgba(255, 255, 0, 0.4)');
+        }
+
+        if (value.length > 0 && !isNaN(value)) {
+            grade.value = +value;
+        }
+
+        if (Object.keys(grade).length > 0) {
+            $.ajax({
+                type: "POST",
+                url: "SetGrade",
+                data: {
+                    studentId: studentId,
+                    disciplineId: $('#viewtitle').data('disciplineId'),
+                    value: value,
+                    date: button.data('date'),
+                },
+                dataType: "text",
+                success: function (result) {
+                }
+            });
+
+            grade.id = studentGrades.length;
+            button.attr('data-gradeid', grade.id);
+            studentGrades.push(grade);
+        }
+    }
+
+    let average = studentGrades.reduce((accumulate, value) => accumulate + value.value, 0) / studentGrades.length;
+    $(`#${studentId}average`).text(parseFloat((average).toFixed(2)));
 
     $('#setGradeModal').modal('hide');
 });
@@ -80,6 +151,44 @@ $('.list_chats_item').on('click', function () {
 });
 
 $('body').on('input', '.input_number', function () {
-    this.value = this.value.substring(0, 4);
-    this.value = this.value.replace(/[^0-9]/g, '');
+    this.value = this.value.substring(0, 4).replace(/[^0-9]/g, '');
 });
+
+$('#hideJournalButton').on('click', function () {
+    $('#hideableTable').toggleClass('d-none');
+    $('.hide-button-icon').toggleClass('d-none');
+});
+
+$('#gradeTable tbody tr').hover(function () {
+    let id = $(this).attr('id').substring(3);
+    $(this).toggleClass('back-lightgray');
+    $(`#tr1${id}`).toggleClass('back-lightgray');
+    $(`#tr2${id}`).toggleClass('back-lightgray');
+});
+
+$('#createLessonModal').on('show.bs.modal', function (event) {
+    $('#theme').val('');
+    $('#homework').val('');
+    $('#lessonDuration').val(1);
+});
+
+$('#createLessonButton').on('click', function () {
+    //add lesson to table
+
+    $.ajax({
+        type: "POST",
+        url: "CreateLesson",
+        data: {
+            theme: $('#theme').val(),
+            homework: $('#homework').val(),
+            lessonDuration: $('#lessonDuration').val(),
+            disciplineId: disciplineId,
+        },
+        dataType: "text",
+        success: function (result) {
+        }
+    });
+
+    $('#createLessonModal').modal('hide');
+});
+

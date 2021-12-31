@@ -37,7 +37,7 @@ namespace JDC.BusinessLogic.Services
         /// <param name="message">Contents of the message.</param>
         /// <returns>The expected task.</returns>
         /// <exception cref="ArgumentException">
-        /// Thrown when <paramref name="email"/> is null.
+        /// Thrown when <paramref name="email"/> is null or empty.
         /// </exception>
         public async Task SendEmailAsync(string name, string email, string subject, string message)
         {
