@@ -8,6 +8,10 @@ $(window).on('load', function () {
     new WOW().init();
 });
 
+$(function () {
+    $('[data-toggle="popover"]').popover()
+});
+
 /*-----------------------------------------------------------------------------------*/
 /*	Modal for adding grade
 /*-----------------------------------------------------------------------------------*/
@@ -33,13 +37,13 @@ $('#setGradeModal').on('show.bs.modal', function (event) {
     var title = button.data('title');
     var modal = $(this);
     modal.find('.modal-title').text(title);
-})
+});
 
 $('#setGradeModal').on('hide.bs.modal', function () {
     $('#grade').val('');
     $('#comment').val('');
-    $('#absent').prop('checked', false);    
-})
+    $('#absent').prop('checked', false);
+});
 
 $('#setGradeButton').on('click', function () {
     let grade = {};
@@ -49,7 +53,7 @@ $('#setGradeButton').on('click', function () {
     let isAbsent = $('#absent').prop('checked');
     var studentGrades = group.students
         .find(student => student.id == studentId).grades
-        .filter(grade => grade.lessonId == lessonId);
+        .filter(grade => grade.lessonId == disciplineId);
 
     button.html(value);
     button.css('background-color', 'transparent');
@@ -114,7 +118,7 @@ $('#setGradeButton').on('click', function () {
                 url: "SetGrade",
                 data: {
                     studentId: studentId,
-                    lessonId: $('#viewtitle').data('lessonId'),
+                    disciplineId: $('#viewtitle').data('disciplineId'),
                     value: value,
                     date: button.data('date'),
                 },
@@ -147,8 +151,7 @@ $('.list_chats_item').on('click', function () {
 });
 
 $('body').on('input', '.input_number', function () {
-    this.value = this.value.substring(0, 4);
-    this.value = this.value.replace(/[^0-9]/g, '');
+    this.value = this.value.substring(0, 4).replace(/[^0-9]/g, '');
 });
 
 $('#hideJournalButton').on('click', function () {
@@ -162,3 +165,30 @@ $('#gradeTable tbody tr').hover(function () {
     $(`#tr1${id}`).toggleClass('back-lightgray');
     $(`#tr2${id}`).toggleClass('back-lightgray');
 });
+
+$('#createLessonModal').on('show.bs.modal', function (event) {
+    $('#theme').val('');
+    $('#homework').val('');
+    $('#lessonDuration').val(1);
+});
+
+$('#createLessonButton').on('click', function () {
+    //add lesson to table
+
+    $.ajax({
+        type: "POST",
+        url: "CreateLesson",
+        data: {
+            theme: $('#theme').val(),
+            homework: $('#homework').val(),
+            lessonDuration: $('#lessonDuration').val(),
+            disciplineId: disciplineId,
+        },
+        dataType: "text",
+        success: function (result) {
+        }
+    });
+
+    $('#createLessonModal').modal('hide');
+});
+

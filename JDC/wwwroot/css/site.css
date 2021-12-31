@@ -22,6 +22,10 @@ html {
     min-height: 82vh;
 }
 
+.c-pointer {
+    cursor: pointer;
+}
+
 label {
     -moz-user-select: none;
     -ms-user-select: none;

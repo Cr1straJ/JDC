@@ -257,7 +257,7 @@ namespace JDC.Controllers
         }
 
         [HttpPost]
-        public async Task CreateLesson(string theme, string homework, int lessonDuration, int disciplineId)
+        public async Task<int> CreateLesson(string theme, string homework, int lessonDuration, int disciplineId)
         {
             Lesson lesson = new Lesson()
             {
@@ -269,6 +269,8 @@ namespace JDC.Controllers
             };
 
             await this.lessonService.Create(lesson);
+
+            return lesson.Id;
         }
     }
 }
