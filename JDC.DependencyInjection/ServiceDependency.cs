@@ -1,6 +1,8 @@
 ﻿using JDC.BusinessLogic.Interfaces;
 using JDC.BusinessLogic.Models;
 using JDC.BusinessLogic.Services;
+using JDC.BusinessLogic.Utilities.EmailSender;
+using JDC.BusinessLogic.Utilities.PasswordGenerator;
 using JDC.Common.Entities;
 using JDC.DataAccess.Data;
 using JDC.DataAccess.Interfaces;
@@ -59,6 +61,7 @@ namespace JDC.DependencyInjection
             services.AddTransient<IStudentRepository, StudentRepository>();
 
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IPasswordGenerator, PasswordGenerator>();
         }
 
         public static void AddIdentity(this IServiceCollection services)

@@ -192,3 +192,20 @@ $('#createLessonButton').on('click', function () {
     $('#createLessonModal').modal('hide');
 });
 
+$('.request-action').on('click', function () {
+    let action = $(this).data('action');
+    let id = $(this).data('id');
+
+    $(`#request${id}`).remove();
+
+    $.ajax({
+        type: "POST",
+        url: `Requests/${action}`,
+        data: {
+            id: id
+        },
+        dataType: "text",
+        success: function (result) {
+        }
+    });
+});

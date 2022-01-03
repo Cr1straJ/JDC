@@ -10,6 +10,8 @@ namespace JDC.BusinessLogic.Interfaces
 
         Task<RegistrationRequest> GetById(int id);
 
+        Task Accept(int id);
+
         Task Create(RegistrationRequest registrationRequest);
 
         Task Update(RegistrationRequest registrationRequest);

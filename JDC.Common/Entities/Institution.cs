@@ -5,6 +5,15 @@ namespace JDC.Common.Entities
 {
     public class Institution
     {
+        public Institution()
+        {
+        }
+
+        public Institution(User director)
+        {
+            this.Director = director;
+        }
+
         public int Id { get; set; }
 
         public string Name { get; set; }

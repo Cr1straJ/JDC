@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using JDC.BusinessLogic.Interfaces;
 using JDC.Common.Entities;
@@ -20,7 +19,7 @@ namespace JDC.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             // return this.View(await this.registrationRequestService.GetAll());
-            return this.View(new List<RegistrationRequest>() 
+            return this.View(new List<RegistrationRequest>()
             {
                 new RegistrationRequest("Ivano Ivan Ivanovich", "+375293584675", null, "gret.@gmail.com", 4356),
                 new RegistrationRequest("Ivano Ivan Ivanovich", "+375293584675", null, "gret.@gmail.com", 4356),
@@ -35,6 +34,19 @@ namespace JDC.Areas.Admin.Controllers
                 new RegistrationRequest("Ivano Ivan Ivanovich", "+375293584675", null, "gret.@gmail.com", 4356),
                 new RegistrationRequest("Ivano Ivan Ivanovich", "+375293584675", null, "gret.@gmail.com", 4356),
             });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Accept(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return this.View("Error");
+            }
+
+            await this.registrationRequestService.Accept(id.Value);
+
+            return this.RedirectToAction("Index");
         }
     }
 }
