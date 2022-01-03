@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using JDC.BusinessLogic.Interfaces;
 using JDC.Common.Entities;
@@ -28,9 +26,11 @@ namespace JDC.BusinessLogic.Services
             await this.registrationRequestRepository.Delete(registrationRequest);
         }
 
-        public async Task<IEnumerable<RegistrationRequest>> GetAll()
+        public async Task<List<RegistrationRequest>> GetAll()
         {
-            return await this.registrationRequestRepository.GetAll();
+            var requests = await this.registrationRequestRepository.GetAll();
+
+            return requests.ToList();
         }
 
         public async Task<RegistrationRequest> GetById(int id)

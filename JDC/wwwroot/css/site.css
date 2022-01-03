@@ -12,6 +12,10 @@ html {
     font-size: 14px;
 }
 
+a.dropdown-item:focus {
+    color: #fff !important;
+}
+
 .bg-light {
     background-color: #f9fbfd !important;
 }
@@ -1452,4 +1456,44 @@ border-radius: 25px;*/
 
 .back-lightgray {
     background-color: rgba(125, 125, 125, 0.1);
+}
+
+.custom-table {
+    box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.custom-table .table td, .custom-table .table th {
+    padding-top: 18px;
+    padding-bottom: 18px;
+    border-top: 0 !important;
+}
+
+.custom-table .table thead th {
+    vertical-align: bottom;
+    border-bottom: 0 !important;
+}
+
+.pl-40 {
+    padding-left: 40px !important;
+}
+
+.max-width-lg {
+    max-width: 925px;
+}
+
+.max-width-xl {
+    max-width: 1170px;
+}
+
+.custom-table thead {
+    box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.1);
+    background: #007bff;
+    color: white;
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.4;
+    font-weight: bold;
 }

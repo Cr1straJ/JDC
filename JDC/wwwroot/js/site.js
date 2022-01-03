@@ -61,7 +61,7 @@ $('#setGradeButton').on('click', function () {
     if (!isNaN(gradeId)) {
         grade = studentGrades.find(grade => grade.id == gradeId);
 
-        if (comment.length == 0 && !isAbsent && value.length == 0) {
+        if (comment.length == 0 && !isAbsent && (value.length == 0 || isNaN(value))) {
             button.removeAttr('data-gradeid');
             studentGrades = studentGrades.filter(function (grade) {
                 return grade.id != gradeId;
