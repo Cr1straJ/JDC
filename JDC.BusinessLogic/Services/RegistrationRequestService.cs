@@ -69,9 +69,9 @@ namespace JDC.BusinessLogic.Services
             return requests.ToList();
         }
 
-        public async Task<RegistrationRequest> GetById(int id)
+        public async Task<RegistrationRequest> GetById(int? id)
         {
-            return await this.registrationRequestRepository.GetById(id);
+            return id.HasValue ? await this.registrationRequestRepository.GetById(id.Value) : null;
         }
 
         public async Task Update(RegistrationRequest registrationRequest)

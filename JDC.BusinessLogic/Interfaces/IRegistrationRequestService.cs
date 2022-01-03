@@ -8,7 +8,7 @@ namespace JDC.BusinessLogic.Interfaces
     {
         Task<List<RegistrationRequest>> GetAll();
 
-        Task<RegistrationRequest> GetById(int id);
+        Task<RegistrationRequest> GetById(int? id);
 
         Task Accept(int id);
 

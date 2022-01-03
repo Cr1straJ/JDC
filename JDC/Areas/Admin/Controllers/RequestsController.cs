@@ -48,5 +48,20 @@ namespace JDC.Areas.Admin.Controllers
 
             return this.RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public async Task<ActionResult> Delete(int? id)
+        {
+            var request = await this.registrationRequestService.GetById(id);
+
+            if (request is null)
+            {
+                return this.View("Error");
+            }
+
+            await this.registrationRequestService.Delete(request);
+
+            return this.RedirectToAction("Index");
+        }
     }
 }
