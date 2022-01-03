@@ -6,7 +6,7 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Threading.Tasks;
 using JDC.Areas.Account.Models;
-using JDC.BusinessLogic.Interfaces;
+using JDC.BusinessLogic.Utilities.EmailSender;
 using JDC.Common.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

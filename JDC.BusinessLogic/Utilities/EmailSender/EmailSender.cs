@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using JDC.BusinessLogic.Interfaces;
 using JDC.BusinessLogic.Models;
 using MailKit.Net.Smtp;
 using MimeKit;
 
-namespace JDC.BusinessLogic.Services
+namespace JDC.BusinessLogic.Utilities.EmailSender
 {
     public class EmailSender : IEmailSender
     {
