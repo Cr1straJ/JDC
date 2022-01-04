@@ -20,6 +20,19 @@ namespace JDC.Common.Entities
 
         public Institution Institution { get; set; }
 
+        public string Country { get; set; }
+
+        public string City { get; set; }
+
+        public string Street { get; set; }
+
+        public string House { get; set; }
+
+        public string Apartment { get; set; }
+
+        [NotMapped]
+        public string Address => $"{this.City}, {this.Country}";
+
         [NotMapped]
         public string ShortName => $"{this.LastName} {this.FirstName?.ToUpper()[0]}. {this.MiddleName?.ToUpper()[0]}.";
 
