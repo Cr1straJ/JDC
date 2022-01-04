@@ -196,8 +196,6 @@ $('.request-action').on('click', function () {
     let action = $(this).data('action');
     let id = $(this).data('id');
 
-    $(`#request${id}`).remove();
-
     $.ajax({
         type: "POST",
         url: `Requests/${action}`,
@@ -208,4 +206,10 @@ $('.request-action').on('click', function () {
         success: function (result) {
         }
     });
+
+    if (window.location.href.indexOf("Details") != -1) {
+        window.location.href = '/Admin/Requests';
+    } else {
+        $(`#request${id}`).remove();
+    }
 });

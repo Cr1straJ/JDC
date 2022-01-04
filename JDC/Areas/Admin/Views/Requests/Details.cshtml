@@ -1,0 +1,40 @@
+﻿@model RegistrationRequest
+
+@{
+    ViewData["Title"] = "Детали заявки";
+}
+
+<h1>Подробная информация о заявке</h1>
+
+<div class="row pl-3">
+    <div class="details-block md-5">
+        <p><b>Идентификатор:</b> @Html.DisplayFor(model => model.Id)</p>
+        <p><b>ФИО директора:</b> @Html.DisplayFor(model => model.DirectorName)</p>
+        <p><b>Email:</b> @Html.DisplayFor(model => model.Email)</p>
+        <p><b>Дата создания:</b> @Html.DisplayFor(model => model.CreationDate)</p>
+        <p><b>Телефон для связи:</b> @Html.DisplayFor(model => model.PhoneNumber)</p>
+        <p>
+            <b>Ссылка на сайт учреждения:</b> 
+            @if (string.IsNullOrWhiteSpace(Model.WebsiteLink))
+            {
+                <span class="text-warning">В заявке не указана ссылка на сайт</span> 
+            }
+            else
+            {
+                <a href="@Model.WebsiteLink">Сайт учреждения</a>
+            }
+        </p>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-outline-primary mr-3 mb-2" asp-action="Index"><i class="fa fa-arrow-left mr-1"></i>Вернуться к списку</a>
+    <button class="btn btn-outline-success mr-3 mb-2 request-action" type="button" data-action="Accept" data-id="@Model.Id">
+        <i class="fa fa-list mr-1"></i>
+        Подтвердить
+    </button>
+    <button class="btn btn-outline-danger mr-3 mb-2 request-action" type="button" data-action="Delete" data-id="@Model.Id">
+        <i class="fa fa-trash mr-1"></i>
+        Удалить
+    </button>
+</div>
