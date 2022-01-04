@@ -213,3 +213,22 @@ $('.request-action').on('click', function () {
         $(`#request${id}`).remove();
     }
 });
+
+$('.change-status-button').on('click', function () {
+    if ($(this).html().indexOf('unlock') != -1) {
+        $(this).html('<i class="fa fa-lock text-danger"></i>');
+    } else {
+        $(this).html('<i class="fa fa-unlock text-success"></i>');
+    }
+
+    $.ajax({
+        type: "POST",
+        url: `Users/ChangeStatus`,
+        data: {
+            id: $(this).attr('id').substring(6)
+        },
+        dataType: "text",
+        success: function (result) {
+        }
+    });
+});

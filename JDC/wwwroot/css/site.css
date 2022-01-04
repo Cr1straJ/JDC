@@ -83,10 +83,10 @@ label {
     color: #335eea;
 }
 
-    .btn-primary-soft:hover {
-        background-color: rgba(51,94,234,.15);
-        color: #335eea;
-    }
+.btn-primary-soft:hover {
+    background-color: rgba(51,94,234,.15);
+    color: #335eea;
+}
 
 .bg-light {
     background-color: #f9fbfd !important;
@@ -94,6 +94,69 @@ label {
 
 .h-400px {
     height: 400px !important;
+}
+
+.admin-card {
+    box-shadow: 0 0 0 1px #e5e5e5;
+    padding: 16px;
+    background-color: #fff;
+}
+
+td {
+    vertical-align: inherit !important;
+}
+
+.admin-card > .rounded-icon {
+    margin-right: 16px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    vertical-align: top;
+    display: inline-block;
+    height: 45px;
+    width: 45px;
+    text-align: center;
+}
+
+.rounded-icon > i {
+    line-height: 45px;
+}
+
+.text-card {
+    display: inline-block;
+}
+
+.admin-card > .text-card > p {
+    margin: 0;
+}
+
+.admin-card > .red-icon {
+    color: #ff5a1f;
+    background-color: #feecdc;
+}
+
+.admin-card > .blue-icon {
+    color: #2196f3;
+    background-color: #e3f2fd;
+}
+
+.admin-card > .green-icon {
+    color: #0e9f6e;
+    background-color: #def7ec;
+}
+
+.text-card > .caption {
+    color: #4c4f52;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+}
+
+.text-card > .value {
+    color: #24262d;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 27px;
 }
 
 /*
