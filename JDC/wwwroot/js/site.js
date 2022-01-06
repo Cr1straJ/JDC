@@ -232,3 +232,24 @@ $('.change-status-button').on('click', function () {
         }
     });
 });
+
+$('.delete-user-button').on('click', function () {
+    let id = $(this).attr('id');
+
+    $.ajax({
+        type: "POST",
+        url: `Users/Delete`,
+        data: {
+            id: id
+        },
+        dataType: "text",
+        success: function (result) {
+        }
+    });
+
+    if (window.location.href.indexOf("Details") != -1) {
+        window.location.href = '/Admin/Users';
+    } else {
+        $(`#user${id}`).remove();
+    }
+});

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using JDC.Common.Entities;
 using Microsoft.AspNetCore.Identity;
@@ -18,42 +19,68 @@ namespace JDC.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            // return this.View(this.userManager.Users.ToList());
-            return this.View(new List<User>()
-            {
-                new User()
-                {
-                    UserName = "Cr1straJ",
-                    PhoneNumber = "+375293584675",
-                    Email = "nikitagalynets52@gmail.com",
-                },
-            });
+            return this.View(this.userManager.Users.ToList());
         }
 
         public async Task<IActionResult> Details(string id)
         {
-           /* User user = await this.userManager.FindByIdAsync(id);
+            User user = await this.userManager.FindByIdAsync(id);
 
             if (user is null)
             {
                 return this.View("Error");
-            }*/
+            }
 
-            return this.View(new User()
+            return this.View(user);
+        }
+
+        [HttpPost]
+        public IActionResult Details(User user)
+        {
+            if (user is null)
             {
-                FirstName = "Nikita",
-                LastName = "Galynets",
-                MiddleName = "Arturovich",
-                UserName = "Cr1straJ",
-                PhoneNumber = "+375293584675",
-                Email = "nikitagalynets52@gmail.com",
-                Institution = new Institution()
-                {
-                    Name = "filial UO «‎BGTU»‎ «‎BGLK»‎",
-                },
-                Country = "Belarus",
-                City = "Bobruisk",
-            });
+                return this.View("Error");
+            }
+
+            // TODO: Add a change of user
+            return this.View();
+        }
+
+        [HttpPost]
+        public async Task<string> ChangeStatus(string id)
+        {
+            string status;
+            User user = await this.userManager.FindByIdAsync(id);
+
+            if (await this.userManager.IsLockedOutAsync(user))
+            {
+                status = "Blocked";
+                user.LockoutEnd = DateTime.Now;
+            }
+            else
+            {
+                status = "Unblocked";
+                user.LockoutEnd = DateTime.MaxValue;
+            }
+
+            await this.userManager.UpdateAsync(user);
+
+            return status;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var user = await this.userManager.FindByIdAsync(id);
+
+            if (user is null)
+            {
+                return this.View("Error");
+            }
+
+            await this.userManager.DeleteAsync(user);
+
+            return this.RedirectToAction("Index");
         }
     }
 }

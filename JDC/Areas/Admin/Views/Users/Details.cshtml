@@ -49,38 +49,63 @@
             </ul>
         </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 mb-2">
         <div class="user-info-card">
             <div class="user-info-card-body">
                 <form method="post">
                     <div class="form-group">
+                        <label class="other_info" asp-for="UserName">Username</label>
+                        <input asp-for="UserName" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
                         <label class="other_info" asp-for="LastName">Фамилия</label>
                         <input asp-for="LastName" class="form-control" />
-                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="other_info" asp-for="FirstName">Имя</label>
+                        <input asp-for="FirstName" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="other_info" asp-for="MiddleName">Отчество</label>
+                        <input asp-for="MiddleName" class="form-control" />
                     </div>
 
                     <div class="form-group">
                         <label class="other_info" asp-for="Email"></label>
                         <input asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
                         <label class="other_info" asp-for="PhoneNumber">Номер телефона</label>
                         <input asp-for="PhoneNumber" class="form-control" />
-                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
-                        <label class="other_info" asp-for="Address">Адрес</label>
-                        <input asp-for="Address" class="form-control" />
-                        <span asp-validation-for="Address" class="text-danger"></span>
+                        <label class="other_info" asp-for="Country">Страна</label>
+                        <input asp-for="Country" class="form-control" />
                     </div>
 
                     <div class="form-group">
-                        <label class="other_info" asp-for="UserName">Username</label>
-                        <input asp-for="UserName" class="form-control" />
-                        <span asp-validation-for="UserName" class="text-danger"></span>
+                        <label class="other_info" asp-for="City">Город</label>
+                        <input asp-for="City" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="other_info" asp-for="Street">Улица</label>
+                        <input asp-for="Street" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="other_info" asp-for="House">Дом</label>
+                        <input asp-for="House" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="other_info" asp-for="Apartment">Квартира</label>
+                        <input asp-for="Apartment" class="form-control" />
                     </div>
 
                     <button class="btn btn-primary mr-3 mb-2" type="submit">
@@ -95,7 +120,7 @@
 
 <div>
     <a class="btn btn-outline-primary mr-3 mb-2" asp-action="Index"><i class="fa fa-arrow-left mr-1"></i>Вернуться к списку</a>
-    <button class="btn btn-outline-danger mr-3 mb-2" type="button">
+    <button class="btn btn-outline-danger mr-3 mb-2 delete-user-button" data-id="@Model.Id" type="button">
         <i class="fa fa-trash mr-1"></i>
         Удалить
     </button>
