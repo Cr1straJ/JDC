@@ -2,10 +2,10 @@
     @if (User.IsInRole("Admin"))
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Заявки</a>
+            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Requests" asp-action="Index">Заявки</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Institutions" asp-action="Index">Пользователи</a>
+            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Users" asp-action="Index">Пользователи</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Institutions" asp-action="Index">Учреждения</a>

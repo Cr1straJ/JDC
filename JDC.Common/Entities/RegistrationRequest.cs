@@ -28,5 +28,21 @@ namespace JDC.Common.Entities
         public bool EmailConfirmed { get; set; } = false;
 
         public int ConfirmationCode { get; set; } = -1;
+
+        public static explicit operator User(RegistrationRequest registrationRequest)
+        {
+            string[] name = registrationRequest.DirectorName.Split(' ');
+            
+            return new User()
+            {
+                FirstName = name[1],
+                MiddleName = name[2],
+                LastName = name[0],
+                UserName = registrationRequest.Email,
+                Email = registrationRequest.Email,
+                PhoneNumber = registrationRequest.PhoneNumber,
+                EmailConfirmed = true,
+            };
+        }
     }
 }

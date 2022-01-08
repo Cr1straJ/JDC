@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using JDC.Common.Entities;
@@ -28,12 +29,15 @@ namespace JDC.DataAccess.Repositories
             await this.context.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<RegistrationRequest>> GetAll()
+        public async Task<IEnumerable<RegistrationRequest>> GetAll()
         {
-            return Task.Factory.StartNew(() =>
-            {
-                return this.context.RegistrationRequests.AsEnumerable();
-            });
+            var requests = this.context.RegistrationRequests.ToList()
+                .Where(request => !request.EmailConfirmed && (DateTime.Now - request.CreationDate).Duration().Days >= 2);
+            
+            this.context.RegistrationRequests.RemoveRange(requests);
+            await this.context.SaveChangesAsync();
+
+            return this.context.RegistrationRequests;
         }
 
         public async Task<RegistrationRequest> GetById(int id)

@@ -1,0 +1,109 @@
+﻿@{
+    ViewData["Title"] = "Admin page";
+}
+
+<div class="row d-flex justify-content-center mt-4">
+    <div class="col-sm-6 mb-3">
+        <div style="min-width: 12rem;" class="overflow-hidden admin-stat-card">
+            <div class="bg-holder bg-card" style="background-image: url(/images/admin/corner-1.png);"></div>
+            <div class="position-relative admin-stat-card-body">
+                <h6>
+                    Аккаунты
+                    <span class="ms-2 badge badge-soft-warning rounded-pill">+0.23%</span>
+                </h6>
+                <div class="text-admin-warning display-4 fs-4 mb-2 fw-normal">
+                    <span class="counter float-number">13.09</span>k
+                </div>
+                <a class="btn btn-admin-warning" asp-area="Admin" asp-controller="Users" asp-action="Index">Просмотреть</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 mb-3">
+        <div style="min-width: 12rem;" class="overflow-hidden admin-stat-card">
+            <div class="bg-holder bg-card" style="background-image: url(/images/admin/corner-2.png);"></div>
+            <div class="position-relative admin-stat-card-body">
+                <h6>
+                    Учреждения
+                    <span class="ms-2 badge badge-soft-info rounded-pill">+0.5%</span>
+                </h6>
+                <div class="text-admin-info display-4 fs-4 mb-2 fw-normal">
+                    <span class="counter">23</span>
+                </div>
+                <a class="btn btn-admin-info" asp-area="Admin" asp-controller="Users" asp-action="Index">Просмотреть</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row d-flex justify-content-center">
+    <div class="col-md-8">
+        <div class="main-timeline-card mb-3 timeline-card p-3">
+            <h4>Количество использований</h4>
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="main-timeline-card mb-3 timeline-card">
+            <div class="timeline-card-body">
+                <h5 class="timeline-card-title">User Timeline</h5>
+                <div class="vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
+                    <div class="vertical-timeline-item vertical-timeline-element">
+                        <div>
+                            <span class="vertical-timeline-element-icon bounce-in"> <i class="badge badge-dot badge-dot-xl badge-success"></i> </span>
+                            <div class="vertical-timeline-element-content bounce-in">
+                                <h4 class="timeline-title">Header info</h4>
+                                <p>Body info</p> <span class="vertical-timeline-element-date">date</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-timeline-item vertical-timeline-element">
+                        <div>
+                            <span class="vertical-timeline-element-icon bounce-in"> <i class="badge badge-dot badge-dot-xl badge-warning"> </i> </span>
+                            <div class="vertical-timeline-element-content bounce-in">
+                                <h4 class="timeline-title">Header info</h4>
+                                <p>Body info</p> <span class="vertical-timeline-element-date">date</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-timeline-item vertical-timeline-element">
+                        <div>
+                            <span class="vertical-timeline-element-icon bounce-in"> <i class="badge badge-dot badge-dot-xl badge-danger"> </i> </span>
+                            <div class="vertical-timeline-element-content bounce-in">
+                                <h4 class="timeline-title">Header info</h4>
+                                <p>Body info</p> <span class="vertical-timeline-element-date">date</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-timeline-item vertical-timeline-element">
+                        <div>
+                            <span class="vertical-timeline-element-icon bounce-in"> <i class="badge badge-dot badge-dot-xl badge-primary"> </i> </span>
+                            <div class="vertical-timeline-element-content bounce-in">
+                                <h4 class="timeline-title">Header info</h4>
+                                <p>Body info</p> <span class="vertical-timeline-element-date">date</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-timeline-item vertical-timeline-element">
+                        <div>
+                            <span class="vertical-timeline-element-icon bounce-in"> <i class="badge badge-dot badge-dot-xl badge-success"> </i> </span>
+                            <div class="vertical-timeline-element-content bounce-in">
+                                <h4 class="timeline-title">Header info</h4>
+                                <p>Body info</p> <span class="vertical-timeline-element-date">date</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-timeline-item vertical-timeline-element">
+                        <div>
+                            <span class="vertical-timeline-element-icon bounce-in"> <i class="badge badge-dot badge-dot-xl badge-warning"> </i> </span>
+                            <div class="vertical-timeline-element-content bounce-in">
+                                <h4 class="timeline-title">Header info</h4>
+                                <p>Body info</p> <span class="vertical-timeline-element-date">date</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

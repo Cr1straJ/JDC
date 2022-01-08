@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using JDC.Areas.Account.Models;
 using JDC.BusinessLogic.Interfaces;
+using JDC.BusinessLogic.Utilities.EmailSender;
 using JDC.Common.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -45,7 +46,7 @@ namespace JDC.Areas.Identity.Controllers
 
                 await this.registrationRequestService.Create(registrationRequest);
                 await this.emailSender.SendEmailAsync(registrationModel.DirectorName, registrationModel.Email, "Подтверждение регистрации учреждения", $"Ваш код: {confirmationCode}");
-                
+
                 return this.RedirectToAction("RegisterConfirmation", new { id = registrationRequest.Id, email = registrationModel.Email });
             }
 
@@ -79,7 +80,7 @@ namespace JDC.Areas.Identity.Controllers
                 }
 
                 this.ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                
+
                 return this.View();
             }
 
