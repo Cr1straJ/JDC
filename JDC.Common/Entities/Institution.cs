@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using JDC.Common.Enums;
 
 namespace JDC.Common.Entities
@@ -33,5 +34,15 @@ namespace JDC.Common.Entities
         public List<Student> Students { get; set; }
 
         public List<Teacher> Teachers { get; set; }
+
+        [NotMapped]
+        public string Type => this.InstituteType switch
+        {
+            InstituteType.Institute => "Университет",
+            InstituteType.College => "Колледж",
+            InstituteType.TechnicalSchool => "Техникум",
+            InstituteType.School => "Школа",
+            _ => "Не определено",
+        };
     }
 }

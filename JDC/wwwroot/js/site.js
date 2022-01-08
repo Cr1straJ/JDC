@@ -351,3 +351,51 @@ $(function () {
     });
 });
 
+/*
+    institution index page
+*/
+$(function () {
+    printInstitutions(institutions);
+
+    $('body').on('input', '#inputInstituteTitle', function () {
+        var mask = $(this).val();
+
+        $.ajax({
+            type: 'GET',
+            url: '/Institutions/GetInstitutions',
+            data: { filter: mask },
+            dataType: 'json',
+            success: function (respons) {
+                printInstitutions(respons);
+            },
+        })
+    });
+
+    function printInstitutions(institutions) {
+        $('#institutionContainer').val('');
+        institutions.forEach(institution => generateInstitutionsCard(institution));
+    }
+
+    function generateInstitutionsCard(institution) {
+        var cardheader = '<div class="card-header overflow-hidden p-0">' + '<img src="https://st3.depositphotos.com/1007963/36020/i/600/depositphotos_360209078-stock-photo-classic-view-of-the-univeristy.jpg" alt="rover" />' +
+            '<div class="card-menu"><div class="dropdown open off-animation">' +
+            '<a href="" id="triggerId2" class="institute-card-dropdown" data-toggle="dropdown" aria-haspopup="true"' +
+            'aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>' +
+            '<div class="dropdown-menu off-animation" aria-labelledby="triggerId2">' +
+            '<a class="dropdown-item text-warning" href="' + urlEdit.replace('__id__', institution.id) + '">' +
+            '<i class="fa fa-pencil mr-1"></i>Редактировать</a>' +
+            '<a class="dropdown-item text-primary" href="' + urlDetails.replace('__id__', institution.id) + '">' +
+            '<i class="fa fa-info-circle mr-1"></i>Подробнее</a>' +
+            '<a class="dropdown-item text-danger" href="' + urlDelete.replace('__id__', institution.id) + '">' +
+            '<i class="fa fa-trash mr-1"></i>Удалить</a></div></div></div></div>';
+
+        var cardbody = '<div class="card-body">' + '<span class="tag tag-teal">' + institution.type + '</span>' +
+            `<p>${institution.name}</p><div class="user"><img src="/images/default_avatar.png" alt="Директор" />` +
+            '<div class="user-info"><h5>' + (institution.director != null ? institution.director.getShortName : 'No name') + '</h5>' +
+            '</div></div></div>';
+
+        let card = `<div id="${institution.id}" class="col-sm-6 col-md-6 col-lg-4"><div class="institution-card position-relative">${cardheader}${cardbody}</div></div>`;
+        $('#institutionContainer').append(card);
+    }
+});
+

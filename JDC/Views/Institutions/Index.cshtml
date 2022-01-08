@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Institution>
+
+@{
+    ViewData["Title"] = "Список учреждений";
+}
+
+<h1>@ViewData["Title"] (@Model.Count())</h1>
+
+<div>
+    <div>
+        <span>Тип учреждения:</span>
+    </div>
+
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" checked id="customCheck1">
+        <label class="custom-control-label" for="customCheck1">Университеты</label>
+    </div>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" checked id="customCheck2">
+        <label class="custom-control-label" for="customCheck2">Колледжи</label>
+    </div>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" checked id="customCheck3">
+        <label class="custom-control-label" for="customCheck3">Техникумы</label>
+    </div>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" checked id="customCheck4">
+        <label class="custom-control-label" for="customCheck4">Школы</label>
+    </div>
+
+    <div class="form-group">
+        <label for="inputInstituteTitle">Название учреждения образования</label>
+        <input type="text" class="form-control" id="inputInstituteTitle" placeholder="Введите название">
+    </div>
+</div>
+
+<div id="institutionContainer" class="row">
+</div>
+
+<script>
+    let institutions = JSON.parse('@Json.Serialize(@Model)');
+    var urlEdit = '@Url.Action("Edit",new {id = "__id__"})';
+    var urlDetails = '@Url.Action("Details", new {id = "__id__"})';
+    var urlDelete = '@Url.Action("Delete", new {id = "__id__"})';
+</script>
