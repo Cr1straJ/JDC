@@ -1573,6 +1573,20 @@ border-radius: 25px;*/
 }
 
 /*User details*/
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info img {
+    height: 40px;
+    margin-right: 13px;
+}
+
+.user-info-body > h5 {
+    line-height: 14px;
+}
+
 .user-info-card {
     min-width: 0;
     display: flex;

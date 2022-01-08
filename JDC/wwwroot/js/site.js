@@ -274,72 +274,80 @@ $('.delete-user-button').on('click', function () {
     Init admin chart
  */
 
-let width, height, gradient, delayed;
+$(function () {
+    let width, height, gradient;
 
-function getGradient(ctx, chartArea) {
-    const chartWidth = chartArea.right - chartArea.left;
-    const chartHeight = chartArea.bottom - chartArea.top;
-    if (!gradient || width !== chartWidth || height !== chartHeight) {
-        width = chartWidth;
-        height = chartHeight;
-        gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
-        gradient.addColorStop(0, 'rgb(255, 99, 132)');
-        gradient.addColorStop(0.5, 'rgb(255, 205, 86)');
-        gradient.addColorStop(1, 'rgb(75, 192, 192)');
+    function getGradient(ctx, chartArea) {
+        const chartWidth = chartArea.right - chartArea.left;
+        const chartHeight = chartArea.bottom - chartArea.top;
+        if (!gradient || width !== chartWidth || height !== chartHeight) {
+            width = chartWidth;
+            height = chartHeight;
+            gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
+            gradient.addColorStop(0, 'rgb(255, 99, 132)');
+            gradient.addColorStop(0.5, 'rgb(255, 205, 86)');
+            gradient.addColorStop(1, 'rgb(75, 192, 192)');
+        }
+
+        return gradient;
     }
 
-    return gradient;
-}
+    let canvas = document.getElementById('myChart');
+    if (canvas == null) {
+        return;
+    }
 
-const ctx = document.getElementById('myChart').getContext('2d');
-const myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: [
-            'Январь',
-            'Февраль',
-            'Март',
-            'Апрель',
-            'Май',
-            'Июнь',
-            'Июль',
-            'Август',
-            'Сентябрь',
-            'Октябрь',
-            'Ноябрь',
-            'Декабрь'
-        ],
-        datasets: [{
-            data: [12, 19, 3, 5, 2, 3, 19, 3, 5, 2, 3, 7],
-            borderColor: function (context) {
-                const chart = context.chart;
-                const {ctx, chartArea} = chart;
+    const ctx = canvas.getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [
+                'Январь',
+                'Февраль',
+                'Март',
+                'Апрель',
+                'Май',
+                'Июнь',
+                'Июль',
+                'Август',
+                'Сентябрь',
+                'Октябрь',
+                'Ноябрь',
+                'Декабрь'
+            ],
+            datasets: [{
+                data: [12, 19, 3, 5, 2, 3, 19, 3, 5, 2, 3, 7],
+                borderColor: function (context) {
+                    const chart = context.chart;
+                    const { ctx, chartArea } = chart;
 
-                if (!chartArea) {
-                    // This case happens on initial chart load
-                    return;
+                    if (!chartArea) {
+                        // This case happens on initial chart load
+                        return;
+                    }
+
+                    return getGradient(ctx, chartArea);
+                },
+                borderWidth: 4
+            }]
+        },
+        options: {
+            animations: {
+                radius: {
+                    duration: 400,
+                    easing: 'linear',
+                    loop: (context) => context.active
                 }
-
-                return getGradient(ctx, chartArea);
             },
-            borderWidth: 4
-        }]
-    },
-    options: {
-        animations: {
-            radius: {
-                duration: 400,
-                easing: 'linear',
-                loop: (context) => context.active
-            }
-        },
-        plugins: {
-            legend: false,
-        },
-        scales: {
-            y: {
-                beginAtZero: true
+            plugins: {
+                legend: false,
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
             }
         }
-    }
+    });
 });
+
