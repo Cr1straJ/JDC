@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using JDC.BusinessLogic.Interfaces;
-using JDC.Common.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JDC.Controllers
@@ -17,12 +16,22 @@ namespace JDC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return this.View(await this.GetInstitutionsAsync());
+            return this.View(await this.institutionService.GetAll());
         }
 
-        public async Task<IEnumerable<Institution>> GetInstitutionsAsync()
+        [HttpPost]
+        public async Task<JsonResult> GetInstitutions(string filter, int[] types)
         {
-            return await this.institutionService.GetAll();
+            if (string.IsNullOrWhiteSpace(filter))
+            {
+                filter = string.Empty;
+            }
+
+            var institutions = await this.institutionService.GetAll();
+
+            return this.Json(institutions.ToList()
+                .Where(institution => types.Contains((int)institution.InstituteType)
+                && institution.Name.Contains(filter, System.StringComparison.CurrentCultureIgnoreCase)));
         }
     }
 }

@@ -357,19 +357,34 @@ $(function () {
 $(function () {
     printInstitutions(institutions);
 
-    $('body').on('input', '#inputInstituteTitle', function () {
-        var mask = $(this).val();
+    $('body').on('input', '#inputInstitutionTitle', function () {
+        getInstitutions();
+    });
+
+    $('.institute-type-check').click(function () {
+        getInstitutions();
+    });
+
+    function getSelectedTypes() {
+        return Array.prototype.filter.call($(`.institute-type-check`), function (item) { return item.checked }).map(item => +item.getAttribute('data-id'));
+    }
+
+    function getInstitutions() {
+        var mask = $('#inputInstitutionTitle').val();
 
         $.ajax({
-            type: 'GET',
+            type: 'POST',
             url: '/Institutions/GetInstitutions',
-            data: { filter: mask },
+            data: {
+                filter: mask,
+                types: getSelectedTypes()
+            },
             dataType: 'json',
             success: function (respons) {
                 printInstitutions(respons);
             },
         })
-    });
+    }
 
     function printInstitutions(institutions) {
         $('#institutionContainer').val('');
@@ -377,19 +392,23 @@ $(function () {
     }
 
     function generateInstitutionsCard(institution) {
+        var dropdown = '<a class="dropdown-item text-primary" href="' + urlDetails.replace('__id__', institution.id) + '">' +
+            '<i class="fa fa-info-circle mr-1"></i>Подробнее</a>';
+
+        if (isEditable) {
+            dropdown = '<a class="dropdown-item text-warning" href="' + urlEdit.replace('__id__', institution.id) + '">' +
+                '<i class="fa fa-pencil mr-1"></i>Редактировать</a>' + dropdown + '<a class="dropdown-item text-danger" href="' + urlDelete.replace('__id__', institution.id) + '">' +
+                '<i class="fa fa-trash mr-1"></i>Удалить</a>';
+        }
+
         var cardheader = '<div class="card-header overflow-hidden p-0">' + '<img src="https://st3.depositphotos.com/1007963/36020/i/600/depositphotos_360209078-stock-photo-classic-view-of-the-univeristy.jpg" alt="rover" />' +
             '<div class="card-menu"><div class="dropdown open off-animation">' +
             '<a href="" id="triggerId2" class="institute-card-dropdown" data-toggle="dropdown" aria-haspopup="true"' +
             'aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>' +
             '<div class="dropdown-menu off-animation" aria-labelledby="triggerId2">' +
-            '<a class="dropdown-item text-warning" href="' + urlEdit.replace('__id__', institution.id) + '">' +
-            '<i class="fa fa-pencil mr-1"></i>Редактировать</a>' +
-            '<a class="dropdown-item text-primary" href="' + urlDetails.replace('__id__', institution.id) + '">' +
-            '<i class="fa fa-info-circle mr-1"></i>Подробнее</a>' +
-            '<a class="dropdown-item text-danger" href="' + urlDelete.replace('__id__', institution.id) + '">' +
-            '<i class="fa fa-trash mr-1"></i>Удалить</a></div></div></div></div>';
+            dropdown + '</div></div></div></div>';
 
-        var cardbody = '<div class="card-body">' + '<span class="tag tag-teal">' + institution.type + '</span>' +
+        var cardbody = '<div class="institution-card-body">' + '<span class="tag tag-teal">' + institution.type + '</span>' +
             `<p>${institution.name}</p><div class="user"><img src="/images/default_avatar.png" alt="Директор" />` +
             '<div class="user-info"><h5>' + (institution.director != null ? institution.director.getShortName : 'No name') + '</h5>' +
             '</div></div></div>';

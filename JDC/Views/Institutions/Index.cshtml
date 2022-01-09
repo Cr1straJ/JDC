@@ -1,36 +1,45 @@
 ﻿@model IEnumerable<Institution>
+@using System.Linq
 
 @{
     ViewData["Title"] = "Список учреждений";
+    Dictionary<int, string> types = new Dictionary<int, string>();
+
+    foreach (InstituteType type in Enum.GetValues(typeof(InstituteType)))
+    {
+        types.Add((int)type, type.GetDescription());
+    }
 }
 
 <h1>@ViewData["Title"] (@Model.Count())</h1>
 
-<div>
-    <div>
-        <span>Тип учреждения:</span>
+<div class="row mt-3">
+    <div class="col-md-6">
+        <div class="form-group m-0">
+            <div class="input-group mb-2">
+                <input class="form-control" id="inputInstitutionTitle" type="text" placeholder="Введите название">
+                <div class="input-group-append">
+                    <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><i class="fa fa-cogs" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 
-    <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" checked id="customCheck1">
-        <label class="custom-control-label" for="customCheck1">Университеты</label>
-    </div>
-    <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" checked id="customCheck2">
-        <label class="custom-control-label" for="customCheck2">Колледжи</label>
-    </div>
-    <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" checked id="customCheck3">
-        <label class="custom-control-label" for="customCheck3">Техникумы</label>
-    </div>
-    <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" checked id="customCheck4">
-        <label class="custom-control-label" for="customCheck4">Школы</label>
-    </div>
-
-    <div class="form-group">
-        <label for="inputInstituteTitle">Название учреждения образования</label>
-        <input type="text" class="form-control" id="inputInstituteTitle" placeholder="Введите название">
+<div class="row mb-3">
+    <div class="col-md-6">
+        <div class="collapse multi-collapse" id="multiCollapseExample1">
+            <div class="card card-body">
+                Тип учреждения:
+                @foreach (var type in types)
+                 {
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input institute-type-check" data-id="@(type.Key)" id="type@(type.Key)" checked>
+                        <label class="custom-control-label" for="type@(type.Key)">@type.Value</label>
+                    </div>
+                 }
+            </div>
+        </div>
     </div>
 </div>
 
@@ -38,6 +47,7 @@
 </div>
 
 <script>
+    const isEditable = @(User.IsInRole("Admin").ToString().ToLower());
     let institutions = JSON.parse('@Json.Serialize(@Model)');
     var urlEdit = '@Url.Action("Edit",new {id = "__id__"})';
     var urlDetails = '@Url.Action("Details", new {id = "__id__"})';

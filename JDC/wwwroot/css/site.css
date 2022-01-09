@@ -346,7 +346,7 @@ html {
     object-fit: cover;
 }
 
-.card-body {
+.institution-card-body {
     background-color: white;
     box-shadow: -3px -10px 10px rgba(0, 0, 0, 0.3);
     overflow: hidden;
@@ -412,7 +412,7 @@ html {
     background-color: #cd5b9f;
 }
 
-.card-body p {
+.institution-card-body p {
     font-size: 1rem;
     margin: 10px 0;
 }
