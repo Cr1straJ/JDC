@@ -1,6 +1,7 @@
 ﻿using JDC.BusinessLogic.Interfaces;
 using JDC.BusinessLogic.Models;
 using JDC.BusinessLogic.Services;
+using JDC.BusinessLogic.Utilities.AzureStorage;
 using JDC.BusinessLogic.Utilities.EmailSender;
 using JDC.BusinessLogic.Utilities.PasswordGenerator;
 using JDC.Common.Entities;
@@ -26,6 +27,14 @@ namespace JDC.DependencyInjection
                 Host = configuration["SmtpClient:Host"],
                 Port = int.Parse(configuration["SmtpClient:Port"]),
             });
+
+            services.AddSingleton(new AzureStorageConfig()
+            {
+                AccountName = configuration["AzureStorageConfig:AccountName"],
+                AccountKey = configuration["AzureStorageConfig:AccountKey"],
+                ImageContainer = configuration["AzureStorageConfig:ImageContainer"],
+                SasToken = configuration["AzureStorageConfig:SasToken"],
+            });
         }
 
         public static void AddDependencies(this IServiceCollection services)
@@ -48,19 +57,20 @@ namespace JDC.DependencyInjection
             services.AddTransient<IRegistrationRequestService, RegistrationRequestService>();
             services.AddTransient<IRegistrationRequestRepository, RegistrationRequestRepository>();
 
-            services.AddTransient<IChatService, ChatService>();            
+            services.AddTransient<IChatService, ChatService>();
             services.AddTransient<IChatRepository, ChatRepository>();
 
-            services.AddTransient<IInstitutionService, InstitutionService>();    
-            services.AddTransient<IInstitutionRepository, InstitutionRepository>();                  
-            
+            services.AddTransient<IInstitutionService, InstitutionService>();
+            services.AddTransient<IInstitutionRepository, InstitutionRepository>();
+
             services.AddTransient<IMessageService, MessageService>();
             services.AddTransient<IMessageRepository, MessageRepository>();
-            
+
             services.AddTransient<IStudentService, StudentService>();
             services.AddTransient<IStudentRepository, StudentRepository>();
 
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IAzureStorage, AzureStorage>();
             services.AddTransient<IPasswordGenerator, PasswordGenerator>();
         }
 
