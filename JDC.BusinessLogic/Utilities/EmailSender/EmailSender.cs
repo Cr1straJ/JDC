@@ -6,6 +6,9 @@ using MimeKit;
 
 namespace JDC.BusinessLogic.Utilities.EmailSender
 {
+    /// <summary>
+    /// Provides methods of working with SmtpClient.
+    /// </summary>
     public class EmailSender : IEmailSender
     {
         private readonly SmtpClientSettings smtpClientSettings;

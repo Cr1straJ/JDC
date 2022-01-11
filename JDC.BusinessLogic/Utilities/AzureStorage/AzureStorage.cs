@@ -60,8 +60,7 @@ namespace JDC.BusinessLogic.Utilities.AzureStorage
         /// </summary>
         /// <param name="fileStream">A Stream containing the content to upload..</param>
         /// <param name="fileName">Source file name.</param>
-        /// <returns>This <see cref=""/> if file is an image, false otherwise.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when <paramref name="file"/> is null.</exception>
+        /// <returns>A file path containing the content to upload.</returns>
         public async Task<string> UploadFileToStorage(Stream fileStream, string fileName)
         {
             string filePath = this.GetImageUrl(fileName);
