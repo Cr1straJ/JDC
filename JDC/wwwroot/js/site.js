@@ -355,7 +355,9 @@ $(function () {
     institution index page
 */
 $(function () {
-    printInstitutions(institutions);
+    if (window.location.href.indexOf("Institutions/Index") > 0) {
+        printInstitutions(institutions);
+    }
 
     $('body').on('input', '#inputInstitutionTitle', function () {
         getInstitutions();
@@ -418,3 +420,13 @@ $(function () {
     }
 });
 
+// create institution page
+
+$.fn.fileinputBsVersion = "3.3.7";
+
+$("#input-file").fileinput({
+    browseLabel: "Pick Image",
+    showUpload: false,
+    allowedFileExtensions: ["jpg", "png", "gif"],
+    previewFileType: 'any'
+});

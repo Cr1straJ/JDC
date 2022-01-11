@@ -49,6 +49,7 @@
 <script>
     const isEditable = @(User.IsInRole("Admin").ToString().ToLower());
     let institutions = JSON.parse('@Json.Serialize(@Model)');
+
     var urlEdit = '@Url.Action("Edit",new {id = "__id__"})';
     var urlDetails = '@Url.Action("Details", new {id = "__id__"})';
     var urlDelete = '@Url.Action("Delete", new {id = "__id__"})';

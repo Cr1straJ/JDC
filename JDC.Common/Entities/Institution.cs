@@ -20,7 +20,7 @@ namespace JDC.Common.Entities
 
         public string Name { get; set; }
 
-        public int DirectorId { get; set; }
+        public string DirectorId { get; set; }
 
         public User Director { get; set; }
 
