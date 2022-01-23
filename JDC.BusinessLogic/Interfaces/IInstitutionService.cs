@@ -12,7 +12,7 @@ namespace JDC.BusinessLogic.Interfaces
     {
         Task<Institution> GetById(int? id);
 
-        IEnumerable<Institution> GetAll();
+        Task<IEnumerable<Institution>> GetAll();
 
         IEnumerable<Institution> Find(Expression<Func<Institution, bool>> expression);
 

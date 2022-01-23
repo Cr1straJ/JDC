@@ -33,7 +33,7 @@ namespace JDC.DataAccess.Repositories
         {
             var requests = this.context.RegistrationRequests.ToList()
                 .Where(request => !request.EmailConfirmed && (DateTime.Now - request.CreationDate).Duration().Days >= 2);
-            
+
             this.context.RegistrationRequests.RemoveRange(requests);
             await this.context.SaveChangesAsync();
 

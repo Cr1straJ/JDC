@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using JDC.Areas.Account.Models;
 using JDC.BusinessLogic.Interfaces;
+using JDC.BusinessLogic.Utilities.AutoMapper;
 using JDC.BusinessLogic.Utilities.EmailSender;
 using JDC.Common.Entities;
 using Microsoft.AspNetCore.Identity;
@@ -41,8 +42,9 @@ namespace JDC.Areas.Identity.Controllers
         {
             if (this.ModelState.IsValid)
             {
-                int confirmationCode = new Random().Next(1000, 10000);
-                RegistrationRequest registrationRequest = new RegistrationRequest(registrationModel.DirectorName, registrationModel.PhoneNumber, registrationModel.WebsiteLink, registrationModel.Email, confirmationCode);
+                var confirmationCode = new Random().Next(1000, 10000);
+                var registrationRequest = new CompiledMapper<RegistrationRequest>().Map(registrationModel);
+                registrationRequest.ConfirmationCode = confirmationCode;
 
                 await this.registrationRequestService.Create(registrationRequest);
                 await this.emailSender.SendEmailAsync(registrationModel.DirectorName, registrationModel.Email, "Подтверждение регистрации учреждения", $"Ваш код: {confirmationCode}");

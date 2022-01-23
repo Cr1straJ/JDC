@@ -1,5 +1,8 @@
-namespace JDC.Common.Enums
+﻿namespace JDC.Common.Enums
 {
+    /// <summary>
+    /// Lesson duration.
+    /// </summary>
     public enum LessonDuration
     {
         /// <summary>

@@ -1,0 +1,62 @@
+﻿@model InstitutionViewModel
+
+@{
+    ViewData["Title"] = "Редактирование учереждения";
+    Dictionary<int, string> types = new Dictionary<int, string>();
+
+    foreach (InstituteType type in Enum.GetValues(typeof(InstituteType)))
+    {
+        types.Add((int)type, type.GetDescription());
+    }
+}
+
+<div class="row m-3 justify-content-center">
+    <div class="col-md-6">
+        <div class="form-card">
+            <div class="form-card-header">
+                <h4 class="form-card-heading">Редактирование учереждения</h4>
+            </div>
+            <div class="form-card-body">
+                <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="DirectorId" class="control-label other-info">Идентификатор директора</label>
+                        <input asp-for="DirectorId" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label other-info">Название</label>
+                        <input asp-for="Name" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="InstituteType" class="other-info">Тип учереждения</label>
+                        <select asp-for="InstituteType" class="form-control" asp-items="@(new SelectList(types, "Key", "Value"))">
+                            <option disabled selected>Выберите тип учереждения</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="WebsiteLink" class="control-label other-info">Ссылка на сайт учереждения</label>
+                        <input asp-for="WebsiteLink" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Image" class="control-label other-info">Изображение учереждения</label>
+                        <input asp-for="Image" id="input-file" type="file" class="file" data-preview-file-type="text">
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        Сохранить
+                    </button>
+
+                    <button class="btn btn-danger" asp-action="Index">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        Перейти к списку
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

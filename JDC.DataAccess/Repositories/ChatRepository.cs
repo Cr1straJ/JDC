@@ -19,48 +19,48 @@ namespace JDC.DataAccess.Repositories
             this.context = context;
         }
 
-        public async Task Add(ChatGroup entity)
+        public async Task Add(Chat entity)
         {
-            await this.context.ChatGroups.AddAsync(entity);
+            await this.context.Chats.AddAsync(entity);
             await this.context.SaveChangesAsync();
         }
 
-        public async Task AddRange(IEnumerable<ChatGroup> entities)
+        public async Task AddRange(IEnumerable<Chat> entities)
         {
-            await this.context.ChatGroups.AddRangeAsync(entities);
+            await this.context.Chats.AddRangeAsync(entities);
             await this.context.SaveChangesAsync();
         }
 
-        public IEnumerable<ChatGroup> Find(Expression<Func<ChatGroup, bool>> expression)
+        public IEnumerable<Chat> Find(Expression<Func<Chat, bool>> expression)
         {
-            return this.context.ChatGroups.Where(expression);
+            return this.context.Chats.Where(expression);
         }
 
-        public IEnumerable<ChatGroup> GetAll()
+        public IEnumerable<Chat> GetAll()
         {
-            return this.context.ChatGroups;
+            return this.context.Chats;
         }
 
-        public async Task<ChatGroup> GetById(int? id)
+        public async Task<Chat> GetById(int? id)
         {
-            return await this.context.ChatGroups.FindAsync(id);
+            return await this.context.Chats.FindAsync(id);
         }
 
-        public async Task Remove(ChatGroup entity)
+        public async Task Remove(Chat entity)
         {
-            this.context.ChatGroups.Remove(entity);
+            this.context.Chats.Remove(entity);
             await this.context.SaveChangesAsync();
         }
 
-        public async Task RemoveRange(IEnumerable<ChatGroup> entities)
+        public async Task RemoveRange(IEnumerable<Chat> entities)
         {
-            this.context.ChatGroups.RemoveRange(entities);
+            this.context.Chats.RemoveRange(entities);
             await this.context.SaveChangesAsync();
         }
 
-        public async Task Update(ChatGroup entity)
+        public async Task Update(Chat entity)
         {
-            this.context.ChatGroups.Update(entity);
+            this.context.Chats.Update(entity);
             await this.context.SaveChangesAsync();
         }
     }

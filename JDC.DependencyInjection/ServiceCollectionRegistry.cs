@@ -1,6 +1,7 @@
 ﻿using JDC.BusinessLogic.Interfaces;
 using JDC.BusinessLogic.Models;
 using JDC.BusinessLogic.Services;
+using JDC.BusinessLogic.Utilities.AzureStorage;
 using JDC.BusinessLogic.Utilities.EmailSender;
 using JDC.BusinessLogic.Utilities.PasswordGenerator;
 using JDC.Common.Entities;
@@ -14,8 +15,16 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace JDC.DependencyInjection
 {
-    public static class ServiceDependency
+    /// <summary>
+    /// Service collection registry.
+    /// </summary>
+    public static class ServiceCollectionRegistry
     {
+        /// <summary>
+        /// Adds configs to service collection.
+        /// </summary>
+        /// <param name="services">Service collection.</param>
+        /// <param name="configuration">Configuration.</param>
         public static void AddConfigurationSettings(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton(new SmtpClientSettings()
@@ -26,8 +35,20 @@ namespace JDC.DependencyInjection
                 Host = configuration["SmtpClient:Host"],
                 Port = int.Parse(configuration["SmtpClient:Port"]),
             });
+
+            services.AddSingleton(new AzureStorageConfig()
+            {
+                AccountName = configuration["AzureStorageConfig:AccountName"],
+                AccountKey = configuration["AzureStorageConfig:AccountKey"],
+                ImageContainer = configuration["AzureStorageConfig:ImageContainer"],
+                SasToken = configuration["AzureStorageConfig:SasToken"],
+            });
         }
 
+        /// <summary>
+        /// Adds services and repositories to service collection.
+        /// </summary>
+        /// <param name="services">Service collection.</param>
         public static void AddDependencies(this IServiceCollection services)
         {
             services.AddTransient<IGroupService, GroupService>();
@@ -48,22 +69,27 @@ namespace JDC.DependencyInjection
             services.AddTransient<IRegistrationRequestService, RegistrationRequestService>();
             services.AddTransient<IRegistrationRequestRepository, RegistrationRequestRepository>();
 
-            services.AddTransient<IChatService, ChatService>();            
+            services.AddTransient<IChatService, ChatService>();
             services.AddTransient<IChatRepository, ChatRepository>();
 
-            services.AddTransient<IInstitutionService, InstitutionService>();    
-            services.AddTransient<IInstitutionRepository, InstitutionRepository>();                  
-            
+            services.AddTransient<IInstitutionService, InstitutionService>();
+            services.AddTransient<IInstitutionRepository, InstitutionRepository>();
+
             services.AddTransient<IMessageService, MessageService>();
             services.AddTransient<IMessageRepository, MessageRepository>();
-            
+
             services.AddTransient<IStudentService, StudentService>();
             services.AddTransient<IStudentRepository, StudentRepository>();
 
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IAzureStorage, AzureStorage>();
             services.AddTransient<IPasswordGenerator, PasswordGenerator>();
         }
 
+        /// <summary>
+        /// Adds identity to service collection.
+        /// </summary>
+        /// <param name="services">Service collection.</param>
         public static void AddIdentity(this IServiceCollection services)
         {
             services.AddDefaultIdentity<User>(options =>
@@ -81,6 +107,11 @@ namespace JDC.DependencyInjection
                 .AddEntityFrameworkStores<ApplicationDbContext>();
         }
 
+        /// <summary>
+        /// Adds database context to service collection.
+        /// </summary>
+        /// <param name="services">Service collection.</param>
+        /// <param name="connectionString">Connection string.</param>
         public static void AddDatabase(this IServiceCollection services, string connectionString)
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
