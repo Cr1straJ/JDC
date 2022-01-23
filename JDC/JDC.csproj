@@ -22,6 +22,6 @@
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\JDC.DependencyInjection\JDC.DependencyInjection.csproj" />
+        <ProjectReference Include="..\JDC.DependencyInjection\JDC.Dependencies.csproj" />
     </ItemGroup>
 </Project>

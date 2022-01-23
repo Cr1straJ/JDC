@@ -11,6 +11,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace JDC.Controllers
 {
+    /// <summary>
+    /// Provides group endpoints.
+    /// </summary>
     public class GroupsController : Controller
     {
         private readonly IGroupService groupService;
@@ -20,6 +23,9 @@ namespace JDC.Controllers
         private readonly ISpecialityService specialityService;
         private readonly UserManager<User> userManager;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GroupsController"/> class.
+        /// </summary>
         public GroupsController(
             UserManager<User> userManager,
             IGroupService groupService,
@@ -36,23 +42,27 @@ namespace JDC.Controllers
             this.specialityService = specialityService;
         }
 
-        public async Task<IActionResult> Index(int? id)
+        /// <summary>
+        /// Gets all groups of the institution whose director is the beneficiary.
+        /// </summary>
+        /// <param name="userId">User id.</param>
+        public async Task<IActionResult> Index(int? userId)
         {
             bool canEditGroup = false;
 
-            if (id is null)
+            if (userId is null)
             {
                 User user = await this.userManager.GetUserAsync(this.User);
 
                 if (user is not null && await this.userManager.IsInRoleAsync(user, "Director"))
                 {
                     canEditGroup = true;
-                    id = user.InstitutionId;
+                    userId = user.InstitutionId;
                 }
             }
 
             this.ViewData["CanEditGroup"] = canEditGroup;
-            List<Group> groups = await this.groupService.GetInstitutionGroups(id);
+            List<Group> groups = await this.groupService.GetInstitutionGroups(userId);
 
             if (groups is null)
             {
@@ -62,6 +72,9 @@ namespace JDC.Controllers
             return this.View(groups);
         }
 
+        /// <summary>
+        /// Displays the creation page of the group.
+        /// </summary>
         public async Task<IActionResult> Create()
         {
             var currentUser = await this.userManager.GetUserAsync(this.User);
@@ -72,6 +85,10 @@ namespace JDC.Controllers
             return this.View();
         }
 
+        /// <summary>
+        /// Creates group.
+        /// </summary>
+        /// <param name="group">Create group request information.</param>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Name,TeacherId")] Group group)
@@ -89,9 +106,13 @@ namespace JDC.Controllers
             return this.View(group);
         }
 
-        public async Task<IActionResult> Edit(int? id)
+        /// <summary>
+        /// Displays the group editing page.
+        /// </summary>
+        /// <param name="groupId">Group id.</param>
+        public async Task<IActionResult> Edit(int? groupId)
         {
-            var group = this.groupService.GetById(id);
+            var group = this.groupService.GetById(groupId);
 
             if (group is null)
             {
@@ -106,6 +127,10 @@ namespace JDC.Controllers
             return this.View(group);
         }
 
+        /// <summary>
+        /// Edits group.
+        /// </summary>
+        /// <param name="group">Edit group request information.</param>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit([Bind("Name,TeacherId")] Group group)
@@ -125,23 +150,15 @@ namespace JDC.Controllers
             return this.View(group);
         }
 
-        public IActionResult Delete(int? id)
-        {
-            var group = this.groupService.GetById(id);
-
-            if (group is null)
-            {
-                return this.View("Error");
-            }
-
-            return this.View(group);
-        }
-
+        /// <summary>
+        /// Deletes group.
+        /// </summary>
+        /// <param name="groupId">Group id.</param>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int? groupId)
         {
-            var group = await this.groupService.GetById(id);
+            var group = await this.groupService.GetById(groupId);
 
             if (group is null)
             {
@@ -153,9 +170,13 @@ namespace JDC.Controllers
             return this.RedirectToAction(nameof(this.Index));
         }
 
-        public IActionResult Details(int? id)
+        /// <summary>
+        /// Displays the group view page.
+        /// </summary>
+        /// <param name="groupId">Group id.</param>
+        public IActionResult Details(int? groupId)
         {
-            var group = this.groupService.GetById(id);
+            var group = this.groupService.GetById(groupId);
 
             if (group is null)
             {
@@ -165,15 +186,20 @@ namespace JDC.Controllers
             return this.View(group);
         }
 
+        /// <summary>
+        /// Displays a page for viewing the group's grades for the selected lesson.
+        /// </summary>
+        /// <param name="groupId">Group id.</param>
+        /// <param name="lessonId">Lesson id.</param>
         public IActionResult Journal(int? groupId, int? lessonId)
         {
             this.ViewData["DisciplineId"] = lessonId;
-            Lesson lesson = new Lesson() 
-            { 
-                Id = 0, 
-                Homework = "№123, №126", 
+            Lesson lesson = new Lesson()
+            {
+                Id = 0,
+                Homework = "№123, №126",
                 Theme = "§ 1.2. Корень n-ой степени",
-                Date = new DateTime(DateTime.Now.Year, 9, 1), 
+                Date = new DateTime(DateTime.Now.Year, 9, 1),
             };
 
             if (groupId == -1)
@@ -213,11 +239,11 @@ namespace JDC.Controllers
                     },
                     Disciplines = new List<Discipline>()
                     {
-                        new Discipline() 
+                        new Discipline()
                         {
                             Id = 0,
                             Title = "Математика",
-                            Lessons = new List<Lesson>() 
+                            Lessons = new List<Lesson>()
                             {
                                lesson,
                             },
@@ -230,6 +256,13 @@ namespace JDC.Controllers
             return this.View(this.groupService.GetById(groupId));
         }
 
+        /// <summary>
+        /// Sets a grade.
+        /// </summary>
+        /// <param name="studentId">Student id.</param>
+        /// <param name="lessonId">Lesson id.</param>
+        /// <param name="value">Value of the grade.</param>
+        /// <param name="date">Grading date.</param>
         [HttpPost]
         public async Task<int> SetGrade(int studentId, int lessonId, double value, string date)
         {
@@ -247,6 +280,11 @@ namespace JDC.Controllers
             return grade.Id;
         }
 
+        /// <summary>
+        /// Updates a grade.
+        /// </summary>
+        /// <param name="gradeId">Grade id.</param>
+        /// <param name="value">Value of the grade.</param>
         [HttpPost]
         public async Task UpdateGrade(int gradeId, double value)
         {
@@ -256,6 +294,13 @@ namespace JDC.Controllers
             await this.gradeService.Update(grade);
         }
 
+        /// <summary>
+        /// Creates a lesson.
+        /// </summary>
+        /// <param name="theme">Lesson theme.</param>
+        /// <param name="homework">Lesson homework.</param>
+        /// <param name="lessonDuration">Lesson duration.</param>
+        /// <param name="disciplineId">Discipline id.</param>
         [HttpPost]
         public async Task<int> CreateLesson(string theme, string homework, int lessonDuration, int disciplineId)
         {

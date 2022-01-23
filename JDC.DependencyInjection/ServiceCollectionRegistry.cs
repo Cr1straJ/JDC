@@ -15,8 +15,16 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace JDC.DependencyInjection
 {
-    public static class ServiceDependency
+    /// <summary>
+    /// Service collection registry.
+    /// </summary>
+    public static class ServiceCollectionRegistry
     {
+        /// <summary>
+        /// Adds configs to service collection.
+        /// </summary>
+        /// <param name="services">Service collection.</param>
+        /// <param name="configuration">Configuration.</param>
         public static void AddConfigurationSettings(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton(new SmtpClientSettings()
@@ -37,6 +45,10 @@ namespace JDC.DependencyInjection
             });
         }
 
+        /// <summary>
+        /// Adds services and repositories to service collection.
+        /// </summary>
+        /// <param name="services">Service collection.</param>
         public static void AddDependencies(this IServiceCollection services)
         {
             services.AddTransient<IGroupService, GroupService>();
@@ -74,6 +86,10 @@ namespace JDC.DependencyInjection
             services.AddTransient<IPasswordGenerator, PasswordGenerator>();
         }
 
+        /// <summary>
+        /// Adds identity to service collection.
+        /// </summary>
+        /// <param name="services">Service collection.</param>
         public static void AddIdentity(this IServiceCollection services)
         {
             services.AddDefaultIdentity<User>(options =>
@@ -91,6 +107,11 @@ namespace JDC.DependencyInjection
                 .AddEntityFrameworkStores<ApplicationDbContext>();
         }
 
+        /// <summary>
+        /// Adds database context to service collection.
+        /// </summary>
+        /// <param name="services">Service collection.</param>
+        /// <param name="connectionString">Connection string.</param>
         public static void AddDatabase(this IServiceCollection services, string connectionString)
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 using JDC.Common.Entities;
 
@@ -10,20 +8,20 @@ namespace JDC.DataAccess.Interfaces
 {
     public interface IChatRepository
     {
-        Task<ChatGroup> GetById(int? id);
+        Task<Chat> GetById(int? id);
 
-        IEnumerable<ChatGroup> GetAll();
+        IEnumerable<Chat> GetAll();
 
-        IEnumerable<ChatGroup> Find(Expression<Func<ChatGroup, bool>> expression);
+        IEnumerable<Chat> Find(Expression<Func<Chat, bool>> expression);
 
-        Task Add(ChatGroup entity);
+        Task Add(Chat entity);
 
-        Task AddRange(IEnumerable<ChatGroup> entities);
+        Task AddRange(IEnumerable<Chat> entities);
 
-        Task Remove(ChatGroup entity);
+        Task Remove(Chat entity);
 
-        Task RemoveRange(IEnumerable<ChatGroup> entities);
+        Task RemoveRange(IEnumerable<Chat> entities);
 
-        Task Update(ChatGroup entity);
+        Task Update(Chat entity);
     }
 }

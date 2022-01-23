@@ -1,9 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Reflection;
 
 namespace JDC.Common.Extensions
 {
+    /// <summary>
+    /// Contains extension methods for <see cref="Enum"/>.
+    /// </summary>
     public static class EnumExtension
     {
         /// <summary>
@@ -19,14 +21,14 @@ namespace JDC.Common.Extensions
             }
 
             // Searching for the DescriptionAttribute attribute for the enumeration
-            MemberInfo[] memberInfo = enumerationValue.GetType()
+            var memberInfo = enumerationValue.GetType()
                 .GetMember(enumerationValue.ToString());
 
-            if (memberInfo != null && memberInfo.Length > 0)
+            if (memberInfo is not null && memberInfo.Length > 0)
             {
-                object[] attributes = memberInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+                var attributes = memberInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
 
-                if (attributes != null && attributes.Length > 0)
+                if (attributes is not null && attributes.Length > 0)
                 {
                     return ((DescriptionAttribute)attributes[0]).Description;
                 }

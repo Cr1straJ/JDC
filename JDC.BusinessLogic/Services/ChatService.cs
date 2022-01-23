@@ -19,42 +19,42 @@ namespace JDC.BusinessLogic.Services
             this.chatRepository = chatRepository;
         }
 
-        public async Task Add(ChatGroup entity)
+        public async Task Add(Chat entity)
         {
             await this.chatRepository.Add(entity);
         }
 
-        public async Task AddRange(IEnumerable<ChatGroup> entities)
+        public async Task AddRange(IEnumerable<Chat> entities)
         {
             await this.chatRepository.AddRange(entities);
         }
 
-        public IEnumerable<ChatGroup> Find(Expression<Func<ChatGroup, bool>> expression)
+        public IEnumerable<Chat> Find(Expression<Func<Chat, bool>> expression)
         {
             return this.chatRepository.Find(expression);
         }
 
-        public IEnumerable<ChatGroup> GetAll()
+        public IEnumerable<Chat> GetAll()
         {
             return this.chatRepository.GetAll();
         }
 
-        public async Task<ChatGroup> GetById(int? id)
+        public async Task<Chat> GetById(int? id)
         {
             return await this.chatRepository.GetById(id);
         }
 
-        public async Task Remove(ChatGroup entity)
+        public async Task Remove(Chat entity)
         {
             await this.chatRepository.Remove(entity);
         }
 
-        public async Task RemoveRange(IEnumerable<ChatGroup> entities)
+        public async Task RemoveRange(IEnumerable<Chat> entities)
         {
             await this.chatRepository.RemoveRange(entities);
         }
 
-        public async Task Update(ChatGroup entity)
+        public async Task Update(Chat entity)
         {
             await this.chatRepository.Update(entity);
         }

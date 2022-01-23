@@ -10,22 +10,36 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace JDC.Controllers
 {
+    /// <summary>
+    /// Provides institution endpoints.
+    /// </summary>
     public class InstitutionsController : Controller
     {
         private readonly IAzureStorage azureStorage;
         private readonly IInstitutionService institutionService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InstitutionsController"/> class.
+        /// </summary>
         public InstitutionsController(IAzureStorage azureStorage, IInstitutionService institutionService)
         {
             this.azureStorage = azureStorage;
             this.institutionService = institutionService;
         }
 
+        /// <summary>
+        /// Gets all the institutions.
+        /// </summary>
         public async Task<IActionResult> Index()
         {
             return this.View(await this.institutionService.GetAll());
         }
 
+        /// <summary>
+        /// Gets all the institutions based on the filter.
+        /// </summary>
+        /// <param name="filter">Part of the institution's name.</param>
+        /// <param name="types">Types of institutions.</param>
         [HttpPost]
         public async Task<JsonResult> GetInstitutions(string filter, int[] types)
         {
@@ -41,9 +55,13 @@ namespace JDC.Controllers
                 && institution.Name.Contains(filter, StringComparison.CurrentCultureIgnoreCase)));
         }
 
-        public async Task<IActionResult> Edit(int? id)
+        /// <summary>
+        /// Displays the institution editing page.
+        /// </summary>
+        /// <param name="institutionId">Institution id.</param>
+        public async Task<IActionResult> Edit(int? institutionId)
         {
-            var institution = await this.institutionService.GetById(id);
+            var institution = await this.institutionService.GetById(institutionId);
 
             if (institution is null)
             {
@@ -53,6 +71,10 @@ namespace JDC.Controllers
             return this.View(new CompiledMapper<InstitutionViewModel>().Map(institution));
         }
 
+        /// <summary>
+        /// Edits institution.
+        /// </summary>
+        /// <param name="institutionViewModel">Edit institution request information.</param>
         [HttpPost]
         public async Task<IActionResult> Edit(InstitutionViewModel institutionViewModel)
         {

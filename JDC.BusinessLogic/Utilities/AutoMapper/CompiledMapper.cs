@@ -11,7 +11,7 @@ namespace JDC.BusinessLogic.Utilities.AutoMapper
     /// Provides method that mapped one object to another.
     /// </summary>
     /// <typeparam name="TOut">Destination type to create.</typeparam>
-    public class CompiledMapper<TOut> : IMapper<TOut>
+    public class CompiledMapper<TOut>
     {
         private readonly Type outType;
         private readonly ConstructorInfo outConstructor;
@@ -62,7 +62,7 @@ namespace JDC.BusinessLogic.Utilities.AutoMapper
         {
             var available = type.GetTypeInfo().DeclaredConstructors;
 
-            return available.FirstOrDefault(c => !c.IsStatic && c.GetParameters().Length == 0);
+            return available.FirstOrDefault(info => !info.IsStatic && info.GetParameters().Length == 0);
         }
 
         private Func<object, TOut> BuildConverter(Type sourceType)

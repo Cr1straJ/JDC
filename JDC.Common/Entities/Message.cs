@@ -1,36 +1,51 @@
 ﻿using System;
-using System.Collections.Generic;
 using JDC.Common.Enums;
 
 namespace JDC.Common.Entities
 {
+    /// <summary>
+    /// Message entity.
+    /// </summary>
     public class Message
     {
-        public Message(int chatGroupId, int userId, RecipientType recipent, string content, DateTime sendingDate)
-        {
-            this.ChatGroupId = chatGroupId;
-            this.UserId = userId;
-            this.Recipent = recipent;
-            this.Content = content;
-            this.SendingDate = sendingDate;
-        }
-
+        /// <summary>
+        /// Gets or sets a message id.
+        /// </summary>
         public int Id { get; set; }
 
+        /// <summary>
+        /// Gets or sets a chat group id.
+        /// </summary>
         public int ChatGroupId { get; set; }
 
-        public ChatGroup ChatGroup { get; set; }
+        /// <summary>
+        /// Gets or sets a chat group which includes a message.
+        /// </summary>
+        public Chat ChatGroup { get; set; }
 
+        /// <summary>
+        /// Gets or sets the user id who sent the message.
+        /// </summary>
         public int UserId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the user who sent the message.
+        /// </summary>
         public User User { get; set; }
 
+        /// <summary>
+        /// Gets or sets the message recipient type.
+        /// </summary>
         public RecipientType Recipent { get; set; } = RecipientType.Deafult;
 
+        /// <summary>
+        /// Gets or sets the message content.
+        /// </summary>
         public string Content { get; set; }
 
+        /// <summary>
+        /// Gets or sets the date the message was sent.
+        /// </summary>
         public DateTime SendingDate { get; set; }
-
-        public List<User> Writed { get; set; }
     }
 }

@@ -2,6 +2,9 @@
 
 namespace JDC.Common.Enums
 {
+    /// <summary>
+    /// Institute type.
+    /// </summary>
     public enum InstituteType
     {
         /// <summary>

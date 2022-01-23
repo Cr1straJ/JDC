@@ -25,7 +25,7 @@ namespace JDC.BusinessLogic.Utilities.AzureStorage
         /// </exception>
         public AzureStorage(AzureStorageConfig azureStorageConfig)
         {
-            this.azureStorageConfig = azureStorageConfig 
+            this.azureStorageConfig = azureStorageConfig
                 ?? throw new ArgumentNullException(nameof(azureStorageConfig));
         }
 
@@ -55,7 +55,7 @@ namespace JDC.BusinessLogic.Utilities.AzureStorage
         }
 
         /// <summary>
-        /// The <see cref="UploadFileToStorage"/> operation loads 
+        /// The <see cref="UploadFileToStorage"/> operation loads
         /// a file from the stream to the blob storage.
         /// </summary>
         /// <param name="fileStream">A Stream containing the content to upload..</param>
@@ -63,13 +63,12 @@ namespace JDC.BusinessLogic.Utilities.AzureStorage
         /// <returns>A file path containing the content to upload.</returns>
         public async Task<string> UploadFileToStorage(Stream fileStream, string fileName)
         {
-            string filePath = this.GetImageUrl(fileName);
-            Uri blobUri = new Uri(filePath);
+            var filePath = this.GetImageUrl(fileName);
+            var blobUri = new Uri(filePath);
 
-            StorageSharedKeyCredential storageCredentials = 
-                new StorageSharedKeyCredential(this.azureStorageConfig.AccountName, this.azureStorageConfig.AccountKey);
+            var storageCredentials = new StorageSharedKeyCredential(this.azureStorageConfig.AccountName, this.azureStorageConfig.AccountKey);
 
-            BlobClient blobClient = new BlobClient(blobUri, storageCredentials);
+            var blobClient = new BlobClient(blobUri, storageCredentials);
             await blobClient.UploadAsync(fileStream);
             await Task.FromResult(true);
 

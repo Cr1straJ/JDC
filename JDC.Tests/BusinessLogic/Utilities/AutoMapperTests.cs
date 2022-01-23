@@ -1,4 +1,5 @@
 ﻿using System;
+using AutoFixture.NUnit3;
 using JDC.BusinessLogic.Utilities.AutoMapper;
 using NUnit.Framework;
 
@@ -16,11 +17,9 @@ namespace JDC.Tests.BusinessLogic.Utilities
         }
 
         [Test]
-        public void AutoMapper_ReturnDestinationObject()
+        [Theory, AutoData]
+        public void AutoMapper_ReturnDestinationObject([Frozen]ModelType source)
         {
-            // Arrange
-            var source = new ModelType() { TheProperty = "string value" };
-
             // Act
             var destination = this.mapper.Map(source);
 
@@ -34,7 +33,7 @@ namespace JDC.Tests.BusinessLogic.Utilities
             // Assert
             Assert.Throws<ArgumentNullException>(() => this.mapper.Map(null), message: "source");
         }
-
+        
         public class ModelType
         {
             public string TheProperty { get; set; }

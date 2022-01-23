@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 using JDC.Common.Entities;
 using JDC.DataAccess.Data;
@@ -21,55 +20,55 @@ namespace JDC.DataAccess.Repositories
 
         public async Task Add(Group entity)
         {
-            await this.context.StudentGroups.AddAsync(entity);
+            await this.context.Groups.AddAsync(entity);
             await this.context.SaveChangesAsync();
         }
 
         public async Task AddRange(IEnumerable<Group> entities)
         {
-            await this.context.StudentGroups.AddRangeAsync(entities);
+            await this.context.Groups.AddRangeAsync(entities);
             await this.context.SaveChangesAsync();
         }
 
         public IEnumerable<Group> Find(Expression<Func<Group, bool>> expression)
         {
-            return this.context.StudentGroups.Where(expression);
+            return this.context.Groups.Where(expression);
         }
 
         public IEnumerable<Group> GetAll()
         {
-            return this.context.StudentGroups;
+            return this.context.Groups;
         }
 
         public async Task<Group> GetById(int? id)
         {
-            return await this.context.StudentGroups.FindAsync(id);
+            return await this.context.Groups.FindAsync(id);
         }
 
         public async Task Remove(Group entity)
         {
-            this.context.StudentGroups.Remove(entity);
+            this.context.Groups.Remove(entity);
             await this.context.SaveChangesAsync();
         }
 
         public async Task RemoveRange(IEnumerable<Group> entities)
         {
-            this.context.StudentGroups.RemoveRange(entities);
+            this.context.Groups.RemoveRange(entities);
             await this.context.SaveChangesAsync();
         }
 
         public async Task Update(Group entity)
         {
-            this.context.StudentGroups.Update(entity);
+            this.context.Groups.Update(entity);
             await this.context.SaveChangesAsync();
         }
-        
+
         public Task<List<Group>> GetInstitutionGroups(int id)
         {
-            return Task.Factory.StartNew(() =>
+            return Task.Factory.StartNew((Func<List<Group>>)(() =>
             {
-                return this.context.StudentGroups.Where(group => group.InstitutionId == id).ToList();
-            });
+                return Queryable.Where<Group>(this.context.Groups, (Expression<Func<Group, bool>>)(group => (bool)(group.InstitutionId == id))).ToList();
+            }));
         }
     }
 }
