@@ -20,8 +20,20 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="System.IO.Packaging" Version="6.0.0" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\JDC.DependencyInjection\JDC.DependencyInjection.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <Reference Include="AwcBll">
+        <HintPath>Libs\AwcBll.dll</HintPath>
+      </Reference>
+      <Reference Include="Xceed.Document.NET">
+        <HintPath>Libs\Xceed.Document.NET.dll</HintPath>
+      </Reference>
+      <Reference Include="Xceed.Words.NET">
+        <HintPath>Libs\Xceed.Words.NET.dll</HintPath>
+      </Reference>
     </ItemGroup>
 </Project>
