@@ -10,6 +10,10 @@ namespace JDC.DataAccess.Data.Migrations
     /// </summary>
     public partial class CreateIdentitySchema : Migration
     {
+        /// <summary>
+        /// Builds the operations that will migrate the database 'up'.
+        /// </summary>
+        /// <param name="migrationBuilder">The <see cref="MigrationBuilder" /> that will build the operations.</param>
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -197,6 +201,10 @@ namespace JDC.DataAccess.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
         }
 
+        /// <summary>
+        /// Builds the operations that will migrate the database 'down'.
+        /// </summary>
+        /// <param name="migrationBuilder">The <see cref="MigrationBuilder" /> that will build the operations.</param>
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

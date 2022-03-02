@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using JDC.Common.Entities;
 using JDC.DataAccess.Data;
@@ -51,7 +52,7 @@ namespace JDC.DataAccess.Repositories
         /// <inheritdoc/>
         public Task<List<Group>> GetInstitutionGroups(int institutionId)
         {
-            return Task.Factory.StartNew(() =>
+            return Task.Factory.StartNew((Func<List<Group>>)(() =>
             {
                 return context.StudentGroups.Where(group => group.InstitutionId == institutionId).ToList();
             });

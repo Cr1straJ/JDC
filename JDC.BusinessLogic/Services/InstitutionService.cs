@@ -34,9 +34,9 @@ namespace JDC.BusinessLogic.Services
             return this.institutionRepository.Find(expression);
         }
 
-        public IEnumerable<Institution> GetAll()
+        public async Task<IEnumerable<Institution>> GetAll()
         {
-            return this.institutionRepository.GetAll();
+            return await Task.Factory.StartNew(() => this.institutionRepository.GetAll());
         }
 
         public async Task<Institution> GetById(int id)

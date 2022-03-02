@@ -41,6 +41,9 @@ namespace JDC.Controllers
             return View(groups);
         }
 
+        /// <summary>
+        /// Displays the creation page of the group.
+        /// </summary>
         public async Task<IActionResult> Create()
         {
             await InitViewData();
@@ -48,6 +51,10 @@ namespace JDC.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Creates group.
+        /// </summary>
+        /// <param name="group">Create group request information.</param>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Name,TeacherId")] Group group)
@@ -69,7 +76,7 @@ namespace JDC.Controllers
         }
 
         /// <summary>
-        /// Edits plan information.
+        /// Displays the group editing page.
         /// </summary>
         /// <param name="groupId">Group id to be edited.</param>
         /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
@@ -113,6 +120,11 @@ namespace JDC.Controllers
             return View(group);
         }
 
+        /// <summary>
+        /// Displays the group deleting page.
+        /// </summary>
+        /// <param name="groupId">Group id to be deleted.</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public IActionResult Delete(int? id)
         {
             if (id is null)
@@ -130,20 +142,35 @@ namespace JDC.Controllers
             return View(group);
         }
 
+        /// <summary>
+        /// Deletes group.
+        /// </summary>
+        /// <param name="groupId">Group id.</param>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int? groupId)
         {
             var group = await groupService.GetById(id);
+
+            if (group is null)
+            {
+                return this.View("Error");
+            }
 
             await groupService.Remove(group);
 
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Details(int? id)
+        /// <summary>
+        /// Displays the group view page.
+        /// </summary>
+        /// <param name="groupId">Group id.</param>
+        public IActionResult Details(int? groupId)
         {
-            if (id is null)
+            var group = this.groupService.GetById(groupId);
+
+            if (group is null)
             {
                 return View("Error");
             }

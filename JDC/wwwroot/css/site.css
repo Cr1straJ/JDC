@@ -27,6 +27,15 @@ a.dropdown-item:focus {
     color: #fff !important;
 }
 
+.bg-gray-100 {
+    background-color: #f8f9fa !important;
+}
+
+.shadow {
+    -webkit-box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+}
+
 .bg-light {
     background-color: #f9fbfd !important;
 }
@@ -318,28 +327,27 @@ html {
     max-width: 100% !important;
 }
 
-.card {
+.institution-card {
     margin: 10px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
-    width: 300px;
 }
 
-.institute_card_dropdown {
+.institute-card-dropdown {
     text-decoration: none;
     color: #fff;
     font-size: 1.3rem;
 }
 
-    .institute_card_dropdown:hover {
-        text-decoration: none;
-        color: #fff;
-    }
+.institute-card-dropdown:hover {
+    text-decoration: none;
+    color: #fff;
+}
 
-    .institute_card_dropdown > i {
-        margin: auto;
-    }
+.institute-card-dropdown > i {
+    margin: auto;
+}
 
 .card-header img {
     width: 100%;
@@ -347,7 +355,7 @@ html {
     object-fit: cover;
 }
 
-.card-body {
+.institution-card-body {
     background-color: white;
     box-shadow: -3px -10px 10px rgba(0, 0, 0, 0.3);
     overflow: hidden;
@@ -413,7 +421,7 @@ html {
     background-color: #cd5b9f;
 }
 
-.card-body p {
+.institution-card-body p {
     font-size: 1rem;
     margin: 10px 0;
 }
@@ -1251,7 +1259,7 @@ border-radius: 25px;*/
     line-height: 20px;
 }
 
-.other_info {
+.other-info {
     font-weight: 400;
     color: #818c99;
     padding-top: 2px;
@@ -1259,7 +1267,7 @@ border-radius: 25px;*/
     line-height: 18px;
 }
 
-.other_info, .user_name {
+.other-info, .user_name {
     display: inline-block;
     margin: 0;
 }
@@ -1874,4 +1882,73 @@ border-radius: 25px;*/
 
 .btn-admin-info:hover {
     color: #fff;
+}
+
+/*
+    bootstrap file input
+*/
+.file-preview {
+    padding: 0;
+    border: initial;
+}
+
+.fileinput-remove {
+    outline: none;
+}
+
+.kv-file-zoom {
+    display: none;
+}
+
+.file-drop-zone {
+    margin: 0;
+}
+
+.image-detail {
+    width: 100%;
+}
+
+/*
+    Form card
+*/
+
+.form-card {
+    border: none;
+    -webkit-box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border-radius: 1rem;
+}
+
+.form-card-header:first-child {
+    border-radius: calc(1rem - 1px) calc(1rem - 1px) 0 0;
+}
+
+.form-card-header {
+    position: relative;
+    padding: 2rem;
+    border-bottom: none;
+    background-color: #fff;
+    -webkit-box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    z-index: 2;
+}
+
+.form-card-heading {
+    margin-bottom: 0;
+    font-size: .9rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+}
+
+.form-card-body {
+    flex: 1 1 auto;
+    padding: 2rem;
 }

@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JDC", "JDC\JDC.csproj", "{6013BDE3-B3A3-4DD9-A156-01D62C058AFC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F73057FF-0FE7-445F-A59C-D0A9242EC2CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{0DB242C1-E869-4117-B307-21BCBFAD1807}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JDC.DataAccess", "JDC.DataAccess\JDC.DataAccess.csproj", "{DC188937-DEDD-4056-947D-08A5B9E9B7F1}"
 	ProjectSection(ProjectDependencies) = postProject
 		{9540D405-2414-4E54-B70A-B626655D1FBE} = {9540D405-2414-4E54-B70A-B626655D1FBE}
@@ -14,15 +18,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		README-RU.md = README-RU.md
 		README.md = README.md
+		.editorconfig = .editorconfig
+		code-analysis.ruleset = code-analysis.ruleset
+		stylecop.json = stylecop.json
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JDC.BusinessLogic", "JDC.BusinessLogic\JDC.BusinessLogic.csproj", "{772A0BDA-2A4F-472F-8F92-C75C02CDE102}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JDC.DependencyInjection", "JDC.DependencyInjection\JDC.DependencyInjection.csproj", "{7DA9A023-E5E5-44B1-B9B1-565518F9CF25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JDC.Dependencies", "JDC.DependencyInjection\JDC.Dependencies.csproj", "{7DA9A023-E5E5-44B1-B9B1-565518F9CF25}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JDC.Common", "JDC.Common\JDC.Common.csproj", "{9540D405-2414-4E54-B70A-B626655D1FBE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JDC.Tests", "JDC.Tests\JDC.Tests.csproj", "{11FBB0F7-F0B0-4B7C-8F36-00E9F5282691}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JDC.UnitTests", "JDC.Tests\JDC.UnitTests.csproj", "{11FBB0F7-F0B0-4B7C-8F36-00E9F5282691}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9D4C8490-9CD4-4012-9EC1-47371374BADC}"
 EndProject

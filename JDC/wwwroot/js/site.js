@@ -197,3 +197,82 @@ $(function () {
     });
 });
 
+/*
+    institution index page
+*/
+$(function () {
+    if (window.location.href.indexOf("Institutions/Index") > 0) {
+        printInstitutions(institutions);
+    }
+
+    $('body').on('input', '#inputInstitutionTitle', function () {
+        getInstitutions();
+    });
+
+    $('.institute-type-check').click(function () {
+        getInstitutions();
+    });
+
+    function getSelectedTypes() {
+        return Array.prototype.filter.call($(`.institute-type-check`), function (item) { return item.checked }).map(item => +item.getAttribute('data-id'));
+    }
+
+    function getInstitutions() {
+        var mask = $('#inputInstitutionTitle').val();
+
+        $.ajax({
+            type: 'POST',
+            url: '/Institutions/GetInstitutions',
+            data: {
+                filter: mask,
+                types: getSelectedTypes()
+            },
+            dataType: 'json',
+            success: function (respons) {
+                printInstitutions(respons);
+            },
+        })
+    }
+
+    function printInstitutions(institutions) {
+        $('#institutionContainer').val('');
+        institutions.forEach(institution => generateInstitutionsCard(institution));
+    }
+
+    function generateInstitutionsCard(institution) {
+        var dropdown = '<a class="dropdown-item text-primary" href="' + urlDetails.replace('__id__', institution.id) + '">' +
+            '<i class="fa fa-info-circle mr-1"></i>Подробнее</a>';
+
+        if (isEditable) {
+            dropdown = '<a class="dropdown-item text-warning" href="' + urlEdit.replace('__id__', institution.id) + '">' +
+                '<i class="fa fa-pencil mr-1"></i>Редактировать</a>' + dropdown + '<a class="dropdown-item text-danger" href="' + urlDelete.replace('__id__', institution.id) + '">' +
+                '<i class="fa fa-trash mr-1"></i>Удалить</a>';
+        }
+
+        var cardheader = '<div class="card-header overflow-hidden p-0">' + '<img src="https://st3.depositphotos.com/1007963/36020/i/600/depositphotos_360209078-stock-photo-classic-view-of-the-univeristy.jpg" alt="rover" />' +
+            '<div class="card-menu"><div class="dropdown open off-animation">' +
+            '<a href="" id="triggerId2" class="institute-card-dropdown" data-toggle="dropdown" aria-haspopup="true"' +
+            'aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>' +
+            '<div class="dropdown-menu off-animation" aria-labelledby="triggerId2">' +
+            dropdown + '</div></div></div></div>';
+
+        var cardbody = '<div class="institution-card-body">' + '<span class="tag tag-teal">' + institution.type + '</span>' +
+            `<p>${institution.name}</p><div class="user"><img src="/images/default_avatar.png" alt="Директор" />` +
+            '<div class="user-info"><h5>' + (institution.director != null ? institution.director.getShortName : 'No name') + '</h5>' +
+            '</div></div></div>';
+
+        let card = `<div id="${institution.id}" class="col-sm-6 col-md-6 col-lg-4"><div class="institution-card position-relative">${cardheader}${cardbody}</div></div>`;
+        $('#institutionContainer').append(card);
+    }
+});
+
+// create institution page
+
+$.fn.fileinputBsVersion = "3.3.7";
+
+$("#input-file").fileinput({
+    browseLabel: "Pick Image",
+    showUpload: false,
+    allowedFileExtensions: ["jpg", "png", "gif"],
+    previewFileType: 'any'
+});

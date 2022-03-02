@@ -28,19 +28,19 @@
                 <div class="col">
                     <div class="">
                         <h3 class="user_name">@(Model?.Input?.LastName) @(Model?.Input?.FirstName)</h3><br />
-                        <h4 class="other_info">Укажите основную информацию, чтобы пользоваться JDC было удобнее</h4>
+                        <h4 class="other-info">Укажите основную информацию, чтобы пользоваться JDC было удобнее</h4>
                     </div>
                 </div>
             </div>
 
             <div class="row mt-3">
                 <div class="form-group col">
-                    <label class="other_info" asp-for="Input.LastName"></label>
+                    <label class="other-info" asp-for="Input.LastName"></label>
                     <input asp-for="Input.LastName" class="form-control" />
                     <span asp-validation-for="Input.LastName" class="text-danger"></span>
                 </div>
                 <div class="form-group col">
-                    <label class="other_info" asp-for="Input.FirstName"></label>
+                    <label class="other-info" asp-for="Input.FirstName"></label>
                     <input asp-for="Input.FirstName" class="form-control" />
                     <span asp-validation-for="Input.FirstName" class="text-danger"></span>
                 </div>
@@ -48,12 +48,12 @@
 
             <div class="row">
                 <div class="form-group col">
-                    <label class="other_info" asp-for="Input.MiddleName"></label>
+                    <label class="other-info" asp-for="Input.MiddleName"></label>
                     <input asp-for="Input.MiddleName" class="form-control" />
                     <span asp-validation-for="Input.MiddleName" class="text-danger"></span>
                 </div>
                 <div class="form-group col">
-                    <label class="other_info" asp-for="Input.Sex"></label>
+                    <label class="other-info" asp-for="Input.Sex"></label>
                     <select asp-for="Input.Sex" class="form-control">
                         <option>Мужской</option>
                         <option>Женский</option>
@@ -64,7 +64,7 @@
 
             <div class="row">
                 <div class="form-group col">
-                    <label class="other_info" asp-for="Input.PhoneNumber"></label>
+                    <label class="other-info" asp-for="Input.PhoneNumber"></label>
                     <input asp-for="Input.PhoneNumber" class="form-control" />
                     <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
                 </div>

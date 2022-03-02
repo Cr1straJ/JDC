@@ -2,31 +2,49 @@
 
 namespace JDC.Common.Entities
 {
+    /// <summary>
+    /// Registration request entity.
+    /// </summary>
     public class RegistrationRequest
     {
-        public RegistrationRequest(string directorName, string phoneNumber, string websiteLink, string email, int confirmationCode)
-        {
-            this.DirectorName = directorName;
-            this.PhoneNumber = phoneNumber;
-            this.WebsiteLink = websiteLink;
-            this.Email = email;
-            this.ConfirmationCode = confirmationCode;
-        }
-
+        /// <summary>
+        /// Gets or sets a registration request id.
+        /// </summary>
         public int Id { get; set; }
 
+        /// <summary>
+        /// Gets or sets an institution director name.
+        /// </summary>
         public string DirectorName { get; set; }
 
+        /// <summary>
+        /// Gets or sets a registration request phone number.
+        /// </summary>
         public string PhoneNumber { get; set; }
 
+        /// <summary>
+        /// Gets or sets an institution website link.
+        /// </summary>
         public string WebsiteLink { get; set; } = string.Empty;
 
+        /// <summary>
+        /// Gets or sets an institution email.
+        /// </summary>
         public string Email { get; set; }
 
+        /// <summary>
+        /// Gets or sets a registration request creation date.
+        /// </summary>
         public DateTime CreationDate { get; set; } = DateTime.Now;
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the email is confirmed.
+        /// </summary>
         public bool EmailConfirmed { get; set; } = false;
 
+        /// <summary>
+        /// Gets or sets a confirmation code.
+        /// </summary>
         public int ConfirmationCode { get; set; } = -1;
 
         public static explicit operator User(RegistrationRequest registrationRequest)
