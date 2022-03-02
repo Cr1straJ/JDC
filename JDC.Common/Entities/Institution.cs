@@ -33,5 +33,7 @@ namespace JDC.Common.Entities
         public List<Student> Students { get; set; }
 
         public List<Teacher> Teachers { get; set; }
+
+        public List<Speciality> Specialities { get; set; }
     }
 }

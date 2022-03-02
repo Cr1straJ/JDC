@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using JDC.BusinessLogic.Interfaces;
 using JDC.Common.Entities;
@@ -10,58 +6,48 @@ using JDC.DataAccess.Interfaces;
 
 namespace JDC.BusinessLogic.Services
 {
+    /// <inheritdoc />
     public class GroupService : IGroupService
     {
         private readonly IGroupRepository groupRepository;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GroupService"/> class.
+        /// </summary>
+        /// <param name="groupRepository">Group repository.</param>
         public GroupService(IGroupRepository groupRepository)
         {
             this.groupRepository = groupRepository;
         }
 
-        public async Task Add(Group entity)
+        /// <inheritdoc />
+        public async Task Add(Group group)
         {
-            await this.groupRepository.Add(entity);
+            await groupRepository.Add(group);
         }
 
-        public async Task AddRange(IEnumerable<Group> entities)
+        /// <inheritdoc />
+        public async Task Remove(Group group)
         {
-            await this.groupRepository.AddRange(entities);
+            await groupRepository.Remove(group);
         }
 
-        public IEnumerable<Group> Find(Expression<Func<Group, bool>> expression)
+        /// <inheritdoc />
+        public async Task<Group> GetById(int groupId)
         {
-            return this.groupRepository.Find(expression);
+            return await groupRepository.GetById(groupId);
         }
 
-        public IEnumerable<Group> GetAll()
+        /// <inheritdoc />
+        public async Task<List<Group>> GetInstitutionGroups(int institutionId)
         {
-            return this.groupRepository.GetAll();
+            return await groupRepository.GetInstitutionGroups(institutionId);
         }
 
-        public async Task Remove(Group entity)
+        /// <inheritdoc />
+        public async Task Update(Group group)
         {
-            await this.groupRepository.Remove(entity);
-        }
-
-        public async Task RemoveRange(IEnumerable<Group> entities)
-        {
-            await this.groupRepository.RemoveRange(entities);
-        }
-
-        public async Task<Group> GetById(int? id)
-        {
-            return id.HasValue ? await this.groupRepository.GetById(id.Value) : null;
-        }
-
-        public async Task<List<Group>> GetInstitutionGroups(int? id)
-        {
-            return id.HasValue ? await this.groupRepository.GetInstitutionGroups(id.Value) : null;
-        }
-
-        public async Task Update(Group entity)
-        {
-            await this.groupRepository.Update(entity);
+            await groupRepository.Update(group);
         }
     }
 }

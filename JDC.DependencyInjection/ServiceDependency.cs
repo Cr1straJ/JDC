@@ -77,7 +77,7 @@ namespace JDC.DependencyInjection
                 options.Password.RequiredUniqueChars = 0;
                 options.User.AllowedUserNameCharacters += "1234567890";
             })
-                .AddRoles<IdentityRole>()
+                .AddRoles<Role>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
         }
 

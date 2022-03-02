@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using JDC.Common.Enums;
 
@@ -21,9 +21,5 @@ namespace JDC.Common.Entities
         public Discipline Discipline { get; set; }
 
         public List<Grade> Grades { get; set; }
-
-        public int GroupId { get; set; }
-
-        public Group Group { get; set; }
     }
 }

@@ -39,7 +39,7 @@ namespace JDC.BusinessLogic.Services
             return this.institutionRepository.GetAll();
         }
 
-        public async Task<Institution> GetById(int? id)
+        public async Task<Institution> GetById(int id)
         {
             return await this.institutionRepository.GetById(id);
         }

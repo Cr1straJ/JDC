@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace JDC.Common.Entities
 {
@@ -13,10 +13,6 @@ namespace JDC.Common.Entities
         public int LessonId { get; set; }
 
         public Lesson Lesson { get; set; }
-
-        public int TeacherId { get; set; }
-
-        public Teacher Teacher { get; set; }
 
         public double? Value { get; set; }
 

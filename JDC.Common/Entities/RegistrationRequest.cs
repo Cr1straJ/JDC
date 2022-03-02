@@ -32,7 +32,7 @@ namespace JDC.Common.Entities
         public static explicit operator User(RegistrationRequest registrationRequest)
         {
             string[] name = registrationRequest.DirectorName.Split(' ');
-            
+
             return new User()
             {
                 FirstName = name[1],

@@ -8,11 +8,9 @@ namespace JDC.Common.Entities
         public int Id { get; set; }
 
         public User User { get; set; }
-        
+
         public int? InstitutionId { get; set; }
 
         public Institution Institution { get; set; }
-
-        public Group Group { get; set; }
     }
 }

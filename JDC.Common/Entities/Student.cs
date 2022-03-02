@@ -1,11 +1,11 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace JDC.Common.Entities
 {
     public class Student
     {
         public int Id { get; set; }
-      
+
         public string City { get; set; }
 
         public string Street { get; set; }

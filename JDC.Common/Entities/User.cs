@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace JDC.Common.Entities
 {
-    public class User : IdentityUser
+    public class User : IdentityUser<int>
     {
         public string LastName { get; set; }
 
@@ -16,7 +16,7 @@ namespace JDC.Common.Entities
 
         public string Sex { get; set; }
 
-        public int? InstitutionId { get; set; }
+        public int InstitutionId { get; set; }
 
         public Institution Institution { get; set; }
 
