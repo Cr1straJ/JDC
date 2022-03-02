@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 using JDC.BusinessLogic.Interfaces;
 using JDC.Common.Entities;
@@ -21,42 +19,42 @@ namespace JDC.BusinessLogic.Services
 
         public async Task Add(Institution entity)
         {
-            await this.institutionRepository.Add(entity);
+            await institutionRepository.Add(entity);
         }
 
         public async Task AddRange(IEnumerable<Institution> entities)
         {
-            await this.institutionRepository.AddRange(entities);
+            await institutionRepository.AddRange(entities);
         }
 
         public IEnumerable<Institution> Find(Expression<Func<Institution, bool>> expression)
         {
-            return this.institutionRepository.Find(expression);
+            return institutionRepository.Find(expression);
         }
 
         public async Task<IEnumerable<Institution>> GetAll()
         {
-            return await Task.Factory.StartNew(() => this.institutionRepository.GetAll());
+            return await institutionRepository.GetAll();
         }
 
         public async Task<Institution> GetById(int id)
         {
-            return await this.institutionRepository.GetById(id);
+            return await institutionRepository.GetById(id);
         }
 
         public async Task Remove(Institution entity)
         {
-            await this.institutionRepository.Remove(entity);
+            await institutionRepository.Remove(entity);
         }
 
         public async Task RemoveRange(IEnumerable<Institution> entities)
         {
-            await this.institutionRepository.RemoveRange(entities);
+            await institutionRepository.RemoveRange(entities);
         }
 
         public async Task Update(Institution entity)
         {
-            await this.institutionRepository.Update(entity);
+            await institutionRepository.Update(entity);
         }
     }
 }

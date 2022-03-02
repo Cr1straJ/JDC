@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 using JDC.Common.Entities;
 using JDC.DataAccess.Data;
@@ -25,36 +24,36 @@ namespace JDC.DataAccess.Repositories
         /// <inheritdoc/>
         public async Task Add(Group group)
         {
-            await context.StudentGroups.AddAsync(group);
+            await context.Groups.AddAsync(group);
             await context.SaveChangesAsync();
         }
 
         /// <inheritdoc/>
         public async Task<Group> GetById(int groupId)
         {
-            return await context.StudentGroups.FindAsync(groupId);
+            return await context.Groups.FindAsync(groupId);
         }
 
         /// <inheritdoc/>
         public async Task Remove(Group group)
         {
-            context.StudentGroups.Remove(group);
+            context.Groups.Remove(group);
             await context.SaveChangesAsync();
         }
 
         /// <inheritdoc/>
         public async Task Update(Group group)
         {
-            context.StudentGroups.Update(group);
+            context.Groups.Update(group);
             await context.SaveChangesAsync();
         }
 
         /// <inheritdoc/>
         public Task<List<Group>> GetInstitutionGroups(int institutionId)
         {
-            return Task.Factory.StartNew((Func<List<Group>>)(() =>
+            return Task.Factory.StartNew(() =>
             {
-                return context.StudentGroups.Where(group => group.InstitutionId == institutionId).ToList();
+                return context.Groups.Where(group => group.InstitutionId == institutionId).ToList();
             });
         }
     }

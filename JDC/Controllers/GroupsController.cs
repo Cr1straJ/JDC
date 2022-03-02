@@ -29,6 +29,11 @@ namespace JDC.Controllers
             this.institutionService = institutionService;
         }
 
+        /// <summary>
+        /// Displays the index page.
+        /// </summary>
+        /// <param name="institutionId">Institution id.</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public async Task<IActionResult> Index(int? institutionId)
         {
             if (institutionId is null)
@@ -44,6 +49,7 @@ namespace JDC.Controllers
         /// <summary>
         /// Displays the creation page of the group.
         /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public async Task<IActionResult> Create()
         {
             await InitViewData();
@@ -55,6 +61,7 @@ namespace JDC.Controllers
         /// Creates group.
         /// </summary>
         /// <param name="group">Create group request information.</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Name,TeacherId")] Group group)
@@ -121,36 +128,15 @@ namespace JDC.Controllers
         }
 
         /// <summary>
-        /// Displays the group deleting page.
-        /// </summary>
-        /// <param name="groupId">Group id to be deleted.</param>
-        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
-        public IActionResult Delete(int? id)
-        {
-            if (id is null)
-            {
-                return View("Error");
-            }
-
-            var group = groupService.GetById(id.Value);
-
-            if (group is null)
-            {
-                return View("Error");
-            }
-
-            return View(group);
-        }
-
-        /// <summary>
         /// Deletes group.
         /// </summary>
         /// <param name="groupId">Group id.</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int? groupId)
+        public async Task<IActionResult> Delete(int groupId)
         {
-            var group = await groupService.GetById(id);
+            var group = await groupService.GetById(groupId);
 
             if (group is null)
             {
@@ -166,16 +152,15 @@ namespace JDC.Controllers
         /// Displays the group view page.
         /// </summary>
         /// <param name="groupId">Group id.</param>
-        public IActionResult Details(int? groupId)
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        public async Task<IActionResult> Details(int? groupId)
         {
-            var group = this.groupService.GetById(groupId);
-
-            if (group is null)
+            if (groupId is null)
             {
                 return View("Error");
             }
 
-            var group = groupService.GetById(id.Value);
+            var group = await groupService.GetById(groupId.Value);
 
             if (group is null)
             {

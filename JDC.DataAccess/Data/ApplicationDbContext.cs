@@ -1,13 +1,12 @@
 ﻿using JDC.Common.Entities;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace JDC.DataAccess.Data
 {
     /// <summary>
-    /// An ApplicationDbContext instance represents a session with the database and can be used to query and save
-    /// instances of your entities. DbContext is a combination of the Unit Of Work and Repository patterns.
+    /// An <see cref="ApplicationDbContext"/> instance represents a session with the database and can be used to query and save
+    /// instances of your entities. <see cref="DbContext"/> is a combination of the Unit Of Work and Repository patterns.
     /// </summary>
     public class ApplicationDbContext : IdentityDbContext<User>
     {

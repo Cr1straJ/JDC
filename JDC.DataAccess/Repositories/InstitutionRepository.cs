@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 using JDC.Common.Entities;
 using JDC.DataAccess.Data;
 using JDC.DataAccess.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace JDC.DataAccess.Repositories
 {
@@ -21,47 +21,47 @@ namespace JDC.DataAccess.Repositories
 
         public async Task Add(Institution entity)
         {
-            await this.context.Institutions.AddAsync(entity);
-            await this.context.SaveChangesAsync();
+            await context.Institutions.AddAsync(entity);
+            await context.SaveChangesAsync();
         }
 
         public async Task AddRange(IEnumerable<Institution> entities)
         {
-            await this.context.Institutions.AddRangeAsync(entities);
-            await this.context.SaveChangesAsync();
+            await context.Institutions.AddRangeAsync(entities);
+            await context.SaveChangesAsync();
         }
 
         public IEnumerable<Institution> Find(Expression<Func<Institution, bool>> expression)
         {
-            return this.context.Institutions.Where(expression);
-        }
-
-        public IEnumerable<Institution> GetAll()
-        {
-            return this.context.Institutions;
+            return context.Institutions.Where(expression);
         }
 
         public async Task<Institution> GetById(int? id)
         {
-            return await this.context.Institutions.FindAsync(id);
+            return await context.Institutions.FindAsync(id);
         }
 
         public async Task Remove(Institution entity)
         {
-            this.context.Institutions.Remove(entity);
-            await this.context.SaveChangesAsync();
+            context.Institutions.Remove(entity);
+            await context.SaveChangesAsync();
         }
 
         public async Task RemoveRange(IEnumerable<Institution> entities)
         {
-            this.context.Institutions.RemoveRange(entities);
-            await this.context.SaveChangesAsync();
+            context.Institutions.RemoveRange(entities);
+            await context.SaveChangesAsync();
         }
 
         public async Task Update(Institution entity)
         {
-            this.context.Institutions.Update(entity);
-            await this.context.SaveChangesAsync();
+            context.Institutions.Update(entity);
+            await context.SaveChangesAsync();
+        }
+
+        public Task<List<Institution>> GetAll()
+        {
+            return context.Institutions.ToListAsync();
         }
     }
 }

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 using JDC.Common.Entities;
 
@@ -12,7 +10,7 @@ namespace JDC.DataAccess.Interfaces
     {
         Task<Institution> GetById(int? id);
 
-        IEnumerable<Institution> GetAll();
+        Task<List<Institution>> GetAll();
 
         IEnumerable<Institution> Find(Expression<Func<Institution, bool>> expression);
 

@@ -61,7 +61,7 @@ namespace JDC.Controllers
         /// <param name="institutionId">Institution id.</param>
         public async Task<IActionResult> Edit(int? institutionId)
         {
-            var institution = await this.institutionService.GetById(institutionId);
+            var institution = await this.institutionService.GetById(institutionId.Value);
 
             if (institution is null)
             {
