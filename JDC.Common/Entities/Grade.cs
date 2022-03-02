@@ -33,16 +33,6 @@ namespace JDC.Common.Entities
         public Lesson Lesson { get; set; }
 
         /// <summary>
-        /// Gets or sets a teacher id.
-        /// </summary>
-        public int TeacherId { get; set; }
-
-        /// <summary>
-        /// Gets or sets a teacher who gave the grade.
-        /// </summary>
-        public Teacher Teacher { get; set; }
-
-        /// <summary>
         /// Gets or sets a value.
         /// </summary>
         public double? Value { get; set; }

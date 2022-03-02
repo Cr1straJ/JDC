@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using JDC.BusinessLogic.Interfaces;
 using JDC.Common.Entities;
-using JDC.Common.Enums;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -17,59 +13,32 @@ namespace JDC.Controllers
     public class GroupsController : Controller
     {
         private readonly IGroupService groupService;
-        private readonly IGradeService gradeService;
-        private readonly ILessonService lessonService;
-        private readonly ITeacherService teacherService;
-        private readonly ISpecialityService specialityService;
+        private readonly IInstitutionService institutionService;
         private readonly UserManager<User> userManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsController"/> class.
         /// </summary>
-        public GroupsController(
-            UserManager<User> userManager,
-            IGroupService groupService,
-            IGradeService gradeService,
-            ILessonService lessonService,
-            ITeacherService teacherService,
-            ISpecialityService specialityService)
+        /// <param name="userManager">Provides the APIs for managing user in a persistence store.</param>
+        /// <param name="groupService">Instance of the <see cref="IGroupService"/> interface.</param>
+        /// <param name="institutionService">Instance of the <see cref="IInstitutionService"/> interface.</param>
+        public GroupsController(UserManager<User> userManager, IGroupService groupService, IInstitutionService institutionService)
         {
             this.userManager = userManager;
             this.groupService = groupService;
-            this.gradeService = gradeService;
-            this.lessonService = lessonService;
-            this.teacherService = teacherService;
-            this.specialityService = specialityService;
+            this.institutionService = institutionService;
         }
 
-        /// <summary>
-        /// Gets all groups of the institution whose director is the beneficiary.
-        /// </summary>
-        /// <param name="userId">User id.</param>
-        public async Task<IActionResult> Index(int? userId)
+        public async Task<IActionResult> Index(int? institutionId)
         {
-            bool canEditGroup = false;
-
-            if (userId is null)
+            if (institutionId is null)
             {
-                User user = await this.userManager.GetUserAsync(this.User);
-
-                if (user is not null && await this.userManager.IsInRoleAsync(user, "Director"))
-                {
-                    canEditGroup = true;
-                    userId = user.InstitutionId;
-                }
+                return View("Error");
             }
 
-            this.ViewData["CanEditGroup"] = canEditGroup;
-            List<Group> groups = await this.groupService.GetInstitutionGroups(userId);
+            var groups = await groupService.GetInstitutionGroups(institutionId.Value);
 
-            if (groups is null)
-            {
-                return this.View("Error");
-            }
-
-            return this.View(groups);
+            return View(groups);
         }
 
         /// <summary>
@@ -77,12 +46,9 @@ namespace JDC.Controllers
         /// </summary>
         public async Task<IActionResult> Create()
         {
-            var currentUser = await this.userManager.GetUserAsync(this.User);
+            await InitViewData();
 
-            this.ViewData["Specialities"] = new SelectList(await this.specialityService.GetInstitutionSpecialities(currentUser.InstitutionId));
-            this.ViewData["Teachers"] = new SelectList(await this.teacherService.GetInstitutionTeachers(currentUser.InstitutionId), "Id", "User.ShortName");
-
-            return this.View();
+            return View();
         }
 
         /// <summary>
@@ -93,61 +59,87 @@ namespace JDC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Name,TeacherId")] Group group)
         {
-            var currentUser = await this.userManager.GetUserAsync(this.User);
+            var currentUser = await userManager.GetUserAsync(User);
 
-            if (this.ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                group.InstitutionId = currentUser.InstitutionId.Value;
-                await this.groupService.Add(group);
+                group.InstitutionId = currentUser.InstitutionId;
 
-                return this.RedirectToAction(nameof(this.Index));
+                await groupService.Add(group);
+
+                return RedirectToAction(nameof(Index));
             }
 
-            return this.View(group);
+            await InitViewData();
+
+            return View(group);
         }
 
         /// <summary>
         /// Displays the group editing page.
         /// </summary>
-        /// <param name="groupId">Group id.</param>
+        /// <param name="groupId">Group id to be edited.</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public async Task<IActionResult> Edit(int? groupId)
         {
-            var group = this.groupService.GetById(groupId);
+            if (groupId is null)
+            {
+                return View("Error");
+            }
+
+            var group = groupService.GetById(groupId.Value);
 
             if (group is null)
             {
-                return this.View("Error");
+                return View("Error");
             }
 
-            var currentUser = await this.userManager.GetUserAsync(this.User);
+            await InitViewData();
 
-            this.ViewData["Specialities"] = new SelectList(await this.specialityService.GetInstitutionSpecialities(currentUser.InstitutionId));
-            this.ViewData["Teachers"] = new SelectList(await this.teacherService.GetInstitutionTeachers(currentUser.InstitutionId), "Id", "User.ShortName");
-
-            return this.View(group);
+            return View(group);
         }
 
         /// <summary>
-        /// Edits group.
+        /// Edits group information.
         /// </summary>
         /// <param name="group">Edit group request information.</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit([Bind("Name,TeacherId")] Group group)
         {
-            if (this.ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                await this.groupService.Update(group);
+                await groupService.Update(group);
 
-                return this.RedirectToAction(nameof(this.Index));
+                return RedirectToAction(nameof(Index));
             }
 
-            var currentUser = await this.userManager.GetUserAsync(this.User);
+            await InitViewData();
 
-            this.ViewData["Specialities"] = new SelectList(await this.specialityService.GetInstitutionSpecialities(currentUser.InstitutionId));
-            this.ViewData["Teachers"] = new SelectList(await this.teacherService.GetInstitutionTeachers(currentUser.InstitutionId), "Id", "User.ShortName");
+            return View(group);
+        }
 
-            return this.View(group);
+        /// <summary>
+        /// Displays the group deleting page.
+        /// </summary>
+        /// <param name="groupId">Group id to be deleted.</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        public IActionResult Delete(int? id)
+        {
+            if (id is null)
+            {
+                return View("Error");
+            }
+
+            var group = groupService.GetById(id.Value);
+
+            if (group is null)
+            {
+                return View("Error");
+            }
+
+            return View(group);
         }
 
         /// <summary>
@@ -158,16 +150,16 @@ namespace JDC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int? groupId)
         {
-            var group = await this.groupService.GetById(groupId);
+            var group = await groupService.GetById(id);
 
             if (group is null)
             {
                 return this.View("Error");
             }
 
-            await this.groupService.Remove(group);
+            await groupService.Remove(group);
 
-            return this.RedirectToAction(nameof(this.Index));
+            return RedirectToAction(nameof(Index));
         }
 
         /// <summary>
@@ -180,142 +172,26 @@ namespace JDC.Controllers
 
             if (group is null)
             {
-                return this.View("Error");
+                return View("Error");
             }
 
-            return this.View(group);
-        }
+            var group = groupService.GetById(id.Value);
 
-        /// <summary>
-        /// Displays a page for viewing the group's grades for the selected lesson.
-        /// </summary>
-        /// <param name="groupId">Group id.</param>
-        /// <param name="lessonId">Lesson id.</param>
-        public IActionResult Journal(int? groupId, int? lessonId)
-        {
-            this.ViewData["DisciplineId"] = lessonId;
-            Lesson lesson = new Lesson()
+            if (group is null)
             {
-                Id = 0,
-                Homework = "№123, №126",
-                Theme = "§ 1.2. Корень n-ой степени",
-                Date = new DateTime(DateTime.Now.Year, 9, 1),
-            };
-
-            if (groupId == -1)
-            {
-                return this.View(new Group()
-                {
-                    Id = 1,
-                    Name = "PO-2",
-                    Students = new List<Student>()
-                    {
-                        new Student()
-                        {
-                            Id = 0,
-                            User = new User() { FirstName = "Захар", LastName = "Кошин", MiddleName = "Михайлович" },
-                            Grades = new List<Grade>()
-                            {
-                                new Grade() { Id = 0, Value = 6, BillingDate = new DateTime(DateTime.Now.Year, 9, 1), Lesson = lesson },
-                                new Grade() { Id = 1, Value = 4, BillingDate = new DateTime(DateTime.Now.Year, 9, 2), LessonId = 1 },
-                                new Grade() { Id = 2, Value = 9, BillingDate = new DateTime(DateTime.Now.Year, 9, 4), Lesson = lesson },
-                            },
-                        },
-                        new Student()
-                        {
-                            Id = 1,
-                            User = new User() { FirstName = "Иван", LastName = "Иванов" },
-                        },
-                        new Student()
-                        {
-                            Id = 2,
-                            User = new User() { FirstName = "Сергей", LastName = "Сидоров" },
-                        },
-                        new Student()
-                        {
-                            Id = 3,
-                            User = new User() { FirstName = "Пётр", LastName = "Петров" },
-                        },
-                    },
-                    Disciplines = new List<Discipline>()
-                    {
-                        new Discipline()
-                        {
-                            Id = 0,
-                            Title = "Математика",
-                            Lessons = new List<Lesson>()
-                            {
-                               lesson,
-                            },
-                        },
-                        new Discipline() { Id = 1, Title = "Физика" },
-                    },
-                });
+                return View("Error");
             }
 
-            return this.View(this.groupService.GetById(groupId));
+            return View(group);
         }
 
-        /// <summary>
-        /// Sets a grade.
-        /// </summary>
-        /// <param name="studentId">Student id.</param>
-        /// <param name="lessonId">Lesson id.</param>
-        /// <param name="value">Value of the grade.</param>
-        /// <param name="date">Grading date.</param>
-        [HttpPost]
-        public async Task<int> SetGrade(int studentId, int lessonId, double value, string date)
+        private async Task InitViewData()
         {
-            DateTime billingDate = DateTime.ParseExact(date, "ddMMyyyy", CultureInfo.InvariantCulture);
-            Grade grade = new Grade()
-            {
-                StudentId = studentId,
-                LessonId = lessonId,
-                Value = value,
-                BillingDate = billingDate,
-            };
+            var currentUser = await userManager.GetUserAsync(User);
+            var institution = await institutionService.GetById(currentUser.InstitutionId);
 
-            await this.gradeService.Add(grade);
-
-            return grade.Id;
-        }
-
-        /// <summary>
-        /// Updates a grade.
-        /// </summary>
-        /// <param name="gradeId">Grade id.</param>
-        /// <param name="value">Value of the grade.</param>
-        [HttpPost]
-        public async Task UpdateGrade(int gradeId, double value)
-        {
-            Grade grade = await this.gradeService.GetById(gradeId);
-            grade.Value = value;
-
-            await this.gradeService.Update(grade);
-        }
-
-        /// <summary>
-        /// Creates a lesson.
-        /// </summary>
-        /// <param name="theme">Lesson theme.</param>
-        /// <param name="homework">Lesson homework.</param>
-        /// <param name="lessonDuration">Lesson duration.</param>
-        /// <param name="disciplineId">Discipline id.</param>
-        [HttpPost]
-        public async Task<int> CreateLesson(string theme, string homework, int lessonDuration, int disciplineId)
-        {
-            Lesson lesson = new Lesson()
-            {
-                Date = DateTime.Now,
-                Theme = theme,
-                Homework = homework,
-                LessonDuration = (LessonDuration)lessonDuration,
-                DisciplineId = disciplineId,
-            };
-
-            await this.lessonService.Create(lesson);
-
-            return lesson.Id;
+            ViewData["Specialities"] = new SelectList(institution.Specialities);
+            ViewData["Teachers"] = new SelectList(institution.Teachers, "Id", "User.ShortName");
         }
     }
 }

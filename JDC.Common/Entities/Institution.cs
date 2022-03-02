@@ -75,6 +75,11 @@ namespace JDC.Common.Entities
         public List<Teacher> Teachers { get; set; }
 
         /// <summary>
+        /// Gets or sets institution specialities.
+        /// </summary>
+        public List<Speciality> Specialities { get; set; }
+
+        /// <summary>
         /// Gets the type of institution in a written format.
         /// </summary>
         [NotMapped]

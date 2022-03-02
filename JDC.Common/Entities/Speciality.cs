@@ -19,15 +19,5 @@
         /// Gets or sets a speciality learning duration.
         /// </summary>
         public int LearningDuration { get; set; } = 4;
-
-        /// <summary>
-        /// Gets or sets the institution id that teaches the specialty.
-        /// </summary>
-        public int InstitutionId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the institution that teaches the specialty.
-        /// </summary>
-        public Institution Institution { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace JDC.DataAccess.Repositories
         {
             return Task.Factory.StartNew(() =>
             {
-                return this.context.Specialities.Where(speciality => speciality.InstitutionId == id).ToList();
+                return this.context.Specialities.ToList();
             });
         }
     }

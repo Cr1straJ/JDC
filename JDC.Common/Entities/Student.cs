@@ -12,6 +12,14 @@ namespace JDC.Common.Entities
         /// </summary>
         public int Id { get; set; }
 
+        public string City { get; set; }
+
+        public string Street { get; set; }
+
+        public string House { get; set; }
+
+        public string Apartament { get; set; }
+
         /// <summary>
         /// Gets or sets the group id to which the student belongs.
         /// </summary>

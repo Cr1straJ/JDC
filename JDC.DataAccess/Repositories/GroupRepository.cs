@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -9,66 +8,54 @@ using JDC.DataAccess.Interfaces;
 
 namespace JDC.DataAccess.Repositories
 {
+    /// <inheritdoc/>
     public class GroupRepository : IGroupRepository
     {
         private readonly ApplicationDbContext context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GroupRepository"/> class.
+        /// </summary>
+        /// <param name="context">Application database context.</param>
         public GroupRepository(ApplicationDbContext context)
         {
             this.context = context;
         }
 
-        public async Task Add(Group entity)
+        /// <inheritdoc/>
+        public async Task Add(Group group)
         {
-            await this.context.Groups.AddAsync(entity);
-            await this.context.SaveChangesAsync();
+            await context.StudentGroups.AddAsync(group);
+            await context.SaveChangesAsync();
         }
 
-        public async Task AddRange(IEnumerable<Group> entities)
+        /// <inheritdoc/>
+        public async Task<Group> GetById(int groupId)
         {
-            await this.context.Groups.AddRangeAsync(entities);
-            await this.context.SaveChangesAsync();
+            return await context.StudentGroups.FindAsync(groupId);
         }
 
-        public IEnumerable<Group> Find(Expression<Func<Group, bool>> expression)
+        /// <inheritdoc/>
+        public async Task Remove(Group group)
         {
-            return this.context.Groups.Where(expression);
+            context.StudentGroups.Remove(group);
+            await context.SaveChangesAsync();
         }
 
-        public IEnumerable<Group> GetAll()
+        /// <inheritdoc/>
+        public async Task Update(Group group)
         {
-            return this.context.Groups;
+            context.StudentGroups.Update(group);
+            await context.SaveChangesAsync();
         }
 
-        public async Task<Group> GetById(int? id)
-        {
-            return await this.context.Groups.FindAsync(id);
-        }
-
-        public async Task Remove(Group entity)
-        {
-            this.context.Groups.Remove(entity);
-            await this.context.SaveChangesAsync();
-        }
-
-        public async Task RemoveRange(IEnumerable<Group> entities)
-        {
-            this.context.Groups.RemoveRange(entities);
-            await this.context.SaveChangesAsync();
-        }
-
-        public async Task Update(Group entity)
-        {
-            this.context.Groups.Update(entity);
-            await this.context.SaveChangesAsync();
-        }
-
-        public Task<List<Group>> GetInstitutionGroups(int id)
+        /// <inheritdoc/>
+        public Task<List<Group>> GetInstitutionGroups(int institutionId)
         {
             return Task.Factory.StartNew((Func<List<Group>>)(() =>
             {
-                return Queryable.Where<Group>(this.context.Groups, (Expression<Func<Group, bool>>)(group => (bool)(group.InstitutionId == id))).ToList();
-            }));
+                return context.StudentGroups.Where(group => group.InstitutionId == institutionId).ToList();
+            });
         }
     }
 }

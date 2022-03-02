@@ -45,16 +45,6 @@ namespace JDC.Common.Entities
         public Discipline Discipline { get; set; }
 
         /// <summary>
-        /// Gets or sets a group id that passed in class.
-        /// </summary>
-        public int GroupId { get; set; }
-
-        /// <summary>
-        /// Gets or sets a group.
-        /// </summary>
-        public Group Group { get; set; }
-
-        /// <summary>
         /// Gets or sets lesson grades.
         /// </summary>
         public List<Grade> Grades { get; set; }

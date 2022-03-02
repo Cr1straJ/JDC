@@ -37,7 +37,7 @@ namespace JDC.Common.Entities
         /// <summary>
         /// Gets or sets an institution id to which the user belongs.
         /// </summary>
-        public int? InstitutionId { get; set; }
+        public int InstitutionId { get; set; }
 
         /// <summary>
         /// Gets or sets an institution to which the user belongs.
