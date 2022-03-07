@@ -1,5 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Identity;
 
 namespace JDC.Common.Entities
@@ -69,6 +72,11 @@ namespace JDC.Common.Entities
         /// </summary>
         public string Apartment { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<Chat> Chats { get; set; }
+ 
         /// <summary>
         /// Gets the user's address.
         /// </summary>

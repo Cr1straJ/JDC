@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using JDC.Common.Entities;
 using JDC.DataAccess.Data;
 using JDC.DataAccess.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace JDC.DataAccess.Repositories
 {

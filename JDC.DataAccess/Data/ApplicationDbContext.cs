@@ -81,6 +81,11 @@ namespace JDC.DataAccess.Data
         /// </param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Institution>()
+                .HasOne(a => a.Director)
+                .WithOne(a => a.Institution)
+                .HasForeignKey<User>(c => c.InstitutionId);
+
             base.OnModelCreating(modelBuilder);
         }
     }

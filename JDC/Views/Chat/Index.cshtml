@@ -1,0 +1,228 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<Chat>
+
+<div class="row">
+    <div class="col-4 left_panel">
+        <div class="search_chat">
+            <div class="wrapper">
+                <div class="search_input_block">
+                    <input id="chat_search_input" type="text" placeholder="Поиск" class="form-control custom-input" autocomplete="off">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="custom-scroll">
+            <div class="list_chats_item selected" id="chat1">
+                <div class="list_chats_item_button" tabindex="0">
+                    <div class="avatar circle_image">
+                        <img src="~/images/default_student_avatar.png" class="avatar_media" alt="Аватарка группы">
+                    </div>
+                    <div class="info">
+                        <div class="title">
+                            <h3>PO-2</h3>
+                            <div class="message_meta">
+                                <span class="time">10:20</span>
+                            </div>
+                        </div>
+
+                        <div class="subtitle">
+                            <p class="last_message">
+                                <span class="sender_name">Вы:</span>
+                                Какое-то тестовое сообщение.
+                            </p>
+
+                            <div class="unread">35</div>
+                        </div>
+                    </div>
+
+                    <div class="ripple-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-8 p-0" style="border-left: 1px solid rgb(244, 244, 245); background: rgb(244, 244, 245);">
+        <div class="d-flex align-items-center flex-column" style="height: 91vh;">
+            <div class="chat_body p-2">
+                <div class="message_container">
+                    <div id="msgContainer" class="message_data">
+                        <!--Messages-->
+                        <div id="message0" class="message_list_item" data-message-id="0">
+                            <div class="avatar circle_image">
+                                <img src="~/images/default_student_avatar.png" alt="">
+                            </div>
+
+                            <div class="message_content_wrapper">
+                                <div class="message_content">
+                                    <div class="content_inner">
+                                        <div class="message_title">
+                                            <span class="other_person_color">Username</span>
+                                        </div>
+
+                                        <p class="text_content">
+                                            Какое-то большое, тестовое, крутое, сообщение
+                                            <span class="send_date">
+                                                <span class="message_time">10:19</span>
+                                            </span>
+                                        </p>
+                                    </div>
+
+                                    <div class="svg_appendix">
+                                        <svg width="9" height="20" xmlns="http://www.w3.org/2000/svg"><defs><filter x="-50%" y="-14.7%" width="200%" height="141.2%" filterUnits="objectBoundingBox" id="a"><feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset><feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur><feColorMatrix values="0 0 0 0 0.0621962482 0 0 0 0 0.138574144 0 0 0 0 0.185037364 0 0 0 0.15 0" in="shadowBlurOuter1"></feColorMatrix></filter></defs><g fill="none" fill-rule="evenodd"><path d="M3 17h6V0c-.193 2.84-.876 5.767-2.05 8.782-.904 2.325-2.446 4.485-4.625 6.48A1 1 0 003 17z" fill="#000" filter="url(#a)"></path><path d="M3 17h6V0c-.193 2.84-.876 5.767-2.05 8.782-.904 2.325-2.446 4.485-4.625 6.48A1 1 0 003 17z" fill="#FFF" class="corner"></path></g></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="message1" class="message_list_item owner" data-message-id="1">
+                            <div class="message_content_wrapper">
+                                <div class="message_content">
+                                    <div class="content_inner">
+                                        <p class="text_content">
+                                            Какое-то большое, тестовое, крутое, сообщение
+                                            <span class="send_date">
+                                                <span class="message_time">10:20</span>
+                                            </span>
+                                        </p>
+                                    </div>
+
+                                    <div class="svg_appendix">
+                                        <svg width="9" height="20" xmlns="http://www.w3.org/2000/svg"><defs><filter x="-50%" y="-14.7%" width="200%" height="141.2%" filterUnits="objectBoundingBox" id="a"><feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset><feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur><feColorMatrix values="0 0 0 0 0.0621962482 0 0 0 0 0.138574144 0 0 0 0 0.185037364 0 0 0 0.15 0" in="shadowBlurOuter1"></feColorMatrix></filter></defs><g fill="none" fill-rule="evenodd"><path d="M3 17h6V0c-.193 2.84-.876 5.767-2.05 8.782-.904 2.325-2.446 4.485-4.625 6.48A1 1 0 003 17z" fill="#000" filter="url(#a)"></path><path d="M3 17h6V0c-.193 2.84-.876 5.767-2.05 8.782-.904 2.325-2.446 4.485-4.625 6.48A1 1 0 003 17z" fill="#FFF" class="corner"></path></g></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat_footer mt-auto p-2">
+                <div id="message-compose">
+                    <div class="message_input_wrapper">
+                        <button id="smileButton" class="d-inline-block icon_button" type="button" title="Выбрать смайлик">
+                            <i class="fa fa-smile-o" aria-hidden="true"></i>
+                        </button>
+
+                        <div id="message-input-text" class="d-flex align-items-center w-100">
+                            <input id="message_input" type="text" placeholder="Сообщение" class="form-control custom-input" autocomplete="off">
+                        </div>
+
+                        <div class="btn-group dropup ml-auto">
+                            <button type="button" class="btn dropdown-toggle select_file_button" title="Добавить прикрепление" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-paperclip" aria-hidden="true"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <div tabindex="0" class="dropdown-item">
+                                    <i class="fa fa-picture-o" aria-hidden="true"></i>
+                                    Изображение
+                                </div>
+                                <div tabindex="0" class="dropdown-item">
+                                    <i class="fa fa-file-o" aria-hidden="true"></i>
+                                    Файл
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="sendButton" class="icon_button" type="button" title="Отправить сообщение">
+                    <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/signalr.js"></script>
+
+<script>
+    let currentusername = '@User.Identity.Name';
+    let groups = @Html.Raw(Json.Serialize(Model));
+    let currentGroup = groups[0].name;
+    let groupId = groups[0].id;
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/chatter")
+        .build();
+
+    document.getElementById('sendButton').addEventListener('click', sendMsg)
+
+    window.onload = async function () {
+        await connection.start()
+        document.getElementById('sendButton').addEventListener('click', sendMsg);
+        connection.invoke("SelectGroup", currentGroup);
+        createMsgFromGroup(groups[0])
+    }
+
+    function createMsgFromGroup(group) {
+        group.messages.forEach(i => createmsg(i.userName, i.name, i.id, i.content, i.date))
+    }
+
+    let countMessages = 2;
+    function sendMsg() {
+        let content = document.getElementById('message_input').value;
+
+        //let container = document.getElementById('msgContainer');
+        //container.innerHTML += `<div id="message${countMessages++}" class="message_list_item owner" data-message-id="1">
+        //                    <div class="message_content_wrapper">
+        //                        <div class="message_content">
+        //                            <div class="content_inner">
+        //                                <p class="text_content">
+        //                                    ${content}
+        //                                    <span class="send_date">
+        //                                        <span class="message_time">${new Date().getHours()}:${new Date().getMinutes()}</span>
+        //                                    </span>
+        //                                </p>
+        //                            </div>
+
+        //                            <div class="svg_appendix">
+        //                                <svg width="9" height="20" xmlns="http://www.w3.org/2000/svg"><defs><filter x="-50%" y="-14.7%" width="200%" height="141.2%" filterUnits="objectBoundingBox" id="a"><feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset><feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur><feColorMatrix values="0 0 0 0 0.0621962482 0 0 0 0 0.138574144 0 0 0 0 0.185037364 0 0 0 0.15 0" in="shadowBlurOuter1"></feColorMatrix></filter></defs><g fill="none" fill-rule="evenodd"><path d="M3 17h6V0c-.193 2.84-.876 5.767-2.05 8.782-.904 2.325-2.446 4.485-4.625 6.48A1 1 0 003 17z" fill="#000" filter="url(#a)"></path><path d="M3 17h6V0c-.193 2.84-.876 5.767-2.05 8.782-.904 2.325-2.446 4.485-4.625 6.48A1 1 0 003 17z" fill="#FFF" class="corner"></path></g></svg>
+        //                            </div>
+        //                        </div>
+        //                    </div>
+        //                </div>`;
+        connection.invoke("SendMessage", content, currentGroup, groupId);
+    }
+
+    connection.on("ReceiveMessage", function (username, name, msgid, msg, time) {
+        createmsg(username, name, msgid, msg, time);
+    });
+
+    function createmsg(username,name,msgid,msg,time) {
+        let message = document.createElement("div");
+        messageclass = currentusername == username?'message_list_item owner':'message_list_item';
+        message.setAttribute('class',messageclass);
+        message.setAttribute('id',msgid);
+        if (currentusername != username) {
+            message.innerHTML = '<div class="avatar circle_image">'+
+                '<img src="/images/default_student_avatar.png" alt="">'+
+            '</div>';
+        }
+        let contentwrapper = document.createElement("div");
+        contentwrapper.setAttribute('class', 'message_content_wrapper');
+        let title = currentusername == username ? '' : '<div class="message_title">' +
+            '<span class="other_person_color">' + name + '</span>' +
+            '</div>';
+        contentwrapper.innerHTML = '<div class="message_content">'+
+                                    '<div class="content_inner">'+
+                                        title+
+                                        '<p class="text_content">'+msg+
+                                            '<span class="send_date">'+
+                                                '<span class="message_time">'+time+'</span>'+
+                                            '</span>'+
+                                        '</p>'+
+                                    '</div>'+
+                                    '<div class="svg_appendix">'+
+                                        '<svg width="9" height="20" xmlns="http://www.w3.org/2000/svg"><defs><filter x="-50%" y="-14.7%" width="200%" height="141.2%" filterUnits="objectBoundingBox" id="a"><feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset><feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur><feColorMatrix values="0 0 0 0 0.0621962482 0 0 0 0 0.138574144 0 0 0 0 0.185037364 0 0 0 0.15 0" in="shadowBlurOuter1"></feColorMatrix></filter></defs><g fill="none" fill-rule="evenodd"><path d="M3 17h6V0c-.193 2.84-.876 5.767-2.05 8.782-.904 2.325-2.446 4.485-4.625 6.48A1 1 0 003 17z" fill="#000" filter="url(#a)"></path><path d="M3 17h6V0c-.193 2.84-.876 5.767-2.05 8.782-.904 2.325-2.446 4.485-4.625 6.48A1 1 0 003 17z" fill="#FFF" class="corner"></path></g></svg>'+
+                                    '</div>'+
+                                '</div>';
+
+        message.appendChild(contentwrapper);
+        document.getElementById('msgContainer').appendChild(message);
+    }
+</script>

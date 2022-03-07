@@ -1,4 +1,5 @@
 ﻿using JDC.DependencyInjection;
+using JDC.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -37,7 +38,7 @@ namespace JDC
             services.AddConfigurationSettings(this.Configuration);
             services.AddDependencies();
             services.AddIdentity();
-
+            services.AddSignalR();
             services.AddRazorPages();
             services.AddControllersWithViews();
         }
@@ -87,6 +88,8 @@ namespace JDC
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapHub<ChatHub>("/chatter");
 
                 endpoints.MapRazorPages();
             });
