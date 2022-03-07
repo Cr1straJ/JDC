@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace JDC.Common.Entities
 {
@@ -20,6 +22,8 @@ namespace JDC.Common.Entities
         /// <summary>
         /// Gets or sets a chat users.
         /// </summary>
+        [JsonIgnore]
+        [IgnoreDataMember]
         public List<User> Users { get; set; }
 
         /// <summary>
