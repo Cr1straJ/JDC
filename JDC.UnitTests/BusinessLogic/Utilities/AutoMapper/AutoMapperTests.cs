@@ -1,9 +1,10 @@
 ﻿using System;
 using AutoFixture.NUnit3;
 using JDC.BusinessLogic.Utilities.AutoMapper;
+using JDC.Tests.BusinessLogic.AutoMapper.Models.Utilities;
 using NUnit.Framework;
 
-namespace JDC.Tests.BusinessLogic.Utilities
+namespace JDC.Tests.BusinessLogic.AutoMapper.Utilities
 {
     [TestFixture]
     public class AutoMapperTests
@@ -13,7 +14,7 @@ namespace JDC.Tests.BusinessLogic.Utilities
         [SetUp]
         public void Setup()
         {
-            this.mapper = new CompiledMapper<DtoType>();
+            mapper = new CompiledMapper<DtoType>();
         }
 
         [Test]
@@ -21,7 +22,7 @@ namespace JDC.Tests.BusinessLogic.Utilities
         public void AutoMapper_ReturnDestinationObject([Frozen]ModelType source)
         {
             // Act
-            var destination = this.mapper.Map(source);
+            var destination = mapper.Map(source);
 
             // Assert
             Assert.AreEqual(source.TheProperty, destination.TheProperty);
@@ -31,17 +32,7 @@ namespace JDC.Tests.BusinessLogic.Utilities
         public void AutoMapper_SourceObjectIsNull_ThrowArgumentNullException()
         {
             // Assert
-            Assert.Throws<ArgumentNullException>(() => this.mapper.Map(null), message: "source");
-        }
-        
-        public class ModelType
-        {
-            public string TheProperty { get; set; }
-        }
-
-        public class DtoType
-        {
-            public string TheProperty { get; set; }
+            Assert.Throws<ArgumentNullException>(() => mapper.Map(null), message: "source");
         }
     }
 }

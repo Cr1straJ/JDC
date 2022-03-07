@@ -36,6 +36,15 @@ namespace JDC.Controllers
         /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public async Task<IActionResult> Index(int? institutionId)
         {
+            var user = await userManager.GetUserAsync(User);
+
+            if (user is null)
+            {
+                return View("Error");
+            }
+
+            institutionId ??= user.InstitutionId;
+
             if (institutionId is null)
             {
                 return View("Error");
@@ -112,9 +121,10 @@ namespace JDC.Controllers
         /// <param name="group">Edit group request information.</param>
         /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit([Bind("Name,TeacherId")] Group group)
+        public async Task<IActionResult> Edit([FromBody] Group group)
         {
+            await groupService.Update(group);
+
             if (ModelState.IsValid)
             {
                 await groupService.Update(group);

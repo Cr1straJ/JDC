@@ -31,7 +31,7 @@ namespace JDC
         /// This method gets called by the runtime. Use this method to add services to the container.
         /// </summary>
         /// <param name="services">Service collection.</param>
-        public void ConfigureServices(IServiceCollection services)
+        public virtual void ConfigureServices(IServiceCollection services)
         {
             services.AddDatabase(this.Configuration.GetConnectionString("DefaultConnection"));
             services.AddConfigurationSettings(this.Configuration);
@@ -39,7 +39,7 @@ namespace JDC
             services.AddIdentity();
 
             services.AddRazorPages();
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddApplicationPart(typeof(Startup).Assembly);
         }
 
         /// <summary>
