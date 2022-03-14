@@ -16,7 +16,7 @@ namespace JDC.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return this.View(await this.registrationRequestService.GetAll());
+            return View(await registrationRequestService.GetAll());
         }
 
         [HttpPost]

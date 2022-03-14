@@ -38,7 +38,7 @@ namespace JDC.Controllers
         {
             var user = await userManager.GetUserAsync(User);
 
-            if (user is null)
+            if (user is null && institutionId is null)
             {
                 return View("Error");
             }
@@ -103,7 +103,7 @@ namespace JDC.Controllers
                 return View("Error");
             }
 
-            var group = groupService.GetById(groupId.Value);
+            var group = await groupService.GetById(groupId.Value);
 
             if (group is null)
             {
@@ -121,7 +121,8 @@ namespace JDC.Controllers
         /// <param name="group">Edit group request information.</param>
         /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [HttpPost]
-        public async Task<IActionResult> Edit([FromBody] Group group)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit([Bind("Name,TeacherId")] Group group)
         {
             await groupService.Update(group);
 
@@ -182,8 +183,14 @@ namespace JDC.Controllers
 
         private async Task InitViewData()
         {
-            var currentUser = await userManager.GetUserAsync(User);
-            var institution = await institutionService.GetById(currentUser.InstitutionId);
+            var user = await userManager.GetUserAsync(User);
+
+            if (user is null)
+            {
+                return;
+            }
+
+            var institution = await institutionService.GetById(user.InstitutionId);
 
             ViewData["Specialities"] = new SelectList(institution.Specialities);
             ViewData["Teachers"] = new SelectList(institution.Teachers, "Id", "User.ShortName");

@@ -33,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{BDC3DB0D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JDC.IntegrationTests", "JDC.IntegrationTests\JDC.IntegrationTests.csproj", "{9F0CABC1-A04E-42B9-85E2-C632992965E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JDC.AutomatedUITests", "JDC.AutomatedUITests\JDC.AutomatedUITests.csproj", "{0CFE6019-E7D8-4B6B-BE98-8BB3A48C6552}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{9F0CABC1-A04E-42B9-85E2-C632992965E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F0CABC1-A04E-42B9-85E2-C632992965E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F0CABC1-A04E-42B9-85E2-C632992965E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CFE6019-E7D8-4B6B-BE98-8BB3A48C6552}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CFE6019-E7D8-4B6B-BE98-8BB3A48C6552}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CFE6019-E7D8-4B6B-BE98-8BB3A48C6552}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CFE6019-E7D8-4B6B-BE98-8BB3A48C6552}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +85,7 @@ Global
 		{9540D405-2414-4E54-B70A-B626655D1FBE} = {9D4C8490-9CD4-4012-9EC1-47371374BADC}
 		{11FBB0F7-F0B0-4B7C-8F36-00E9F5282691} = {BDC3DB0D-C296-497C-85DD-DF2C561ED726}
 		{9F0CABC1-A04E-42B9-85E2-C632992965E5} = {BDC3DB0D-C296-497C-85DD-DF2C561ED726}
+		{0CFE6019-E7D8-4B6B-BE98-8BB3A48C6552} = {BDC3DB0D-C296-497C-85DD-DF2C561ED726}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2BA473E3-203E-4B28-90F8-1018C6A17CBC}

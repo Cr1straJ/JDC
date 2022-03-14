@@ -1,6 +1,4 @@
-﻿using System.Security.Claims;
-using System.Threading.Tasks;
-using JDC.Common.Entities;
+﻿using JDC.Common.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,7 +24,17 @@ namespace JDC.Areas.Profile.Controllers
                 return View("Error");
             }*/
 
-            return this.View(new User());
+            return View(new User()
+            {
+                UserName = "ivanov_ivan",
+                FirstName = "Ivan",
+                LastName = "Ivanov",
+                MiddleName = "Ivanovich",
+                Email = "ivanov_ivan@mail.ru",
+                PhoneNumber = "+375291587982",
+                Country = "Belarus",
+                City = "Minsk",
+            });
         }
 
         public IActionResult CreateCharacteristic(string userId)

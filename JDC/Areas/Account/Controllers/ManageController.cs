@@ -33,13 +33,12 @@ namespace JDC.Areas.Account.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var user = new User();
-            /*var user = await this.userManager.GetUserAsync(this.User);
+            var user = await this.userManager.GetUserAsync(this.User);
 
             if (user is null)
             {
                 return this.View("Error");
-            }*/
+            }
 
             return this.View(await this.GetIndexModelAsync(user));
         }

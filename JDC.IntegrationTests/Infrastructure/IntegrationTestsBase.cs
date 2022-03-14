@@ -1,61 +1,34 @@
-﻿using System;
-using System.Net.Http;
-using JDC.IntegrationTests.Infrastructure.DataBuilder.Interfaces;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.TestHost;
-using Microsoft.Extensions.Configuration;
+﻿using System.Net.Http;
+using System.Threading.Tasks;
+using JDC.IntegrationTests.Infrastructure.Helpers;
+using JDC.IntegrationTests.Infrastructure.Models;
+using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Net.Http.Headers;
+using Xunit;
 
 namespace JDC.IntegrationTests.Infrastructure
 {
-    /// <summary>
-    /// Integration tests base.
-    /// </summary>
-    internal abstract class IntegrationTestsBase : IDisposable
+    public class IntegrationTestsBase : IClassFixture<WebApplicationFactory>
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="IntegrationTestsBase"/> class.
-        /// </summary>
-        public IntegrationTestsBase()
+        protected readonly HttpClient Client;
+
+        public IntegrationTestsBase(WebApplicationFactory factory)
         {
-            /*IConfiguration config = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.Testing.json")
-                .AddEnvironmentVariables()
-                .Build();
-
-            var server = new TestServer(new WebHostBuilder()
-                .UseConfiguration(config)
-                .UseStartup<IntegrationTestsStartup>());*/
-            var factory = new WebApplicationFactory();
-            Server = factory.Server;
-            Client = Server.CreateClient();
-            Client.BaseAddress = new Uri("http://localhost");
-
-            Builder = Server.Services.GetService(typeof(IDataBuilder)) as IDataBuilder;
+            Client = factory.CreateClient(new WebApplicationFactoryClientOptions
+            {
+                AllowAutoRedirect = false
+            });
         }
 
-        /// <summary>
-        /// Test server.
-        /// </summary>
-        protected TestServer Server { get; }
-
-        /// <summary>
-        /// Client of test server.
-        /// </summary>
-        protected HttpClient Client { get; }
-
-        /// <summary>
-        /// Data builder.
-        /// </summary>
-        protected IDataBuilder Builder { get; }
-
-        /// <summary>
-        /// Disposes integration tests module.
-        /// </summary>
-        public void Dispose()
+        protected async Task<(string, HttpRequestMessage)> GetRequestWithAntiForgeryToken(HttpMethod method, string responseUri, string requestUri)
         {
-            Builder.Clear();
-            Client?.Dispose();
-            Server?.Dispose();
+            var initResponse = await Client.GetAsync(responseUri);
+            var (fieldValue, cookieValue) = await AntiForgeryHelper.ExtractAntiForgeryValues(initResponse);
+            var request = new HttpRequestMessage(method, requestUri);
+
+            request.Headers.Add("Cookie", new CookieHeaderValue(AntiForgeryTokenExtractor.AntiForgeryCookieName, cookieValue).ToString());
+
+            return (fieldValue, request);
         }
     }
 }

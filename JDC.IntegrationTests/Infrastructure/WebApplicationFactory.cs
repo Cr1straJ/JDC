@@ -1,19 +1,51 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using System.Linq;
+using JDC.DataAccess.Data;
+using JDC.IntegrationTests.Helpers;
+using JDC.IntegrationTests.Infrastructure.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace JDC.IntegrationTests.Infrastructure
 {
     /// <inheritdoc/>
-    public class WebApplicationFactory : WebApplicationFactory<IntegrationTestsStartup>
+    public class WebApplicationFactory : WebApplicationFactory<Startup>
     {
-        /// <inheritdoc/>
-        protected override IHostBuilder CreateHostBuilder()
+        protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
-            return Host.CreateDefaultBuilder().ConfigureWebHost((builder) =>
+            builder.ConfigureServices(services =>
             {
-                builder.UseStartup<IntegrationTestsStartup>();
-                builder.UseEnvironment("Testing");
+                var dbContext = services.SingleOrDefault(
+                    d => d.ServiceType == typeof(DbContextOptions<ApplicationDbContext>));
+
+                if (dbContext is not null)
+                {
+                    services.Remove(dbContext);
+                }
+
+                var serviceProvider = new ServiceCollection()
+                    .AddEntityFrameworkInMemoryDatabase()
+                    .BuildServiceProvider();
+
+                services.AddDbContext<ApplicationDbContext>(options =>
+                {
+                    options.UseInMemoryDatabase("InMemoryJournalTest");
+                    options.UseInternalServiceProvider(serviceProvider);
+                });
+
+                services.AddAntiforgery(t =>
+                {
+                    t.Cookie.Name = AntiForgeryTokenExtractor.AntiForgeryCookieName;
+                    t.FormFieldName = AntiForgeryTokenExtractor.AntiForgeryFieldName;
+                });
+
+                var provider = services.BuildServiceProvider();
+
+                using var scope = provider.CreateScope();
+                using var appContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+                Utilities.InitializeDbForTests(appContext);
             });
         }
     }

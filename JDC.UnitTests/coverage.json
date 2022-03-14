@@ -1,0 +1,3900 @@
+{
+  "JDC.BusinessLogic.dll": {
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.BusinessLogic\\Utilities\\PasswordGenerator\\PasswordGenerator.cs": {
+      "JDC.BusinessLogic.Utilities.PasswordGenerator.PasswordGenerator": {
+        "System.String JDC.BusinessLogic.Utilities.PasswordGenerator.PasswordGenerator::GeneratePassword(System.Int32)": {
+          "Lines": {
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "34": 0,
+            "35": 0
+          },
+          "Branches": [
+            {
+              "Line": 19,
+              "Offset": 187,
+              "EndOffset": 18,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 22,
+              "Offset": 42,
+              "EndOffset": 44,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 22,
+              "Offset": 42,
+              "EndOffset": 47,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 28,
+              "Offset": 97,
+              "EndOffset": 99,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 28,
+              "Offset": 141,
+              "EndOffset": 143,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 28,
+              "Offset": 141,
+              "EndOffset": 154,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 28,
+              "Offset": 97,
+              "EndOffset": 157,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 28,
+              "Offset": 162,
+              "EndOffset": 164,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 28,
+              "Offset": 162,
+              "EndOffset": 173,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 19,
+              "Offset": 187,
+              "EndOffset": 192,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.BusinessLogic\\Utilities\\EmailSender\\EmailSender.cs": {
+      "JDC.BusinessLogic.Utilities.EmailSender.EmailSender": {
+        "System.Void JDC.BusinessLogic.Utilities.EmailSender.EmailSender::.ctor(JDC.BusinessLogic.Models.SmtpClientSettings)": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "30": 0,
+            "31": 0
+          },
+          "Branches": [
+            {
+              "Line": 25,
+              "Offset": 14,
+              "EndOffset": 16,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 25,
+              "Offset": 14,
+              "EndOffset": 28,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "JDC.BusinessLogic.Utilities.EmailSender.EmailSender/<SendEmailAsync>d__2": {
+        "System.Void JDC.BusinessLogic.Utilities.EmailSender.EmailSender/<SendEmailAsync>d__2::MoveNext()": {
+          "Lines": {
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "60": 0,
+            "61": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0
+          },
+          "Branches": [
+            {
+              "Line": 46,
+              "Offset": 65,
+              "EndOffset": 67,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 46,
+              "Offset": 65,
+              "EndOffset": 84,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.BusinessLogic\\Utilities\\AzureStorage\\AzureStorage.cs": {
+      "JDC.BusinessLogic.Utilities.AzureStorage.AzureStorage": {
+        "System.Boolean JDC.BusinessLogic.Utilities.AzureStorage.AzureStorage::IsImage(Microsoft.AspNetCore.Http.IFormFile)": {
+          "Lines": {
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "52": 0,
+            "54": 0,
+            "55": 0
+          },
+          "Branches": [
+            {
+              "Line": 42,
+              "Offset": 25,
+              "EndOffset": 27,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 42,
+              "Offset": 25,
+              "EndOffset": 39,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 47,
+              "Offset": 63,
+              "EndOffset": 65,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 47,
+              "Offset": 63,
+              "EndOffset": 71,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.String JDC.BusinessLogic.Utilities.AzureStorage.AzureStorage::GetImageUrl(System.String)": {
+          "Lines": {
+            "79": 0
+          },
+          "Branches": []
+        },
+        "System.Void JDC.BusinessLogic.Utilities.AzureStorage.AzureStorage::.ctor(JDC.BusinessLogic.Models.AzureStorageConfig)": {
+          "Lines": {
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0
+          },
+          "Branches": [
+            {
+              "Line": 28,
+              "Offset": 11,
+              "EndOffset": 13,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 28,
+              "Offset": 11,
+              "EndOffset": 25,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "JDC.BusinessLogic.Utilities.AzureStorage.AzureStorage/<UploadFileToStorage>d__3": {
+        "System.Void JDC.BusinessLogic.Utilities.AzureStorage.AzureStorage/<UploadFileToStorage>d__3::MoveNext()": {
+          "Lines": {
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "69": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "75": 0,
+            "76": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.BusinessLogic\\Utilities\\AutoMapper\\CompiledMapper.cs": {
+      "JDC.BusinessLogic.Utilities.AutoMapper.CompiledMapper`1": {
+        "TOut JDC.BusinessLogic.Utilities.AutoMapper.CompiledMapper`1::Map(System.Object)": {
+          "Lines": {
+            "42": 2,
+            "43": 2,
+            "44": 1,
+            "45": 1,
+            "48": 1,
+            "49": 1,
+            "50": 0,
+            "51": 0,
+            "54": 1,
+            "55": 1,
+            "57": 1,
+            "58": 1
+          },
+          "Branches": [
+            {
+              "Line": 43,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 43,
+              "Offset": 7,
+              "EndOffset": 21,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 49,
+              "Offset": 46,
+              "EndOffset": 48,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 49,
+              "Offset": 46,
+              "EndOffset": 60,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Reflection.ConstructorInfo JDC.BusinessLogic.Utilities.AutoMapper.CompiledMapper`1::GetEmptyConstructor(System.Type)": {
+          "Lines": {
+            "62": 2,
+            "63": 2,
+            "65": 4,
+            "66": 2
+          },
+          "Branches": [
+            {
+              "Line": 65,
+              "Offset": 20,
+              "EndOffset": 22,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 3
+            },
+            {
+              "Line": 65,
+              "Offset": 20,
+              "EndOffset": 45,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Func`2<System.Object,TOut> JDC.BusinessLogic.Utilities.AutoMapper.CompiledMapper`1::BuildConverter(System.Type)": {
+          "Lines": {
+            "69": 1,
+            "70": 1,
+            "72": 1,
+            "73": 1,
+            "75": 1,
+            "76": 1,
+            "77": 1,
+            "78": 1,
+            "79": 1,
+            "81": 1,
+            "82": 5,
+            "83": 1,
+            "84": 1,
+            "85": 0,
+            "86": 0,
+            "89": 1,
+            "90": 1,
+            "92": 1,
+            "93": 1,
+            "95": 1,
+            "96": 1,
+            "98": 1,
+            "99": 1
+          },
+          "Branches": [
+            {
+              "Line": 82,
+              "Offset": 208,
+              "EndOffset": 119,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 84,
+              "Offset": 154,
+              "EndOffset": 156,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 84,
+              "Offset": 154,
+              "EndOffset": 159,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 82,
+              "Offset": 208,
+              "EndOffset": 210,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Void JDC.BusinessLogic.Utilities.AutoMapper.CompiledMapper`1::.ctor()": {
+          "Lines": {
+            "24": 2,
+            "25": 2,
+            "26": 2,
+            "27": 2,
+            "28": 4,
+            "29": 2,
+            "30": 2
+          },
+          "Branches": [
+            {
+              "Line": 28,
+              "Offset": 59,
+              "EndOffset": 61,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 28,
+              "Offset": 59,
+              "EndOffset": 84,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.BusinessLogic\\Services\\ChatService.cs": {
+      "JDC.BusinessLogic.Services.ChatService": {
+        "System.Collections.Generic.IEnumerable`1<JDC.Common.Entities.Chat> JDC.BusinessLogic.Services.ChatService::Find(System.Linq.Expressions.Expression`1<System.Func`2<JDC.Common.Entities.Chat,System.Boolean>>)": {
+          "Lines": {
+            "33": 0,
+            "34": 0,
+            "35": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<JDC.Common.Entities.Chat> JDC.BusinessLogic.Services.ChatService::GetAll()": {
+          "Lines": {
+            "38": 0,
+            "39": 0,
+            "40": 0
+          },
+          "Branches": []
+        },
+        "System.Void JDC.BusinessLogic.Services.ChatService::.ctor(JDC.DataAccess.Interfaces.IChatRepository)": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.ChatService/<Add>d__2": {
+        "System.Void JDC.BusinessLogic.Services.ChatService/<Add>d__2::MoveNext()": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.ChatService/<AddRange>d__3": {
+        "System.Void JDC.BusinessLogic.Services.ChatService/<AddRange>d__3::MoveNext()": {
+          "Lines": {
+            "28": 0,
+            "29": 0,
+            "30": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.ChatService/<GetById>d__6": {
+        "System.Void JDC.BusinessLogic.Services.ChatService/<GetById>d__6::MoveNext()": {
+          "Lines": {
+            "43": 0,
+            "44": 0,
+            "45": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.ChatService/<Remove>d__7": {
+        "System.Void JDC.BusinessLogic.Services.ChatService/<Remove>d__7::MoveNext()": {
+          "Lines": {
+            "48": 0,
+            "49": 0,
+            "50": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.ChatService/<RemoveRange>d__8": {
+        "System.Void JDC.BusinessLogic.Services.ChatService/<RemoveRange>d__8::MoveNext()": {
+          "Lines": {
+            "53": 0,
+            "54": 0,
+            "55": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.ChatService/<Update>d__9": {
+        "System.Void JDC.BusinessLogic.Services.ChatService/<Update>d__9::MoveNext()": {
+          "Lines": {
+            "58": 0,
+            "59": 0,
+            "60": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.BusinessLogic\\Services\\GradeService.cs": {
+      "JDC.BusinessLogic.Services.GradeService": {
+        "System.Void JDC.BusinessLogic.Services.GradeService::.ctor(JDC.DataAccess.Interfaces.IGradeRepository)": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.GradeService/<Add>d__2": {
+        "System.Void JDC.BusinessLogic.Services.GradeService/<Add>d__2::MoveNext()": {
+          "Lines": {
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.GradeService/<GetById>d__3": {
+        "System.Void JDC.BusinessLogic.Services.GradeService/<GetById>d__3::MoveNext()": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.GradeService/<Update>d__4": {
+        "System.Void JDC.BusinessLogic.Services.GradeService/<Update>d__4::MoveNext()": {
+          "Lines": {
+            "28": 0,
+            "29": 0,
+            "30": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.BusinessLogic\\Services\\GradesService.cs": {
+      "JDC.BusinessLogic.Services.GradesService": {
+        "System.Collections.Generic.IEnumerable`1<JDC.Common.Entities.Grade> JDC.BusinessLogic.Services.GradesService::Find(System.Linq.Expressions.Expression`1<System.Func`2<JDC.Common.Entities.Grade,System.Boolean>>)": {
+          "Lines": {
+            "33": 0,
+            "34": 0,
+            "35": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<JDC.Common.Entities.Grade> JDC.BusinessLogic.Services.GradesService::GetAll()": {
+          "Lines": {
+            "38": 0,
+            "39": 0,
+            "40": 0
+          },
+          "Branches": []
+        },
+        "System.Void JDC.BusinessLogic.Services.GradesService::.ctor(JDC.DataAccess.Interfaces.IGradesRepository)": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.GradesService/<Add>d__2": {
+        "System.Void JDC.BusinessLogic.Services.GradesService/<Add>d__2::MoveNext()": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.GradesService/<AddRange>d__3": {
+        "System.Void JDC.BusinessLogic.Services.GradesService/<AddRange>d__3::MoveNext()": {
+          "Lines": {
+            "28": 0,
+            "29": 0,
+            "30": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.GradesService/<GetById>d__6": {
+        "System.Void JDC.BusinessLogic.Services.GradesService/<GetById>d__6::MoveNext()": {
+          "Lines": {
+            "43": 0,
+            "44": 0,
+            "45": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.GradesService/<Remove>d__7": {
+        "System.Void JDC.BusinessLogic.Services.GradesService/<Remove>d__7::MoveNext()": {
+          "Lines": {
+            "48": 0,
+            "49": 0,
+            "50": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.GradesService/<RemoveRange>d__8": {
+        "System.Void JDC.BusinessLogic.Services.GradesService/<RemoveRange>d__8::MoveNext()": {
+          "Lines": {
+            "53": 0,
+            "54": 0,
+            "55": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.GradesService/<Update>d__9": {
+        "System.Void JDC.BusinessLogic.Services.GradesService/<Update>d__9::MoveNext()": {
+          "Lines": {
+            "58": 0,
+            "59": 0,
+            "60": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.BusinessLogic\\Services\\GroupService.cs": {
+      "JDC.BusinessLogic.Services.GroupService": {
+        "System.Void JDC.BusinessLogic.Services.GroupService::.ctor(JDC.DataAccess.Interfaces.IGroupRepository)": {
+          "Lines": {
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.GroupService/<Add>d__2": {
+        "System.Void JDC.BusinessLogic.Services.GroupService/<Add>d__2::MoveNext()": {
+          "Lines": {
+            "25": 0,
+            "26": 0,
+            "27": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.GroupService/<GetById>d__4": {
+        "System.Void JDC.BusinessLogic.Services.GroupService/<GetById>d__4::MoveNext()": {
+          "Lines": {
+            "37": 0,
+            "38": 0,
+            "39": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.GroupService/<GetInstitutionGroups>d__5": {
+        "System.Void JDC.BusinessLogic.Services.GroupService/<GetInstitutionGroups>d__5::MoveNext()": {
+          "Lines": {
+            "43": 0,
+            "44": 0,
+            "45": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.GroupService/<Remove>d__3": {
+        "System.Void JDC.BusinessLogic.Services.GroupService/<Remove>d__3::MoveNext()": {
+          "Lines": {
+            "31": 0,
+            "32": 0,
+            "33": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.GroupService/<Update>d__6": {
+        "System.Void JDC.BusinessLogic.Services.GroupService/<Update>d__6::MoveNext()": {
+          "Lines": {
+            "49": 0,
+            "50": 0,
+            "51": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.BusinessLogic\\Services\\InstitutionService.cs": {
+      "JDC.BusinessLogic.Services.InstitutionService": {
+        "System.Collections.Generic.IEnumerable`1<JDC.Common.Entities.Institution> JDC.BusinessLogic.Services.InstitutionService::Find(System.Linq.Expressions.Expression`1<System.Func`2<JDC.Common.Entities.Institution,System.Boolean>>)": {
+          "Lines": {
+            "31": 0,
+            "32": 0,
+            "33": 0
+          },
+          "Branches": []
+        },
+        "System.Void JDC.BusinessLogic.Services.InstitutionService::.ctor(JDC.DataAccess.Interfaces.IInstitutionRepository)": {
+          "Lines": {
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.InstitutionService/<Add>d__2": {
+        "System.Void JDC.BusinessLogic.Services.InstitutionService/<Add>d__2::MoveNext()": {
+          "Lines": {
+            "21": 0,
+            "22": 0,
+            "23": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.InstitutionService/<AddRange>d__3": {
+        "System.Void JDC.BusinessLogic.Services.InstitutionService/<AddRange>d__3::MoveNext()": {
+          "Lines": {
+            "26": 0,
+            "27": 0,
+            "28": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.InstitutionService/<GetAll>d__5": {
+        "System.Void JDC.BusinessLogic.Services.InstitutionService/<GetAll>d__5::MoveNext()": {
+          "Lines": {
+            "36": 0,
+            "37": 0,
+            "38": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.InstitutionService/<GetById>d__6": {
+        "System.Void JDC.BusinessLogic.Services.InstitutionService/<GetById>d__6::MoveNext()": {
+          "Lines": {
+            "41": 0,
+            "42": 0,
+            "43": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.InstitutionService/<Remove>d__7": {
+        "System.Void JDC.BusinessLogic.Services.InstitutionService/<Remove>d__7::MoveNext()": {
+          "Lines": {
+            "46": 0,
+            "47": 0,
+            "48": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.InstitutionService/<RemoveRange>d__8": {
+        "System.Void JDC.BusinessLogic.Services.InstitutionService/<RemoveRange>d__8::MoveNext()": {
+          "Lines": {
+            "51": 0,
+            "52": 0,
+            "53": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.InstitutionService/<Update>d__9": {
+        "System.Void JDC.BusinessLogic.Services.InstitutionService/<Update>d__9::MoveNext()": {
+          "Lines": {
+            "56": 0,
+            "57": 0,
+            "58": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.BusinessLogic\\Services\\LessonService.cs": {
+      "JDC.BusinessLogic.Services.LessonService": {
+        "System.Void JDC.BusinessLogic.Services.LessonService::.ctor(JDC.DataAccess.Interfaces.ILessonRepository)": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.LessonService/<Create>d__2": {
+        "System.Void JDC.BusinessLogic.Services.LessonService/<Create>d__2::MoveNext()": {
+          "Lines": {
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.BusinessLogic\\Services\\MessageService.cs": {
+      "JDC.BusinessLogic.Services.MessageService": {
+        "System.Collections.Generic.IEnumerable`1<JDC.Common.Entities.Message> JDC.BusinessLogic.Services.MessageService::Find(System.Linq.Expressions.Expression`1<System.Func`2<JDC.Common.Entities.Message,System.Boolean>>)": {
+          "Lines": {
+            "33": 0,
+            "34": 0,
+            "35": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<JDC.Common.Entities.Message> JDC.BusinessLogic.Services.MessageService::GetAll()": {
+          "Lines": {
+            "38": 0,
+            "39": 0,
+            "40": 0
+          },
+          "Branches": []
+        },
+        "System.Void JDC.BusinessLogic.Services.MessageService::.ctor(JDC.DataAccess.Interfaces.IMessageRepository)": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.MessageService/<Add>d__2": {
+        "System.Void JDC.BusinessLogic.Services.MessageService/<Add>d__2::MoveNext()": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.MessageService/<AddRange>d__3": {
+        "System.Void JDC.BusinessLogic.Services.MessageService/<AddRange>d__3::MoveNext()": {
+          "Lines": {
+            "28": 0,
+            "29": 0,
+            "30": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.MessageService/<GetById>d__6": {
+        "System.Void JDC.BusinessLogic.Services.MessageService/<GetById>d__6::MoveNext()": {
+          "Lines": {
+            "43": 0,
+            "44": 0,
+            "45": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.MessageService/<Remove>d__7": {
+        "System.Void JDC.BusinessLogic.Services.MessageService/<Remove>d__7::MoveNext()": {
+          "Lines": {
+            "48": 0,
+            "49": 0,
+            "50": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.MessageService/<RemoveRange>d__8": {
+        "System.Void JDC.BusinessLogic.Services.MessageService/<RemoveRange>d__8::MoveNext()": {
+          "Lines": {
+            "53": 0,
+            "54": 0,
+            "55": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.MessageService/<Update>d__9": {
+        "System.Void JDC.BusinessLogic.Services.MessageService/<Update>d__9::MoveNext()": {
+          "Lines": {
+            "58": 0,
+            "59": 0,
+            "60": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.BusinessLogic\\Services\\RegistrationRequestService.cs": {
+      "JDC.BusinessLogic.Services.RegistrationRequestService": {
+        "System.Void JDC.BusinessLogic.Services.RegistrationRequestService::.ctor(JDC.BusinessLogic.Utilities.EmailSender.IEmailSender,Microsoft.AspNetCore.Identity.UserManager`1<JDC.Common.Entities.User>,JDC.BusinessLogic.Utilities.PasswordGenerator.IPasswordGenerator,JDC.BusinessLogic.Interfaces.IInstitutionService,JDC.DataAccess.Interfaces.IRegistrationRequestRepository)": {
+          "Lines": {
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.RegistrationRequestService/<Accept>d__6": {
+        "System.Void JDC.BusinessLogic.Services.RegistrationRequestService/<Accept>d__6::MoveNext()": {
+          "Lines": {
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "40": 0,
+            "41": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "49": 0,
+            "50": 0,
+            "52": 0,
+            "53": 0
+          },
+          "Branches": [
+            {
+              "Line": 43,
+              "Offset": 400,
+              "EndOffset": 405,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 43,
+              "Offset": 400,
+              "EndOffset": 855,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "JDC.BusinessLogic.Services.RegistrationRequestService/<Create>d__7": {
+        "System.Void JDC.BusinessLogic.Services.RegistrationRequestService/<Create>d__7::MoveNext()": {
+          "Lines": {
+            "56": 0,
+            "57": 0,
+            "58": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.RegistrationRequestService/<Delete>d__8": {
+        "System.Void JDC.BusinessLogic.Services.RegistrationRequestService/<Delete>d__8::MoveNext()": {
+          "Lines": {
+            "61": 0,
+            "62": 0,
+            "63": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.RegistrationRequestService/<GetAll>d__9": {
+        "System.Void JDC.BusinessLogic.Services.RegistrationRequestService/<GetAll>d__9::MoveNext()": {
+          "Lines": {
+            "66": 0,
+            "67": 0,
+            "69": 0,
+            "70": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.RegistrationRequestService/<GetById>d__10": {
+        "System.Void JDC.BusinessLogic.Services.RegistrationRequestService/<GetById>d__10::MoveNext()": {
+          "Lines": {
+            "73": 0,
+            "74": 0,
+            "75": 0
+          },
+          "Branches": [
+            {
+              "Line": 74,
+              "Offset": 26,
+              "EndOffset": 31,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 74,
+              "Offset": 26,
+              "EndOffset": 171,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "JDC.BusinessLogic.Services.RegistrationRequestService/<Update>d__11": {
+        "System.Void JDC.BusinessLogic.Services.RegistrationRequestService/<Update>d__11::MoveNext()": {
+          "Lines": {
+            "78": 0,
+            "79": 0,
+            "80": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.BusinessLogic\\Services\\SpecialityService.cs": {
+      "JDC.BusinessLogic.Services.SpecialityService": {
+        "System.Void JDC.BusinessLogic.Services.SpecialityService::.ctor(JDC.DataAccess.Interfaces.ISpecialityRepository)": {
+          "Lines": {
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.SpecialityService/<GetInstitutionSpecialities>d__2": {
+        "System.Void JDC.BusinessLogic.Services.SpecialityService/<GetInstitutionSpecialities>d__2::MoveNext()": {
+          "Lines": {
+            "19": 0,
+            "20": 0,
+            "21": 0
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 26,
+              "EndOffset": 31,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 20,
+              "Offset": 26,
+              "EndOffset": 171,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.BusinessLogic\\Services\\StudentService.cs": {
+      "JDC.BusinessLogic.Services.StudentService": {
+        "System.Collections.Generic.IEnumerable`1<JDC.Common.Entities.Student> JDC.BusinessLogic.Services.StudentService::Find(System.Linq.Expressions.Expression`1<System.Func`2<JDC.Common.Entities.Student,System.Boolean>>)": {
+          "Lines": {
+            "33": 0,
+            "34": 0,
+            "35": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<JDC.Common.Entities.Student> JDC.BusinessLogic.Services.StudentService::GetAll()": {
+          "Lines": {
+            "38": 0,
+            "39": 0,
+            "40": 0
+          },
+          "Branches": []
+        },
+        "System.Void JDC.BusinessLogic.Services.StudentService::.ctor(JDC.DataAccess.Interfaces.IStudentRepository)": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.StudentService/<Add>d__2": {
+        "System.Void JDC.BusinessLogic.Services.StudentService/<Add>d__2::MoveNext()": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.StudentService/<AddRange>d__3": {
+        "System.Void JDC.BusinessLogic.Services.StudentService/<AddRange>d__3::MoveNext()": {
+          "Lines": {
+            "28": 0,
+            "29": 0,
+            "30": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.StudentService/<GetById>d__6": {
+        "System.Void JDC.BusinessLogic.Services.StudentService/<GetById>d__6::MoveNext()": {
+          "Lines": {
+            "43": 0,
+            "44": 0,
+            "45": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.StudentService/<Remove>d__7": {
+        "System.Void JDC.BusinessLogic.Services.StudentService/<Remove>d__7::MoveNext()": {
+          "Lines": {
+            "48": 0,
+            "49": 0,
+            "50": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.StudentService/<RemoveRange>d__8": {
+        "System.Void JDC.BusinessLogic.Services.StudentService/<RemoveRange>d__8::MoveNext()": {
+          "Lines": {
+            "53": 0,
+            "54": 0,
+            "55": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.StudentService/<Update>d__9": {
+        "System.Void JDC.BusinessLogic.Services.StudentService/<Update>d__9::MoveNext()": {
+          "Lines": {
+            "58": 0,
+            "59": 0,
+            "60": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.BusinessLogic\\Services\\TeacherService.cs": {
+      "JDC.BusinessLogic.Services.TeacherService": {
+        "System.Collections.Generic.IEnumerable`1<JDC.Common.Entities.Teacher> JDC.BusinessLogic.Services.TeacherService::Find(System.Linq.Expressions.Expression`1<System.Func`2<JDC.Common.Entities.Teacher,System.Boolean>>)": {
+          "Lines": {
+            "36": 0,
+            "37": 0,
+            "38": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<JDC.Common.Entities.Teacher> JDC.BusinessLogic.Services.TeacherService::GetAll()": {
+          "Lines": {
+            "41": 0,
+            "42": 0,
+            "43": 0
+          },
+          "Branches": []
+        },
+        "System.Void JDC.BusinessLogic.Services.TeacherService::.ctor(JDC.DataAccess.Interfaces.ITeacherRepository)": {
+          "Lines": {
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.TeacherService/<Add>d__3": {
+        "System.Void JDC.BusinessLogic.Services.TeacherService/<Add>d__3::MoveNext()": {
+          "Lines": {
+            "26": 0,
+            "27": 0,
+            "28": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.TeacherService/<AddRange>d__4": {
+        "System.Void JDC.BusinessLogic.Services.TeacherService/<AddRange>d__4::MoveNext()": {
+          "Lines": {
+            "31": 0,
+            "32": 0,
+            "33": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.TeacherService/<GetById>d__7": {
+        "System.Void JDC.BusinessLogic.Services.TeacherService/<GetById>d__7::MoveNext()": {
+          "Lines": {
+            "46": 0,
+            "47": 0,
+            "48": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.TeacherService/<GetInstitutionTeachers>d__2": {
+        "System.Void JDC.BusinessLogic.Services.TeacherService/<GetInstitutionTeachers>d__2::MoveNext()": {
+          "Lines": {
+            "21": 0,
+            "22": 0,
+            "23": 0
+          },
+          "Branches": [
+            {
+              "Line": 22,
+              "Offset": 26,
+              "EndOffset": 31,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 22,
+              "Offset": 26,
+              "EndOffset": 171,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "JDC.BusinessLogic.Services.TeacherService/<Remove>d__8": {
+        "System.Void JDC.BusinessLogic.Services.TeacherService/<Remove>d__8::MoveNext()": {
+          "Lines": {
+            "51": 0,
+            "52": 0,
+            "53": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.TeacherService/<RemoveRange>d__9": {
+        "System.Void JDC.BusinessLogic.Services.TeacherService/<RemoveRange>d__9::MoveNext()": {
+          "Lines": {
+            "56": 0,
+            "57": 0,
+            "58": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.BusinessLogic.Services.TeacherService/<Update>d__10": {
+        "System.Void JDC.BusinessLogic.Services.TeacherService/<Update>d__10::MoveNext()": {
+          "Lines": {
+            "61": 0,
+            "62": 0,
+            "63": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.BusinessLogic\\Models\\AzureStorageConfig.cs": {
+      "JDC.BusinessLogic.Models.AzureStorageConfig": {
+        "System.String JDC.BusinessLogic.Models.AzureStorageConfig::get_AccountName()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.BusinessLogic.Models.AzureStorageConfig::get_AccountKey()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.BusinessLogic.Models.AzureStorageConfig::get_ImageContainer()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.BusinessLogic.Models.AzureStorageConfig::get_SasToken()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.BusinessLogic\\Models\\SmtpClientSettings.cs": {
+      "JDC.BusinessLogic.Models.SmtpClientSettings": {
+        "System.String JDC.BusinessLogic.Models.SmtpClientSettings::get_Email()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.BusinessLogic.Models.SmtpClientSettings::get_Password()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.BusinessLogic.Models.SmtpClientSettings::get_Name()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.BusinessLogic.Models.SmtpClientSettings::get_Host()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 JDC.BusinessLogic.Models.SmtpClientSettings::get_Port()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        }
+      }
+    }
+  },
+  "JDC.Common.dll": {
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.Common\\Extensions\\EnumExtension.cs": {
+      "JDC.Common.Extensions.EnumExtension": {
+        "System.String JDC.Common.Extensions.EnumExtension::GetDescription(System.Enum)": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "24": 0,
+            "25": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "35": 0,
+            "38": 0,
+            "39": 0
+          },
+          "Branches": [
+            {
+              "Line": 18,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 18,
+              "Offset": 7,
+              "EndOffset": 21,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 27,
+              "Offset": 40,
+              "EndOffset": 42,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 27,
+              "Offset": 40,
+              "EndOffset": 49,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 27,
+              "Offset": 52,
+              "EndOffset": 54,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 31,
+              "Offset": 76,
+              "EndOffset": 78,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 31,
+              "Offset": 76,
+              "EndOffset": 85,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 31,
+              "Offset": 90,
+              "EndOffset": 92,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 31,
+              "Offset": 90,
+              "EndOffset": 110,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 27,
+              "Offset": 52,
+              "EndOffset": 111,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.Common\\Entities\\Chat.cs": {
+      "JDC.Common.Entities.Chat": {
+        "System.Int32 JDC.Common.Entities.Chat::get_Id()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.Chat::get_Name()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<JDC.Common.Entities.User> JDC.Common.Entities.Chat::get_Users()": {
+          "Lines": {
+            "23": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<JDC.Common.Entities.Message> JDC.Common.Entities.Chat::get_Messages()": {
+          "Lines": {
+            "28": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.Common\\Entities\\Discipline.cs": {
+      "JDC.Common.Entities.Discipline": {
+        "System.Int32 JDC.Common.Entities.Discipline::get_Id()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.Discipline::get_Title()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 JDC.Common.Entities.Discipline::get_GroupId()": {
+          "Lines": {
+            "23": 0
+          },
+          "Branches": []
+        },
+        "JDC.Common.Entities.Group JDC.Common.Entities.Discipline::get_Group()": {
+          "Lines": {
+            "28": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<JDC.Common.Entities.Lesson> JDC.Common.Entities.Discipline::get_Lessons()": {
+          "Lines": {
+            "33": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.Common\\Entities\\Grade.cs": {
+      "JDC.Common.Entities.Grade": {
+        "System.Int32 JDC.Common.Entities.Grade::get_Id()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 JDC.Common.Entities.Grade::get_StudentId()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "JDC.Common.Entities.Student JDC.Common.Entities.Grade::get_Student()": {
+          "Lines": {
+            "23": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 JDC.Common.Entities.Grade::get_LessonId()": {
+          "Lines": {
+            "28": 0
+          },
+          "Branches": []
+        },
+        "JDC.Common.Entities.Lesson JDC.Common.Entities.Grade::get_Lesson()": {
+          "Lines": {
+            "33": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Double> JDC.Common.Entities.Grade::get_Value()": {
+          "Lines": {
+            "38": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.Grade::get_Comment()": {
+          "Lines": {
+            "43": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean JDC.Common.Entities.Grade::get_IsAbsent()": {
+          "Lines": {
+            "48": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime JDC.Common.Entities.Grade::get_BillingDate()": {
+          "Lines": {
+            "53": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 JDC.Common.Entities.Grade::GetNumericDate()": {
+          "Lines": {
+            "60": 0,
+            "61": 0,
+            "62": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.Common\\Entities\\Group.cs": {
+      "JDC.Common.Entities.Group": {
+        "System.Int32 JDC.Common.Entities.Group::get_Id()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.Group::get_Name()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 JDC.Common.Entities.Group::get_InstitutionId()": {
+          "Lines": {
+            "23": 0
+          },
+          "Branches": []
+        },
+        "JDC.Common.Entities.Institution JDC.Common.Entities.Group::get_Institution()": {
+          "Lines": {
+            "28": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 JDC.Common.Entities.Group::get_TeacherId()": {
+          "Lines": {
+            "33": 0
+          },
+          "Branches": []
+        },
+        "JDC.Common.Entities.Teacher JDC.Common.Entities.Group::get_Teacher()": {
+          "Lines": {
+            "38": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 JDC.Common.Entities.Group::get_SpecialityId()": {
+          "Lines": {
+            "43": 0
+          },
+          "Branches": []
+        },
+        "JDC.Common.Entities.Speciality JDC.Common.Entities.Group::get_Speciality()": {
+          "Lines": {
+            "48": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<JDC.Common.Entities.Student> JDC.Common.Entities.Group::get_Students()": {
+          "Lines": {
+            "53": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<JDC.Common.Entities.Discipline> JDC.Common.Entities.Group::get_Disciplines()": {
+          "Lines": {
+            "58": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.Common\\Entities\\Institution.cs": {
+      "JDC.Common.Entities.Institution": {
+        "System.Int32 JDC.Common.Entities.Institution::get_Id()": {
+          "Lines": {
+            "30": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.Institution::get_Name()": {
+          "Lines": {
+            "35": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.Institution::get_DirectorId()": {
+          "Lines": {
+            "40": 0
+          },
+          "Branches": []
+        },
+        "JDC.Common.Entities.User JDC.Common.Entities.Institution::get_Director()": {
+          "Lines": {
+            "45": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.Institution::get_WebsiteLink()": {
+          "Lines": {
+            "50": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.Institution::get_ImageUrl()": {
+          "Lines": {
+            "55": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<JDC.Common.Enums.InstituteType> JDC.Common.Entities.Institution::get_InstituteType()": {
+          "Lines": {
+            "60": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<JDC.Common.Entities.Group> JDC.Common.Entities.Institution::get_Groups()": {
+          "Lines": {
+            "65": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<JDC.Common.Entities.Student> JDC.Common.Entities.Institution::get_Students()": {
+          "Lines": {
+            "70": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<JDC.Common.Entities.Teacher> JDC.Common.Entities.Institution::get_Teachers()": {
+          "Lines": {
+            "75": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<JDC.Common.Entities.Speciality> JDC.Common.Entities.Institution::get_Specialities()": {
+          "Lines": {
+            "80": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.Institution::get_Type()": {
+          "Lines": {
+            "86": 0
+          },
+          "Branches": [
+            {
+              "Line": 86,
+              "Offset": 15,
+              "EndOffset": 17,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 86,
+              "Offset": 15,
+              "EndOffset": 21,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 86,
+              "Offset": 37,
+              "EndOffset": 39,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 86,
+              "Offset": 37,
+              "EndOffset": 45,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void JDC.Common.Entities.Institution::.ctor()": {
+          "Lines": {
+            "16": 0,
+            "17": 0,
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.Void JDC.Common.Entities.Institution::.ctor(JDC.Common.Entities.User)": {
+          "Lines": {
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.Common\\Entities\\Lesson.cs": {
+      "JDC.Common.Entities.Lesson": {
+        "System.Int32 JDC.Common.Entities.Lesson::get_Id()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.Lesson::get_Theme()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime JDC.Common.Entities.Lesson::get_Date()": {
+          "Lines": {
+            "25": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.Lesson::get_Homework()": {
+          "Lines": {
+            "30": 0
+          },
+          "Branches": []
+        },
+        "JDC.Common.Enums.LessonDuration JDC.Common.Entities.Lesson::get_LessonDuration()": {
+          "Lines": {
+            "35": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 JDC.Common.Entities.Lesson::get_DisciplineId()": {
+          "Lines": {
+            "40": 0
+          },
+          "Branches": []
+        },
+        "JDC.Common.Entities.Discipline JDC.Common.Entities.Lesson::get_Discipline()": {
+          "Lines": {
+            "45": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<JDC.Common.Entities.Grade> JDC.Common.Entities.Lesson::get_Grades()": {
+          "Lines": {
+            "50": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.Common\\Entities\\Message.cs": {
+      "JDC.Common.Entities.Message": {
+        "System.Int32 JDC.Common.Entities.Message::get_Id()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 JDC.Common.Entities.Message::get_ChatGroupId()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "JDC.Common.Entities.Chat JDC.Common.Entities.Message::get_ChatGroup()": {
+          "Lines": {
+            "24": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 JDC.Common.Entities.Message::get_UserId()": {
+          "Lines": {
+            "29": 0
+          },
+          "Branches": []
+        },
+        "JDC.Common.Entities.User JDC.Common.Entities.Message::get_User()": {
+          "Lines": {
+            "34": 0
+          },
+          "Branches": []
+        },
+        "JDC.Common.Enums.RecipientType JDC.Common.Entities.Message::get_Recipent()": {
+          "Lines": {
+            "39": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.Message::get_Content()": {
+          "Lines": {
+            "44": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime JDC.Common.Entities.Message::get_SendingDate()": {
+          "Lines": {
+            "49": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.Common\\Entities\\RegistrationRequest.cs": {
+      "JDC.Common.Entities.RegistrationRequest": {
+        "System.Int32 JDC.Common.Entities.RegistrationRequest::get_Id()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.RegistrationRequest::get_DirectorName()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.RegistrationRequest::get_PhoneNumber()": {
+          "Lines": {
+            "23": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.RegistrationRequest::get_WebsiteLink()": {
+          "Lines": {
+            "28": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.RegistrationRequest::get_Email()": {
+          "Lines": {
+            "33": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime JDC.Common.Entities.RegistrationRequest::get_CreationDate()": {
+          "Lines": {
+            "38": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean JDC.Common.Entities.RegistrationRequest::get_EmailConfirmed()": {
+          "Lines": {
+            "43": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 JDC.Common.Entities.RegistrationRequest::get_ConfirmationCode()": {
+          "Lines": {
+            "48": 0
+          },
+          "Branches": []
+        },
+        "JDC.Common.Entities.User JDC.Common.Entities.RegistrationRequest::op_Explicit(JDC.Common.Entities.RegistrationRequest)": {
+          "Lines": {
+            "51": 0,
+            "52": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.Common\\Entities\\Speciality.cs": {
+      "JDC.Common.Entities.Speciality": {
+        "System.Int32 JDC.Common.Entities.Speciality::get_Id()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.Speciality::get_Name()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 JDC.Common.Entities.Speciality::get_LearningDuration()": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.Common\\Entities\\Student.cs": {
+      "JDC.Common.Entities.Student": {
+        "System.Int32 JDC.Common.Entities.Student::get_Id()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.Student::get_City()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.Student::get_Street()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.Student::get_House()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.Student::get_Apartament()": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Int32> JDC.Common.Entities.Student::get_GroupId()": {
+          "Lines": {
+            "26": 0
+          },
+          "Branches": []
+        },
+        "JDC.Common.Entities.Group JDC.Common.Entities.Student::get_Group()": {
+          "Lines": {
+            "31": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 JDC.Common.Entities.Student::get_UserId()": {
+          "Lines": {
+            "36": 0
+          },
+          "Branches": []
+        },
+        "JDC.Common.Entities.User JDC.Common.Entities.Student::get_User()": {
+          "Lines": {
+            "41": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<JDC.Common.Entities.Grade> JDC.Common.Entities.Student::get_Grades()": {
+          "Lines": {
+            "46": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.Common\\Entities\\Teacher.cs": {
+      "JDC.Common.Entities.Teacher": {
+        "System.Int32 JDC.Common.Entities.Teacher::get_Id()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "JDC.Common.Entities.User JDC.Common.Entities.Teacher::get_User()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Int32> JDC.Common.Entities.Teacher::get_InstitutionId()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "JDC.Common.Entities.Institution JDC.Common.Entities.Teacher::get_Institution()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.Common\\Entities\\User.cs": {
+      "JDC.Common.Entities.User": {
+        "System.String JDC.Common.Entities.User::get_LastName()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.User::get_FirstName()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.User::get_MiddleName()": {
+          "Lines": {
+            "25": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.User::get_Avatar()": {
+          "Lines": {
+            "30": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.User::get_Sex()": {
+          "Lines": {
+            "35": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 JDC.Common.Entities.User::get_InstitutionId()": {
+          "Lines": {
+            "40": 0
+          },
+          "Branches": []
+        },
+        "JDC.Common.Entities.Institution JDC.Common.Entities.User::get_Institution()": {
+          "Lines": {
+            "45": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.User::get_Country()": {
+          "Lines": {
+            "50": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.User::get_City()": {
+          "Lines": {
+            "55": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.User::get_Street()": {
+          "Lines": {
+            "60": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.User::get_House()": {
+          "Lines": {
+            "65": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.User::get_Apartment()": {
+          "Lines": {
+            "70": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.User::get_Address()": {
+          "Lines": {
+            "76": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.User::get_ShortName()": {
+          "Lines": {
+            "85": 0
+          },
+          "Branches": [
+            {
+              "Line": 85,
+              "Offset": 18,
+              "EndOffset": 20,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 85,
+              "Offset": 18,
+              "EndOffset": 32,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 85,
+              "Offset": 60,
+              "EndOffset": 62,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 85,
+              "Offset": 60,
+              "EndOffset": 74,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.String JDC.Common.Entities.User::get_FullName()": {
+          "Lines": {
+            "94": 0
+          },
+          "Branches": []
+        },
+        "System.String JDC.Common.Entities.User::get_LongName()": {
+          "Lines": {
+            "103": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean JDC.Common.Entities.User::IsEqualsName(System.String)": {
+          "Lines": {
+            "111": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean JDC.Common.Entities.User::IsContainsText(System.String)": {
+          "Lines": {
+            "114": 0,
+            "115": 0,
+            "116": 0,
+            "117": 0,
+            "118": 0
+          },
+          "Branches": [
+            {
+              "Line": 115,
+              "Offset": 14,
+              "EndOffset": 16,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 115,
+              "Offset": 29,
+              "EndOffset": 31,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 115,
+              "Offset": 14,
+              "EndOffset": 46,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 115,
+              "Offset": 29,
+              "EndOffset": 46,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    }
+  },
+  "JDC.DataAccess.dll": {
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.DataAccess\\Repositories\\ChatRepository.cs": {
+      "JDC.DataAccess.Repositories.ChatRepository": {
+        "System.Collections.Generic.IEnumerable`1<JDC.Common.Entities.Chat> JDC.DataAccess.Repositories.ChatRepository::Find(System.Linq.Expressions.Expression`1<System.Func`2<JDC.Common.Entities.Chat,System.Boolean>>)": {
+          "Lines": {
+            "35": 0,
+            "36": 0,
+            "37": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<JDC.Common.Entities.Chat> JDC.DataAccess.Repositories.ChatRepository::GetAll()": {
+          "Lines": {
+            "40": 0,
+            "41": 0,
+            "42": 0
+          },
+          "Branches": []
+        },
+        "System.Void JDC.DataAccess.Repositories.ChatRepository::.ctor(JDC.DataAccess.Data.ApplicationDbContext)": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.ChatRepository/<Add>d__2": {
+        "System.Void JDC.DataAccess.Repositories.ChatRepository/<Add>d__2::MoveNext()": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.ChatRepository/<AddRange>d__3": {
+        "System.Void JDC.DataAccess.Repositories.ChatRepository/<AddRange>d__3::MoveNext()": {
+          "Lines": {
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.ChatRepository/<GetById>d__6": {
+        "System.Void JDC.DataAccess.Repositories.ChatRepository/<GetById>d__6::MoveNext()": {
+          "Lines": {
+            "45": 0,
+            "46": 0,
+            "47": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.ChatRepository/<Remove>d__7": {
+        "System.Void JDC.DataAccess.Repositories.ChatRepository/<Remove>d__7::MoveNext()": {
+          "Lines": {
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.ChatRepository/<RemoveRange>d__8": {
+        "System.Void JDC.DataAccess.Repositories.ChatRepository/<RemoveRange>d__8::MoveNext()": {
+          "Lines": {
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.ChatRepository/<Update>d__9": {
+        "System.Void JDC.DataAccess.Repositories.ChatRepository/<Update>d__9::MoveNext()": {
+          "Lines": {
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.DataAccess\\Repositories\\GradeRepository.cs": {
+      "JDC.DataAccess.Repositories.GradeRepository": {
+        "System.Void JDC.DataAccess.Repositories.GradeRepository::.ctor(JDC.DataAccess.Data.ApplicationDbContext)": {
+          "Lines": {
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.GradeRepository/<Add>d__2": {
+        "System.Void JDC.DataAccess.Repositories.GradeRepository/<Add>d__2::MoveNext()": {
+          "Lines": {
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.GradeRepository/<GetById>d__3": {
+        "System.Void JDC.DataAccess.Repositories.GradeRepository/<GetById>d__3::MoveNext()": {
+          "Lines": {
+            "28": 0,
+            "29": 0,
+            "30": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.GradeRepository/<Update>d__4": {
+        "System.Void JDC.DataAccess.Repositories.GradeRepository/<Update>d__4::MoveNext()": {
+          "Lines": {
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.DataAccess\\Repositories\\GradesRepository.cs": {
+      "JDC.DataAccess.Repositories.GradesRepository": {
+        "System.Collections.Generic.IEnumerable`1<JDC.Common.Entities.Grade> JDC.DataAccess.Repositories.GradesRepository::Find(System.Linq.Expressions.Expression`1<System.Func`2<JDC.Common.Entities.Grade,System.Boolean>>)": {
+          "Lines": {
+            "35": 0,
+            "36": 0,
+            "37": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<JDC.Common.Entities.Grade> JDC.DataAccess.Repositories.GradesRepository::GetAll()": {
+          "Lines": {
+            "40": 0,
+            "41": 0,
+            "42": 0
+          },
+          "Branches": []
+        },
+        "System.Void JDC.DataAccess.Repositories.GradesRepository::.ctor(JDC.DataAccess.Data.ApplicationDbContext)": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.GradesRepository/<Add>d__2": {
+        "System.Void JDC.DataAccess.Repositories.GradesRepository/<Add>d__2::MoveNext()": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.GradesRepository/<AddRange>d__3": {
+        "System.Void JDC.DataAccess.Repositories.GradesRepository/<AddRange>d__3::MoveNext()": {
+          "Lines": {
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.GradesRepository/<GetById>d__6": {
+        "System.Void JDC.DataAccess.Repositories.GradesRepository/<GetById>d__6::MoveNext()": {
+          "Lines": {
+            "45": 0,
+            "46": 0,
+            "47": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.GradesRepository/<Remove>d__7": {
+        "System.Void JDC.DataAccess.Repositories.GradesRepository/<Remove>d__7::MoveNext()": {
+          "Lines": {
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.GradesRepository/<RemoveRange>d__8": {
+        "System.Void JDC.DataAccess.Repositories.GradesRepository/<RemoveRange>d__8::MoveNext()": {
+          "Lines": {
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.GradesRepository/<Update>d__9": {
+        "System.Void JDC.DataAccess.Repositories.GradesRepository/<Update>d__9::MoveNext()": {
+          "Lines": {
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.DataAccess\\Repositories\\GroupRepository.cs": {
+      "JDC.DataAccess.Repositories.GroupRepository": {
+        "System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<JDC.Common.Entities.Group>> JDC.DataAccess.Repositories.GroupRepository::GetInstitutionGroups(System.Int32)": {
+          "Lines": {
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0
+          },
+          "Branches": []
+        },
+        "System.Void JDC.DataAccess.Repositories.GroupRepository::.ctor(JDC.DataAccess.Data.ApplicationDbContext)": {
+          "Lines": {
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.GroupRepository/<Add>d__2": {
+        "System.Void JDC.DataAccess.Repositories.GroupRepository/<Add>d__2::MoveNext()": {
+          "Lines": {
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.GroupRepository/<GetById>d__3": {
+        "System.Void JDC.DataAccess.Repositories.GroupRepository/<GetById>d__3::MoveNext()": {
+          "Lines": {
+            "33": 0,
+            "34": 0,
+            "35": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.GroupRepository/<Remove>d__4": {
+        "System.Void JDC.DataAccess.Repositories.GroupRepository/<Remove>d__4::MoveNext()": {
+          "Lines": {
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.GroupRepository/<Update>d__5": {
+        "System.Void JDC.DataAccess.Repositories.GroupRepository/<Update>d__5::MoveNext()": {
+          "Lines": {
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.DataAccess\\Repositories\\InstitutionRepository.cs": {
+      "JDC.DataAccess.Repositories.InstitutionRepository": {
+        "System.Collections.Generic.IEnumerable`1<JDC.Common.Entities.Institution> JDC.DataAccess.Repositories.InstitutionRepository::Find(System.Linq.Expressions.Expression`1<System.Func`2<JDC.Common.Entities.Institution,System.Boolean>>)": {
+          "Lines": {
+            "35": 0,
+            "36": 0,
+            "37": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<JDC.Common.Entities.Institution>> JDC.DataAccess.Repositories.InstitutionRepository::GetAll()": {
+          "Lines": {
+            "63": 0,
+            "64": 0,
+            "65": 0
+          },
+          "Branches": []
+        },
+        "System.Void JDC.DataAccess.Repositories.InstitutionRepository::.ctor(JDC.DataAccess.Data.ApplicationDbContext)": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.InstitutionRepository/<Add>d__2": {
+        "System.Void JDC.DataAccess.Repositories.InstitutionRepository/<Add>d__2::MoveNext()": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.InstitutionRepository/<AddRange>d__3": {
+        "System.Void JDC.DataAccess.Repositories.InstitutionRepository/<AddRange>d__3::MoveNext()": {
+          "Lines": {
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.InstitutionRepository/<GetById>d__5": {
+        "System.Void JDC.DataAccess.Repositories.InstitutionRepository/<GetById>d__5::MoveNext()": {
+          "Lines": {
+            "40": 0,
+            "41": 0,
+            "42": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.InstitutionRepository/<Remove>d__6": {
+        "System.Void JDC.DataAccess.Repositories.InstitutionRepository/<Remove>d__6::MoveNext()": {
+          "Lines": {
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.InstitutionRepository/<RemoveRange>d__7": {
+        "System.Void JDC.DataAccess.Repositories.InstitutionRepository/<RemoveRange>d__7::MoveNext()": {
+          "Lines": {
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.InstitutionRepository/<Update>d__8": {
+        "System.Void JDC.DataAccess.Repositories.InstitutionRepository/<Update>d__8::MoveNext()": {
+          "Lines": {
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.DataAccess\\Repositories\\LessonRepository.cs": {
+      "JDC.DataAccess.Repositories.LessonRepository": {
+        "System.Void JDC.DataAccess.Repositories.LessonRepository::.ctor(JDC.DataAccess.Data.ApplicationDbContext)": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.LessonRepository/<Create>d__2": {
+        "System.Void JDC.DataAccess.Repositories.LessonRepository/<Create>d__2::MoveNext()": {
+          "Lines": {
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.DataAccess\\Repositories\\MessageRepository.cs": {
+      "JDC.DataAccess.Repositories.MessageRepository": {
+        "System.Collections.Generic.IEnumerable`1<JDC.Common.Entities.Message> JDC.DataAccess.Repositories.MessageRepository::Find(System.Linq.Expressions.Expression`1<System.Func`2<JDC.Common.Entities.Message,System.Boolean>>)": {
+          "Lines": {
+            "35": 0,
+            "36": 0,
+            "37": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<JDC.Common.Entities.Message> JDC.DataAccess.Repositories.MessageRepository::GetAll()": {
+          "Lines": {
+            "40": 0,
+            "41": 0,
+            "42": 0
+          },
+          "Branches": []
+        },
+        "System.Void JDC.DataAccess.Repositories.MessageRepository::.ctor(JDC.DataAccess.Data.ApplicationDbContext)": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.MessageRepository/<Add>d__2": {
+        "System.Void JDC.DataAccess.Repositories.MessageRepository/<Add>d__2::MoveNext()": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.MessageRepository/<AddRange>d__3": {
+        "System.Void JDC.DataAccess.Repositories.MessageRepository/<AddRange>d__3::MoveNext()": {
+          "Lines": {
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.MessageRepository/<GetById>d__6": {
+        "System.Void JDC.DataAccess.Repositories.MessageRepository/<GetById>d__6::MoveNext()": {
+          "Lines": {
+            "45": 0,
+            "46": 0,
+            "47": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.MessageRepository/<Remove>d__7": {
+        "System.Void JDC.DataAccess.Repositories.MessageRepository/<Remove>d__7::MoveNext()": {
+          "Lines": {
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.MessageRepository/<RemoveRange>d__8": {
+        "System.Void JDC.DataAccess.Repositories.MessageRepository/<RemoveRange>d__8::MoveNext()": {
+          "Lines": {
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.MessageRepository/<Update>d__9": {
+        "System.Void JDC.DataAccess.Repositories.MessageRepository/<Update>d__9::MoveNext()": {
+          "Lines": {
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.DataAccess\\Repositories\\RegistrationRequestRepository.cs": {
+      "JDC.DataAccess.Repositories.RegistrationRequestRepository": {
+        "System.Void JDC.DataAccess.Repositories.RegistrationRequestRepository::.ctor(JDC.DataAccess.Data.ApplicationDbContext)": {
+          "Lines": {
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.RegistrationRequestRepository/<>c": {
+        "System.Boolean JDC.DataAccess.Repositories.RegistrationRequestRepository/<>c::<GetAll>b__4_0(JDC.Common.Entities.RegistrationRequest)": {
+          "Lines": {
+            "35": 0
+          },
+          "Branches": [
+            {
+              "Line": 35,
+              "Offset": 6,
+              "EndOffset": 8,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 35,
+              "Offset": 6,
+              "EndOffset": 48,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "JDC.DataAccess.Repositories.RegistrationRequestRepository/<Create>d__2": {
+        "System.Void JDC.DataAccess.Repositories.RegistrationRequestRepository/<Create>d__2::MoveNext()": {
+          "Lines": {
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.RegistrationRequestRepository/<Delete>d__3": {
+        "System.Void JDC.DataAccess.Repositories.RegistrationRequestRepository/<Delete>d__3::MoveNext()": {
+          "Lines": {
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.RegistrationRequestRepository/<GetAll>d__4": {
+        "System.Void JDC.DataAccess.Repositories.RegistrationRequestRepository/<GetAll>d__4::MoveNext()": {
+          "Lines": {
+            "33": 0,
+            "34": 0,
+            "37": 0,
+            "38": 0,
+            "40": 0,
+            "41": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.RegistrationRequestRepository/<GetById>d__5": {
+        "System.Void JDC.DataAccess.Repositories.RegistrationRequestRepository/<GetById>d__5::MoveNext()": {
+          "Lines": {
+            "44": 0,
+            "45": 0,
+            "46": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.RegistrationRequestRepository/<Update>d__6": {
+        "System.Void JDC.DataAccess.Repositories.RegistrationRequestRepository/<Update>d__6::MoveNext()": {
+          "Lines": {
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.DataAccess\\Repositories\\SpecialityRepository.cs": {
+      "JDC.DataAccess.Repositories.SpecialityRepository": {
+        "System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<JDC.Common.Entities.Speciality>> JDC.DataAccess.Repositories.SpecialityRepository::GetInstitutionSpecialities(System.Int32)": {
+          "Lines": {
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0
+          },
+          "Branches": []
+        },
+        "System.Void JDC.DataAccess.Repositories.SpecialityRepository::.ctor(JDC.DataAccess.Data.ApplicationDbContext)": {
+          "Lines": {
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.DataAccess\\Repositories\\StudentRepository.cs": {
+      "JDC.DataAccess.Repositories.StudentRepository": {
+        "System.Collections.Generic.IEnumerable`1<JDC.Common.Entities.Student> JDC.DataAccess.Repositories.StudentRepository::Find(System.Linq.Expressions.Expression`1<System.Func`2<JDC.Common.Entities.Student,System.Boolean>>)": {
+          "Lines": {
+            "35": 0,
+            "36": 0,
+            "37": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<JDC.Common.Entities.Student> JDC.DataAccess.Repositories.StudentRepository::GetAll()": {
+          "Lines": {
+            "40": 0,
+            "41": 0,
+            "42": 0
+          },
+          "Branches": []
+        },
+        "System.Void JDC.DataAccess.Repositories.StudentRepository::.ctor(JDC.DataAccess.Data.ApplicationDbContext)": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.StudentRepository/<Add>d__2": {
+        "System.Void JDC.DataAccess.Repositories.StudentRepository/<Add>d__2::MoveNext()": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.StudentRepository/<AddRange>d__3": {
+        "System.Void JDC.DataAccess.Repositories.StudentRepository/<AddRange>d__3::MoveNext()": {
+          "Lines": {
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.StudentRepository/<GetById>d__6": {
+        "System.Void JDC.DataAccess.Repositories.StudentRepository/<GetById>d__6::MoveNext()": {
+          "Lines": {
+            "45": 0,
+            "46": 0,
+            "47": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.StudentRepository/<Remove>d__7": {
+        "System.Void JDC.DataAccess.Repositories.StudentRepository/<Remove>d__7::MoveNext()": {
+          "Lines": {
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.StudentRepository/<RemoveRange>d__8": {
+        "System.Void JDC.DataAccess.Repositories.StudentRepository/<RemoveRange>d__8::MoveNext()": {
+          "Lines": {
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.StudentRepository/<Update>d__9": {
+        "System.Void JDC.DataAccess.Repositories.StudentRepository/<Update>d__9::MoveNext()": {
+          "Lines": {
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.DataAccess\\Repositories\\TeacherRepository.cs": {
+      "JDC.DataAccess.Repositories.TeacherRepository": {
+        "System.Collections.Generic.IEnumerable`1<JDC.Common.Entities.Teacher> JDC.DataAccess.Repositories.TeacherRepository::Find(System.Linq.Expressions.Expression`1<System.Func`2<JDC.Common.Entities.Teacher,System.Boolean>>)": {
+          "Lines": {
+            "34": 0,
+            "35": 0,
+            "36": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<JDC.Common.Entities.Teacher> JDC.DataAccess.Repositories.TeacherRepository::GetAll()": {
+          "Lines": {
+            "39": 0,
+            "40": 0,
+            "41": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<JDC.Common.Entities.Teacher>> JDC.DataAccess.Repositories.TeacherRepository::GetInstitutionTeachers(System.Int32)": {
+          "Lines": {
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0
+          },
+          "Branches": []
+        },
+        "System.Void JDC.DataAccess.Repositories.TeacherRepository::.ctor(JDC.DataAccess.Data.ApplicationDbContext)": {
+          "Lines": {
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.TeacherRepository/<Add>d__2": {
+        "System.Void JDC.DataAccess.Repositories.TeacherRepository/<Add>d__2::MoveNext()": {
+          "Lines": {
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.TeacherRepository/<AddRange>d__3": {
+        "System.Void JDC.DataAccess.Repositories.TeacherRepository/<AddRange>d__3::MoveNext()": {
+          "Lines": {
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.TeacherRepository/<GetById>d__6": {
+        "System.Void JDC.DataAccess.Repositories.TeacherRepository/<GetById>d__6::MoveNext()": {
+          "Lines": {
+            "44": 0,
+            "45": 0,
+            "46": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.TeacherRepository/<Remove>d__7": {
+        "System.Void JDC.DataAccess.Repositories.TeacherRepository/<Remove>d__7::MoveNext()": {
+          "Lines": {
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.TeacherRepository/<RemoveRange>d__8": {
+        "System.Void JDC.DataAccess.Repositories.TeacherRepository/<RemoveRange>d__8::MoveNext()": {
+          "Lines": {
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0
+          },
+          "Branches": []
+        }
+      },
+      "JDC.DataAccess.Repositories.TeacherRepository/<Update>d__9": {
+        "System.Void JDC.DataAccess.Repositories.TeacherRepository/<Update>d__9::MoveNext()": {
+          "Lines": {
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.DataAccess\\Data\\ApplicationDbContext.cs": {
+      "JDC.DataAccess.Data.ApplicationDbContext": {
+        "Microsoft.EntityFrameworkCore.DbSet`1<JDC.Common.Entities.Institution> JDC.DataAccess.Data.ApplicationDbContext::get_Institutions()": {
+          "Lines": {
+            "25": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<JDC.Common.Entities.Speciality> JDC.DataAccess.Data.ApplicationDbContext::get_Specialities()": {
+          "Lines": {
+            "30": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<JDC.Common.Entities.Teacher> JDC.DataAccess.Data.ApplicationDbContext::get_Teachers()": {
+          "Lines": {
+            "35": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<JDC.Common.Entities.Lesson> JDC.DataAccess.Data.ApplicationDbContext::get_Lessons()": {
+          "Lines": {
+            "40": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<JDC.Common.Entities.Grade> JDC.DataAccess.Data.ApplicationDbContext::get_Grades()": {
+          "Lines": {
+            "45": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<JDC.Common.Entities.RegistrationRequest> JDC.DataAccess.Data.ApplicationDbContext::get_RegistrationRequests()": {
+          "Lines": {
+            "50": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<JDC.Common.Entities.Chat> JDC.DataAccess.Data.ApplicationDbContext::get_Chats()": {
+          "Lines": {
+            "55": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<JDC.Common.Entities.Group> JDC.DataAccess.Data.ApplicationDbContext::get_Groups()": {
+          "Lines": {
+            "60": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<JDC.Common.Entities.Message> JDC.DataAccess.Data.ApplicationDbContext::get_Messages()": {
+          "Lines": {
+            "65": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<JDC.Common.Entities.Student> JDC.DataAccess.Data.ApplicationDbContext::get_Students()": {
+          "Lines": {
+            "70": 0
+          },
+          "Branches": []
+        },
+        "System.Void JDC.DataAccess.Data.ApplicationDbContext::OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "83": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "89": 0,
+            "90": 0
+          },
+          "Branches": []
+        },
+        "System.Void JDC.DataAccess.Data.ApplicationDbContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<JDC.DataAccess.Data.ApplicationDbContext>)": {
+          "Lines": {
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.DataAccess\\Data\\Migrations\\00000000000000_CreateIdentitySchema.cs": {
+      "JDC.DataAccess.Data.Migrations.CreateIdentitySchema": {
+        "System.Void JDC.DataAccess.Data.Migrations.CreateIdentitySchema::Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "91": 0,
+            "92": 0,
+            "93": 0,
+            "94": 0,
+            "95": 0,
+            "96": 0,
+            "97": 0,
+            "98": 0,
+            "100": 0,
+            "101": 0,
+            "102": 0,
+            "103": 0,
+            "104": 0,
+            "105": 0,
+            "106": 0,
+            "107": 0,
+            "108": 0,
+            "109": 0,
+            "110": 0,
+            "111": 0,
+            "112": 0,
+            "113": 0,
+            "114": 0,
+            "115": 0,
+            "116": 0,
+            "117": 0,
+            "118": 0,
+            "120": 0,
+            "121": 0,
+            "122": 0,
+            "123": 0,
+            "124": 0,
+            "125": 0,
+            "126": 0,
+            "127": 0,
+            "128": 0,
+            "129": 0,
+            "130": 0,
+            "131": 0,
+            "132": 0,
+            "133": 0,
+            "134": 0,
+            "135": 0,
+            "136": 0,
+            "137": 0,
+            "138": 0,
+            "139": 0,
+            "140": 0,
+            "141": 0,
+            "142": 0,
+            "144": 0,
+            "145": 0,
+            "146": 0,
+            "147": 0,
+            "148": 0,
+            "149": 0,
+            "150": 0,
+            "151": 0,
+            "152": 0,
+            "153": 0,
+            "154": 0,
+            "155": 0,
+            "156": 0,
+            "157": 0,
+            "158": 0,
+            "159": 0,
+            "160": 0,
+            "161": 0,
+            "162": 0,
+            "164": 0,
+            "165": 0,
+            "166": 0,
+            "167": 0,
+            "169": 0,
+            "170": 0,
+            "171": 0,
+            "172": 0,
+            "173": 0,
+            "174": 0,
+            "176": 0,
+            "177": 0,
+            "178": 0,
+            "179": 0,
+            "181": 0,
+            "182": 0,
+            "183": 0,
+            "184": 0,
+            "186": 0,
+            "187": 0,
+            "188": 0,
+            "189": 0,
+            "191": 0,
+            "192": 0,
+            "193": 0,
+            "194": 0,
+            "196": 0,
+            "197": 0,
+            "198": 0,
+            "199": 0,
+            "200": 0,
+            "201": 0,
+            "202": 0
+          },
+          "Branches": []
+        },
+        "System.Void JDC.DataAccess.Data.Migrations.CreateIdentitySchema::Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "209": 0,
+            "210": 0,
+            "211": 0,
+            "213": 0,
+            "214": 0,
+            "216": 0,
+            "217": 0,
+            "219": 0,
+            "220": 0,
+            "222": 0,
+            "223": 0,
+            "225": 0,
+            "226": 0,
+            "228": 0,
+            "229": 0,
+            "230": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.DataAccess\\Data\\Migrations\\00000000000000_CreateIdentitySchema.Designer.cs": {
+      "JDC.DataAccess.Data.Migrations.CreateIdentitySchema": {
+        "System.Void JDC.DataAccess.Data.Migrations.CreateIdentitySchema::BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "16": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "91": 0,
+            "92": 0,
+            "93": 0,
+            "94": 0,
+            "95": 0,
+            "96": 0,
+            "97": 0,
+            "98": 0,
+            "99": 0,
+            "100": 0,
+            "101": 0,
+            "102": 0,
+            "103": 0,
+            "104": 0,
+            "105": 0,
+            "106": 0,
+            "107": 0,
+            "108": 0,
+            "109": 0,
+            "110": 0,
+            "111": 0,
+            "112": 0,
+            "113": 0,
+            "114": 0,
+            "115": 0,
+            "116": 0,
+            "117": 0,
+            "118": 0,
+            "119": 0,
+            "120": 0,
+            "121": 0,
+            "122": 0,
+            "123": 0,
+            "124": 0,
+            "125": 0,
+            "126": 0,
+            "127": 0,
+            "128": 0,
+            "129": 0,
+            "130": 0,
+            "131": 0,
+            "132": 0,
+            "133": 0,
+            "134": 0,
+            "135": 0,
+            "136": 0,
+            "137": 0,
+            "139": 0,
+            "140": 0,
+            "141": 0,
+            "142": 0,
+            "143": 0,
+            "144": 0,
+            "145": 0,
+            "146": 0,
+            "147": 0,
+            "148": 0,
+            "149": 0,
+            "150": 0,
+            "151": 0,
+            "152": 0,
+            "153": 0,
+            "154": 0,
+            "155": 0,
+            "156": 0,
+            "157": 0,
+            "158": 0,
+            "159": 0,
+            "160": 0,
+            "161": 0,
+            "163": 0,
+            "164": 0,
+            "165": 0,
+            "166": 0,
+            "167": 0,
+            "168": 0,
+            "169": 0,
+            "170": 0,
+            "171": 0,
+            "172": 0,
+            "173": 0,
+            "174": 0,
+            "175": 0,
+            "176": 0,
+            "177": 0,
+            "178": 0,
+            "179": 0,
+            "180": 0,
+            "181": 0,
+            "182": 0,
+            "183": 0,
+            "184": 0,
+            "185": 0,
+            "187": 0,
+            "188": 0,
+            "189": 0,
+            "190": 0,
+            "191": 0,
+            "192": 0,
+            "193": 0,
+            "194": 0,
+            "195": 0,
+            "196": 0,
+            "197": 0,
+            "198": 0,
+            "199": 0,
+            "200": 0,
+            "202": 0,
+            "203": 0,
+            "204": 0,
+            "205": 0,
+            "206": 0,
+            "207": 0,
+            "208": 0,
+            "209": 0,
+            "210": 0,
+            "211": 0,
+            "212": 0,
+            "213": 0,
+            "214": 0,
+            "215": 0,
+            "216": 0,
+            "217": 0,
+            "218": 0,
+            "219": 0,
+            "220": 0,
+            "221": 0,
+            "223": 0,
+            "224": 0,
+            "225": 0,
+            "226": 0,
+            "227": 0,
+            "228": 0,
+            "229": 0,
+            "230": 0,
+            "232": 0,
+            "233": 0,
+            "234": 0,
+            "235": 0,
+            "236": 0,
+            "237": 0,
+            "238": 0,
+            "239": 0,
+            "241": 0,
+            "242": 0,
+            "243": 0,
+            "244": 0,
+            "245": 0,
+            "246": 0,
+            "247": 0,
+            "248": 0,
+            "250": 0,
+            "251": 0,
+            "252": 0,
+            "253": 0,
+            "254": 0,
+            "255": 0,
+            "256": 0,
+            "257": 0,
+            "258": 0,
+            "259": 0,
+            "260": 0,
+            "261": 0,
+            "262": 0,
+            "263": 0,
+            "265": 0,
+            "266": 0,
+            "267": 0,
+            "268": 0,
+            "269": 0,
+            "270": 0,
+            "271": 0,
+            "272": 0,
+            "274": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Колледж\\_Работы\\Дипломная работа - 2021-2022\\JDC\\JDC.DataAccess\\Data\\Migrations\\ApplicationDbContextModelSnapshot.cs": {
+      "JDC.DataAccess.Data.Migrations.ApplicationDbContextModelSnapshot": {
+        "System.Void JDC.DataAccess.Data.Migrations.ApplicationDbContextModelSnapshot::BuildModel(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "20": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "91": 0,
+            "92": 0,
+            "93": 0,
+            "94": 0,
+            "95": 0,
+            "96": 0,
+            "97": 0,
+            "98": 0,
+            "99": 0,
+            "100": 0,
+            "101": 0,
+            "102": 0,
+            "103": 0,
+            "104": 0,
+            "105": 0,
+            "106": 0,
+            "107": 0,
+            "108": 0,
+            "109": 0,
+            "110": 0,
+            "111": 0,
+            "112": 0,
+            "113": 0,
+            "114": 0,
+            "115": 0,
+            "116": 0,
+            "117": 0,
+            "118": 0,
+            "119": 0,
+            "120": 0,
+            "121": 0,
+            "122": 0,
+            "123": 0,
+            "124": 0,
+            "125": 0,
+            "126": 0,
+            "127": 0,
+            "128": 0,
+            "129": 0,
+            "130": 0,
+            "131": 0,
+            "132": 0,
+            "133": 0,
+            "134": 0,
+            "135": 0,
+            "136": 0,
+            "137": 0,
+            "138": 0,
+            "139": 0,
+            "140": 0,
+            "141": 0,
+            "143": 0,
+            "144": 0,
+            "145": 0,
+            "146": 0,
+            "147": 0,
+            "148": 0,
+            "149": 0,
+            "150": 0,
+            "151": 0,
+            "152": 0,
+            "153": 0,
+            "154": 0,
+            "155": 0,
+            "156": 0,
+            "157": 0,
+            "158": 0,
+            "159": 0,
+            "160": 0,
+            "161": 0,
+            "162": 0,
+            "163": 0,
+            "164": 0,
+            "165": 0,
+            "167": 0,
+            "168": 0,
+            "169": 0,
+            "170": 0,
+            "171": 0,
+            "172": 0,
+            "173": 0,
+            "174": 0,
+            "175": 0,
+            "176": 0,
+            "177": 0,
+            "178": 0,
+            "179": 0,
+            "180": 0,
+            "181": 0,
+            "182": 0,
+            "183": 0,
+            "184": 0,
+            "185": 0,
+            "186": 0,
+            "187": 0,
+            "188": 0,
+            "189": 0,
+            "191": 0,
+            "192": 0,
+            "193": 0,
+            "194": 0,
+            "195": 0,
+            "196": 0,
+            "197": 0,
+            "198": 0,
+            "199": 0,
+            "200": 0,
+            "201": 0,
+            "202": 0,
+            "203": 0,
+            "204": 0,
+            "206": 0,
+            "207": 0,
+            "208": 0,
+            "209": 0,
+            "210": 0,
+            "211": 0,
+            "212": 0,
+            "213": 0,
+            "214": 0,
+            "215": 0,
+            "216": 0,
+            "217": 0,
+            "218": 0,
+            "219": 0,
+            "220": 0,
+            "221": 0,
+            "222": 0,
+            "223": 0,
+            "224": 0,
+            "225": 0,
+            "227": 0,
+            "228": 0,
+            "229": 0,
+            "230": 0,
+            "231": 0,
+            "232": 0,
+            "233": 0,
+            "234": 0,
+            "236": 0,
+            "237": 0,
+            "238": 0,
+            "239": 0,
+            "240": 0,
+            "241": 0,
+            "242": 0,
+            "243": 0,
+            "245": 0,
+            "246": 0,
+            "247": 0,
+            "248": 0,
+            "249": 0,
+            "250": 0,
+            "251": 0,
+            "252": 0,
+            "254": 0,
+            "255": 0,
+            "256": 0,
+            "257": 0,
+            "258": 0,
+            "259": 0,
+            "260": 0,
+            "261": 0,
+            "262": 0,
+            "263": 0,
+            "264": 0,
+            "265": 0,
+            "266": 0,
+            "267": 0,
+            "269": 0,
+            "270": 0,
+            "271": 0,
+            "272": 0,
+            "273": 0,
+            "274": 0,
+            "275": 0,
+            "276": 0,
+            "277": 0
+          },
+          "Branches": []
+        }
+      }
+    }
+  }
+}

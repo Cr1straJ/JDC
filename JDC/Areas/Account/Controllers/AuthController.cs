@@ -27,66 +27,59 @@ namespace JDC.Areas.Identity.Controllers
             this.signInManager = signInManager;
         }
 
-        public IActionResult Index()
-        {
-            return this.View();
-        }
-
         public IActionResult Register()
         {
-            return this.View(new RegistrationModel());
+            return View(new RegistrationModel());
         }
 
         [HttpPost]
         public async Task<IActionResult> Register(RegistrationModel registrationModel)
         {
-            if (this.ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var confirmationCode = new Random().Next(1000, 10000);
                 var registrationRequest = new CompiledMapper<RegistrationRequest>().Map(registrationModel);
                 registrationRequest.ConfirmationCode = confirmationCode;
 
-                await this.registrationRequestService.Create(registrationRequest);
-                await this.emailSender.SendEmailAsync(registrationModel.DirectorName, registrationModel.Email, "Подтверждение регистрации учреждения", $"Ваш код: {confirmationCode}");
+                await registrationRequestService.Create(registrationRequest);
+                await emailSender.SendEmailAsync(registrationModel.DirectorName, registrationModel.Email, "Подтверждение регистрации учреждения", $"Ваш код: {confirmationCode}");
 
-                return this.RedirectToAction("RegisterConfirmation", new { id = registrationRequest.Id, email = registrationModel.Email });
+                return RedirectToAction("RegisterConfirmation", new { id = registrationRequest.Id, email = registrationModel.Email });
             }
 
-            return this.View(registrationModel);
+            return View(registrationModel);
         }
 
         public IActionResult Login()
         {
-            return this.View(new LoginModel());
+            return View(new LoginModel());
         }
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel inputLogin)
         {
-            if (this.ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await this.signInManager.PasswordSignInAsync(inputLogin.Username, inputLogin.Password, inputLogin.RememberMe, lockoutOnFailure: false);
+                var result = await signInManager.PasswordSignInAsync(inputLogin.Username, inputLogin.Password, inputLogin.RememberMe, lockoutOnFailure: false);
 
                 if (result.Succeeded)
                 {
-                    User user = await this.signInManager.UserManager.FindByNameAsync(inputLogin.Username);
+                    User user = await signInManager.UserManager.FindByNameAsync(inputLogin.Username);
 
-                    if (await this.signInManager.UserManager.IsInRoleAsync(user, "Director"))
+                    if (await signInManager.UserManager.IsInRoleAsync(user, "Director"))
                     {
-                        return this.RedirectToAction("Index", "Groups");
+                        return RedirectToAction("Index", "Groups");
                     }
 
-                    return this.RedirectToAction("Index", "Admin");
+                    return RedirectToAction("Index", "Admin");
                 }
 
-                this.ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
 
-                return this.View();
+                return View();
             }
 
-            return this.View(inputLogin);
+            return View(inputLogin);
         }
     }
 }
