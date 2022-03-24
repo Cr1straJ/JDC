@@ -53,13 +53,17 @@ namespace JDC.Common.Entities
 
             return new User()
             {
+                LastName = name[0],
                 FirstName = name[1],
                 MiddleName = name[2],
-                LastName = name[0],
                 UserName = registrationRequest.Email,
                 Email = registrationRequest.Email,
                 PhoneNumber = registrationRequest.PhoneNumber,
-                EmailConfirmed = true,
+                EmailConfirmed = registrationRequest.EmailConfirmed,
+                PhoneNumberConfirmed = false,
+                TwoFactorEnabled = false,
+                LockoutEnabled = true,
+                AccessFailedCount = 0,
             };
         }
     }

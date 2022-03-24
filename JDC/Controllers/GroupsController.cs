@@ -79,7 +79,7 @@ namespace JDC.Controllers
 
             if (ModelState.IsValid)
             {
-                group.InstitutionId = currentUser.InstitutionId;
+                group.InstitutionId = currentUser.InstitutionId.Value;
 
                 await groupService.Add(group);
 
@@ -190,7 +190,7 @@ namespace JDC.Controllers
                 return;
             }
 
-            var institution = await institutionService.GetById(user.InstitutionId);
+            var institution = await institutionService.GetById(user.InstitutionId.Value);
 
             ViewData["Specialities"] = new SelectList(institution.Specialities);
             ViewData["Teachers"] = new SelectList(institution.Teachers, "Id", "User.ShortName");

@@ -1,82 +1,84 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using JDC.BusinessLogic.Interfaces;
 using JDC.BusinessLogic.Utilities.EmailSender;
-using JDC.BusinessLogic.Utilities.PasswordGenerator;
 using JDC.Common.Entities;
 using JDC.DataAccess.Interfaces;
-using Microsoft.AspNetCore.Identity;
 
 namespace JDC.BusinessLogic.Services
 {
+    /// <inheritdoc/>
     public class RegistrationRequestService : IRegistrationRequestService
     {
+        private readonly IAuthService authService;
         private readonly IEmailSender emailSender;
-        private readonly UserManager<User> userManager;
-        private readonly IPasswordGenerator passwordGenerator;
-        private readonly IInstitutionService institutionService;
         private readonly IRegistrationRequestRepository registrationRequestRepository;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RegistrationRequestService"/> class.
+        /// </summary>
+        /// <param name="authService">Authentication service.</param>
+        /// <param name="emailSender">Email sender service.</param>
+        /// <param name="registrationRequestRepository">Registration request repository.</param>
         public RegistrationRequestService(
+            IAuthService authService,
             IEmailSender emailSender,
-            UserManager<User> userManager,
-            IPasswordGenerator passwordGenerator,
-            IInstitutionService institutionService,
             IRegistrationRequestRepository registrationRequestRepository)
         {
+            this.authService = authService;
             this.emailSender = emailSender;
-            this.userManager = userManager;
-            this.passwordGenerator = passwordGenerator;
-            this.institutionService = institutionService;
             this.registrationRequestRepository = registrationRequestRepository;
         }
 
+        /// <inheritdoc/>
         public async Task Accept(int id)
         {
-            var request = await this.GetById(id);
-            var user = (User)request;
+            var request = await GetById(id);
 
-            var password = this.passwordGenerator.GeneratePassword();
-            var result = await this.userManager.CreateAsync(user, password);
-
-            if (result.Succeeded)
+            if (await authService.Register(request))
             {
-                string message = $"Login: {request.Email}<br/>Password: <strong>{password}</strong>";
-                await this.emailSender.SendEmailAsync(request.DirectorName, request.Email, "Данные для входа на платформу JDC", message);
-                await this.userManager.AddToRoleAsync(user, "Director");
-
-                await this.registrationRequestRepository.Delete(request);
+                await registrationRequestRepository.Delete(request);
             }
-
-            await this.institutionService.Add(new Institution(user));
         }
 
-        public async Task Create(RegistrationRequest registrationRequest)
+        /// <inheritdoc/>
+        public async Task ConfirmEmail(int requestId)
         {
-            await this.registrationRequestRepository.Create(registrationRequest);
+            await registrationRequestRepository.ConfirmEmail(requestId);
         }
 
+        /// <inheritdoc/>
+        public async Task Create(RegistrationRequest request)
+        {
+            var confirmationCode = new Random().Next(1000, 10000);
+            request.ConfirmationCode = confirmationCode;
+            await registrationRequestRepository.Create(request);
+            await emailSender.SendEmailAsync(request.DirectorName, request.Email, "Подтверждение регистрации учреждения", $"Ваш код: {confirmationCode}");
+        }
+
+        /// <inheritdoc/>
         public async Task Delete(RegistrationRequest registrationRequest)
         {
-            await this.registrationRequestRepository.Delete(registrationRequest);
+            await registrationRequestRepository.Delete(registrationRequest);
         }
 
+        /// <inheritdoc/>
+        public RegistrationRequest FirstOrDefault(Func<RegistrationRequest, bool> predicate)
+        {
+            return registrationRequestRepository.FirstOrDefault(predicate);
+        }
+
+        /// <inheritdoc/>
         public async Task<List<RegistrationRequest>> GetAll()
         {
-            var requests = await this.registrationRequestRepository.GetAll();
-
-            return requests.ToList();
+            return await registrationRequestRepository.GetAll();
         }
 
-        public async Task<RegistrationRequest> GetById(int? id)
+        /// <inheritdoc/>
+        public async Task<RegistrationRequest> GetById(int requestId)
         {
-            return id.HasValue ? await this.registrationRequestRepository.GetById(id.Value) : null;
-        }
-
-        public async Task Update(RegistrationRequest registrationRequest)
-        {
-            await this.registrationRequestRepository.Update(registrationRequest);
+            return await registrationRequestRepository.GetById(requestId);
         }
     }
 }

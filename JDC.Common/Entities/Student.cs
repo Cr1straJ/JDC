@@ -8,17 +8,9 @@ namespace JDC.Common.Entities
     public class Student
     {
         /// <summary>
-        /// Gets or sets a student id.
+        /// Gets or sets the student id.
         /// </summary>
         public int Id { get; set; }
-
-        public string City { get; set; }
-
-        public string Street { get; set; }
-
-        public string House { get; set; }
-
-        public string Apartament { get; set; }
 
         /// <summary>
         /// Gets or sets the group id to which the student belongs.

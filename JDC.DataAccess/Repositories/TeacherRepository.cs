@@ -67,7 +67,7 @@ namespace JDC.DataAccess.Repositories
         {
             return Task.Factory.StartNew(() =>
             {
-                return this.context.Teachers.Where(teacher => teacher.User.InstitutionId == id).ToList();
+                return this.context.Teachers.Where(teacher => teacher.InstitutionId == id).ToList();
             });
         }
     }

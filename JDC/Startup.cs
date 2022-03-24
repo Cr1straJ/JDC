@@ -34,8 +34,8 @@ namespace JDC
         /// <param name="services">Service collection.</param>
         public virtual void ConfigureServices(IServiceCollection services)
         {
-            services.AddDatabase(this.Configuration.GetConnectionString("DefaultConnection"));
-            services.AddConfigurationSettings(this.Configuration);
+            services.AddDatabase(Configuration.GetConnectionString("DefaultConnection"));
+            services.AddConfigurationSettings(Configuration);
             services.AddDependencies();
             services.AddIdentity();
             services.AddSignalR();

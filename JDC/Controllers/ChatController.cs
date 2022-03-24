@@ -23,9 +23,24 @@ namespace JDC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var user = await this.userManager.Users.Include(i=>i.Chats).ThenInclude(i=>i.Messages).SingleAsync(i=> User.Identity.Name == i.Email);
-            var groups = user.Chats;
-            return View(groups.ToList());
+            var user = await userManager.Users
+                .Include(i => i.Chats)
+                .ThenInclude(i => i.Messages)
+                .SingleAsync(i => User.Identity.Name == i.Email);
+
+            return View(user.Chats.ToList());
+        }
+
+        [HttpPost]
+        public async Task Send(Message message)
+        {
+            await chatService.Add(new Chat
+            {
+                Messages = new List<Message>
+                {
+                    message,
+                },
+            });
         }
     }
 }

@@ -51,6 +51,8 @@ namespace JDC.DependencyInjection
         /// <param name="services">Service collection.</param>
         public static void AddDependencies(this IServiceCollection services)
         {
+            services.AddTransient<IAuthService, AuthService>();
+
             services.AddTransient<IGroupService, GroupService>();
             services.AddTransient<IGroupRepository, GroupRepository>();
 
@@ -96,10 +98,7 @@ namespace JDC.DependencyInjection
             {
                 options.SignIn.RequireConfirmedAccount = true;
                 options.Password.RequireDigit = false;
-                options.Password.RequiredLength = 0;
-                options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = false;
                 options.Password.RequiredUniqueChars = 0;
                 options.User.AllowedUserNameCharacters += "1234567890";
             })

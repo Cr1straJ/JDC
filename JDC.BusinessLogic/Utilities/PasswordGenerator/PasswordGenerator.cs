@@ -4,13 +4,10 @@ using System.Text;
 
 namespace JDC.BusinessLogic.Utilities.PasswordGenerator
 {
+    /// <inheritdoc/>
     public class PasswordGenerator : IPasswordGenerator
     {
-        /// <summary>
-        /// Generates a random password respecting the given strength requirements.
-        /// </summary>
-        /// <param name="length">Password length.</param>
-        /// <returns>A random password.</returns>
+        /// <inheritdoc/>
         public string GeneratePassword(int length)
         {
             StringBuilder password = new StringBuilder();
@@ -25,13 +22,20 @@ namespace JDC.BusinessLogic.Utilities.PasswordGenerator
                 }
 
                 password.Append(character);
-                if (!password.ToString().Any(i => char.IsLetter(i)) || (!password.ToString().Any(i => char.IsDigit(i)) && password.Length == 8))
+                if (password.Length == length && IsNotValidPassword(password.ToString()))
                 {
                     password.Clear();
                 }
             }
 
             return password.ToString();
+        }
+
+        private static bool IsNotValidPassword(string password)
+        {
+            return password.All(i => !char.IsUpper(i))
+                || password.All(i => !char.IsLower(i))
+                || password.All(i => !char.IsDigit(i));
         }
     }
 }

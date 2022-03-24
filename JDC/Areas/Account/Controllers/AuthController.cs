@@ -1,85 +1,137 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using JDC.Areas.Account.Models;
 using JDC.BusinessLogic.Interfaces;
+using JDC.BusinessLogic.Models.Requests;
 using JDC.BusinessLogic.Utilities.AutoMapper;
-using JDC.BusinessLogic.Utilities.EmailSender;
 using JDC.Common.Entities;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JDC.Areas.Identity.Controllers
 {
+    /// <summary>
+    /// Provides authentication endpoints.
+    /// </summary>
     [Area("Account")]
     public class AuthController : Controller
     {
-        private readonly IEmailSender emailSender;
+        private readonly IAuthService authService;
         private readonly IRegistrationRequestService registrationRequestService;
-        private readonly SignInManager<User> signInManager;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AuthController"/> class.
+        /// </summary>
+        /// <param name="authService">Authentication service.</param>
+        /// <param name="registrationRequestService">Registration request service.</param>
         public AuthController(
-            IEmailSender emailSender,
-            IRegistrationRequestService registrationRequestService,
-            SignInManager<User> signInManager)
+            IAuthService authService,
+            IRegistrationRequestService registrationRequestService)
         {
-            this.emailSender = emailSender;
+            this.authService = authService;
             this.registrationRequestService = registrationRequestService;
-            this.signInManager = signInManager;
         }
 
+        /// <summary>
+        /// Displays the register page.
+        /// </summary>
+        /// <returns>The result of an action method.</returns>
         public IActionResult Register()
         {
             return View(new RegistrationModel());
         }
 
+        /// <summary>
+        /// Registers user according register form information.
+        /// </summary>
+        /// <param name="model">Register form information.</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [HttpPost]
-        public async Task<IActionResult> Register(RegistrationModel registrationModel)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegistrationModel model)
         {
             if (ModelState.IsValid)
             {
-                var confirmationCode = new Random().Next(1000, 10000);
-                var registrationRequest = new CompiledMapper<RegistrationRequest>().Map(registrationModel);
-                registrationRequest.ConfirmationCode = confirmationCode;
+                var registrationRequest = new CompiledMapper<RegistrationRequest>().Map(model);
 
                 await registrationRequestService.Create(registrationRequest);
-                await emailSender.SendEmailAsync(registrationModel.DirectorName, registrationModel.Email, "Подтверждение регистрации учреждения", $"Ваш код: {confirmationCode}");
 
-                return RedirectToAction("RegisterConfirmation", new { id = registrationRequest.Id, email = registrationModel.Email });
+                return RedirectToAction("RegisterConfirmation", new { id = registrationRequest.Id, email = model.Email });
             }
 
-            return View(registrationModel);
+            return View(model);
         }
 
+        /// <summary>
+        /// Displays the login page.
+        /// </summary>
+        /// <returns>The result of an action method.</returns>
         public IActionResult Login()
         {
-            return View(new LoginModel());
+            return View(new LoginRequest());
         }
 
+        /// <summary>
+        /// Authencicates user according login form information.
+        /// </summary>
+        /// <param name="request">Login form information.</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [HttpPost]
-        public async Task<IActionResult> Login(LoginModel inputLogin)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginRequest request)
         {
-            if (ModelState.IsValid)
+            var user = await authService.TryLogin(request);
+
+            if (ModelState.IsValid && user is not null)
             {
-                var result = await signInManager.PasswordSignInAsync(inputLogin.Username, inputLogin.Password, inputLogin.RememberMe, lockoutOnFailure: false);
-
-                if (result.Succeeded)
+                if (await authService.IsInRole(user, "Director"))
                 {
-                    User user = await signInManager.UserManager.FindByNameAsync(inputLogin.Username);
-
-                    if (await signInManager.UserManager.IsInRoleAsync(user, "Director"))
-                    {
-                        return RedirectToAction("Index", "Groups");
-                    }
-
-                    return RedirectToAction("Index", "Admin");
+                    return RedirectToAction("Index", "Groups");
                 }
 
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-
-                return View();
+                return RedirectToAction("Index", "Admin");
             }
 
-            return View(inputLogin);
+            return View(request);
+        }
+
+        /// <summary>
+        /// Displays the register confirmation page.
+        /// </summary>
+        /// <param name="id">Registration request id.</param>
+        /// <param name="email">Registration request email.</param>
+        /// <returns>The result of an action method.</returns>
+        public IActionResult RegisterConfirmation(int id, string email)
+        {
+            return View(new RegisterConfirmationModel()
+            {
+                Id = id,
+                Email = email,
+            });
+        }
+
+        /// <summary>
+        /// Confirmes user registration request information.
+        /// </summary>
+        /// <param name="model">Register confirmation form information.</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RegisterConfirmation(RegisterConfirmationModel model)
+        {
+            var registrationRequest = registrationRequestService
+                .FirstOrDefault(request => model.Id is null ? request.Email.Equals(model.Email) : request.Id.Equals(model.Id));
+
+            if (!Equals(registrationRequest.ConfirmationCode, int.Parse(model.ConfirmationCode)))
+            {
+                ModelState.AddModelError(string.Empty, $"Неверный код подтверждения!");
+            }
+
+            if (ModelState.IsValid)
+            {
+                await registrationRequestService.ConfirmEmail(registrationRequest.Id);
+                return Redirect("~/Home/Index");
+            }
+
+            return View(model);
         }
     }
 }

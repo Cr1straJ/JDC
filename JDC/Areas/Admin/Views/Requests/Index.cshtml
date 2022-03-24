@@ -6,6 +6,11 @@
 
 <h1>Заявок на регистрацию (@Model.Count)</h1>
 
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "__AjaxAntiForgeryForm" }))
+{
+    @Html.AntiForgeryToken()
+}
+
 @if (Model.Count == 0)
 {
     <div class="alert alert-warning" role="alert">
@@ -56,7 +61,7 @@ else
                                     <i class="fa fa-ellipsis-v"></i>
                                 </a>
                                 <div class="dropdown-menu off-animation" aria-labelledby="triggerId2">
-                                    <button class="dropdown-item text-success request-action" type="button" data-action="Accept" data-id="@Model[i].Id">
+                                    <button class="dropdown-item text-success request-action" type="button" data-url="@Url.Action("Accept", "Requests")" data-id="@Model[i].Id">
                                         <i class="fa fa-list"></i>
                                         Подтвердить
                                     </button>
@@ -64,7 +69,7 @@ else
                                         <i class="fa fa-info-circle"></i>
                                         Подробнее
                                     </a>
-                                    <button class="dropdown-item text-danger request-action" type="button" data-action="Delete" data-id="@Model[i].Id">
+                                    <button class="dropdown-item text-danger request-action" type="button" data-url="@Url.Action("Delete", "Requests")" data-id="@Model[i].Id">
                                         <i class="fa fa-trash"></i>
                                         Удалить
                                     </button>

@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Identity;
 
 namespace JDC.Common.Entities
@@ -38,16 +37,6 @@ namespace JDC.Common.Entities
         public string Sex { get; set; }
 
         /// <summary>
-        /// Gets or sets an institution id to which the user belongs.
-        /// </summary>
-        public int InstitutionId { get; set; }
-
-        /// <summary>
-        /// Gets or sets an institution to which the user belongs.
-        /// </summary>
-        public Institution Institution { get; set; }
-
-        /// <summary>
         /// Gets or sets a country where the student lives.
         /// </summary>
         public string Country { get; set; }
@@ -73,15 +62,25 @@ namespace JDC.Common.Entities
         public string Apartment { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets an institution id to which the user belongs.
+        /// </summary>
+        public int? InstitutionId { get; set; }
+
+        /// <summary>
+        /// Gets or sets an institution to which the user belongs.
+        /// </summary>
+        public Institution Institution { get; set; }
+
+        /// <summary>
+        /// Gets or sets a chat list.
         /// </summary>
         public List<Chat> Chats { get; set; }
- 
+
         /// <summary>
         /// Gets the user's address.
         /// </summary>
         [NotMapped]
-        public string Address => $"{this.City}, {this.Country}";
+        public string Address => $"{City}, {Country}";
 
         /// <summary>
         /// Gets the user's short name.
@@ -90,7 +89,7 @@ namespace JDC.Common.Entities
         /// Ivanov I. I.
         /// </example>
         [NotMapped]
-        public string ShortName => $"{this.LastName} {this.FirstName?.ToUpper()[0]}. {this.MiddleName?.ToUpper()[0]}.";
+        public string ShortName => $"{LastName} {FirstName?.ToUpper()[0]}. {MiddleName?.ToUpper()[0]}.";
 
         /// <summary>
         /// Gets the user's full name.
@@ -99,7 +98,7 @@ namespace JDC.Common.Entities
         /// Ivanov Ivan Ivanovich.
         /// </example>
         [NotMapped]
-        public string FullName => $"{this.LastName} {this.FirstName} {this.MiddleName}";
+        public string FullName => $"{LastName} {FirstName} {MiddleName}";
 
         /// <summary>
         /// Gets the user's long name.
@@ -108,7 +107,7 @@ namespace JDC.Common.Entities
         /// Ivanov Ivan.
         /// </example>
         [NotMapped]
-        public string LongName => $"{this.LastName} {this.FirstName}";
+        public string LongName => $"{LastName} {FirstName}";
 
         /// <summary>
         /// Verifies if the name of the user is the same as the source.
@@ -116,13 +115,13 @@ namespace JDC.Common.Entities
         /// <param name="name">The source user name.</param>
         /// <returns>true if the name of the user is the same as the source, false otherwise.</returns>
         public bool IsEqualsName(string name)
-            => name.Split(' ', System.StringSplitOptions.RemoveEmptyEntries).Any(word => this.IsContainsText(word));
+            => name.Split(' ', StringSplitOptions.RemoveEmptyEntries).Any(word => IsContainsText(word));
 
         private bool IsContainsText(string text)
         {
-            return this.LastName.Contains(text, System.StringComparison.CurrentCultureIgnoreCase) ||
-                this.FirstName.Contains(text, System.StringComparison.CurrentCultureIgnoreCase) ||
-                this.MiddleName.Contains(text, System.StringComparison.CurrentCultureIgnoreCase);
+            return LastName.Contains(text, StringComparison.CurrentCultureIgnoreCase) ||
+                FirstName.Contains(text, StringComparison.CurrentCultureIgnoreCase) ||
+                MiddleName.Contains(text, StringComparison.CurrentCultureIgnoreCase);
         }
     }
 }

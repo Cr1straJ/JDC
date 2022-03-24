@@ -8,28 +8,54 @@ using JDC.DataAccess.Interfaces;
 
 namespace JDC.DataAccess.Repositories
 {
+    /// <inheritdoc/>
     public class RegistrationRequestRepository : IRegistrationRequestRepository
     {
         private readonly ApplicationDbContext context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RegistrationRequestRepository"/> class.
+        /// </summary>
+        /// <param name="context">Application database context.</param>
         public RegistrationRequestRepository(ApplicationDbContext context)
         {
             this.context = context;
         }
 
+        /// <inheritdoc/>
+        public async Task ConfirmEmail(int requestId)
+        {
+            var request = context.RegistrationRequests.FirstOrDefault(request => request.Id == requestId);
+
+            if (request is not null)
+            {
+                request.EmailConfirmed = true;
+                await context.SaveChangesAsync();
+            }
+        }
+
+        /// <inheritdoc/>
         public async Task Create(RegistrationRequest registrationRequest)
         {
-            await this.context.RegistrationRequests.AddAsync(registrationRequest);
-            await this.context.SaveChangesAsync();
+            await context.RegistrationRequests.AddAsync(registrationRequest);
+            await context.SaveChangesAsync();
         }
 
+        /// <inheritdoc/>
         public async Task Delete(RegistrationRequest registrationRequest)
         {
-            this.context.RegistrationRequests.Remove(registrationRequest);
-            await this.context.SaveChangesAsync();
+            context.RegistrationRequests.Remove(registrationRequest);
+            await context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<RegistrationRequest>> GetAll()
+        /// <inheritdoc/>
+        public RegistrationRequest FirstOrDefault(Func<RegistrationRequest, bool> predicate)
+        {
+            return context.RegistrationRequests.FirstOrDefault(predicate);
+        }
+
+        /// <inheritdoc/>
+        public async Task<List<RegistrationRequest>> GetAll()
         {
             var requests = this.context.RegistrationRequests.ToList()
                 .Where(request => !request.EmailConfirmed && (DateTime.Now - request.CreationDate).Duration().Days >= 2);
@@ -37,18 +63,13 @@ namespace JDC.DataAccess.Repositories
             this.context.RegistrationRequests.RemoveRange(requests);
             await this.context.SaveChangesAsync();
 
-            return this.context.RegistrationRequests;
+            return this.context.RegistrationRequests.ToList();
         }
 
+        /// <inheritdoc/>
         public async Task<RegistrationRequest> GetById(int id)
         {
             return await this.context.RegistrationRequests.FindAsync(id);
-        }
-
-        public async Task Update(RegistrationRequest registrationRequest)
-        {
-            this.context.RegistrationRequests.Update(registrationRequest);
-            await this.context.SaveChangesAsync();
         }
     }
 }

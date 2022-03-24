@@ -37,7 +37,12 @@ namespace JDC.Controllers
                         new Student()
                         {
                             Id = 0,
-                            User = new User() { FirstName = "Иван", LastName = "Иванов", MiddleName = "Иванович" },
+                            User = new User
+                            {
+                                FirstName = "Иван",
+                                LastName = "Иванов",
+                                MiddleName = "Иванович",
+                            },
                             Grades = new List<Grade>()
                             {
                                 new Grade() { Id = 0, Value = 6, BillingDate = new DateTime(DateTime.Now.Year, 9, 1), Lesson = lesson },
@@ -48,12 +53,20 @@ namespace JDC.Controllers
                         new Student()
                         {
                             Id = 1,
-                            User = new User() { FirstName = "Сергей", LastName = "Сидоров" },
+                            User = new User
+                            {
+                                FirstName = "Сергей",
+                                LastName = "Сидоров",
+                            },
                         },
                         new Student()
                         {
                             Id = 2,
-                            User = new User() { FirstName = "Пётр", LastName = "Петров" },
+                            User = new User
+                            {
+                                FirstName = "Пётр",
+                                LastName = "Петров",
+                            },
                         },
                     },
                     Disciplines = new List<Discipline>()

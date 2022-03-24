@@ -50,10 +50,8 @@ namespace JDC.Common.Entities
         public User User { get; set; }
 
         [NotMapped]
-        public string UserName { get { return this.User.Email; } }
-
-        [NotMapped]
-        public string Name { get { return this.User.FirstName; } }
+        public string UserName
+            => User.MiddleName;
 
         /// <summary>
         /// Gets or sets the message recipient type.
@@ -71,6 +69,7 @@ namespace JDC.Common.Entities
         public DateTime SendingDate { get; set; }
 
         [NotMapped]
-        public string Date { get { return SendingDate.ToString("hhh,mm"); } }
+        public string Date
+            => SendingDate.ToString("hhh,mm");
     }
 }

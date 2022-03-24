@@ -1,4 +1,5 @@
-﻿using JDC.Common.Entities;
+﻿using System.Security.Claims;
+using JDC.Common.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,15 +17,16 @@ namespace JDC.Areas.Profile.Controllers
 
         public IActionResult Index(string userId)
         {
-            /*userId ??= User.FindFirstValue(ClaimTypes.NameIdentifier);
+            userId ??= User.FindFirstValue(ClaimTypes.NameIdentifier);
             var user = userManager.FindByIdAsync(userId);
 
             if (user is null)
             {
                 return View("Error");
-            }*/
+            }
 
-            return View(new User()
+            return View();
+           /* return View(new User()
             {
                 UserName = "ivanov_ivan",
                 FirstName = "Ivan",
@@ -34,18 +36,7 @@ namespace JDC.Areas.Profile.Controllers
                 PhoneNumber = "+375291587982",
                 Country = "Belarus",
                 City = "Minsk",
-            });
-        }
-
-        public IActionResult CreateCharacteristic(string userId)
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult CreateCharacteristic()
-        {
-            return View();
+            });*/
         }
     }
 }

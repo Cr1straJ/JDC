@@ -4,11 +4,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace JDC.Areas.Admin.Controllers
 {
+    /// <summary>
+    /// Provides registration request endpoints.
+    /// </summary>
     [Area("Admin")]
     public class RequestsController : Controller
     {
         private readonly IRegistrationRequestService registrationRequestService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RequestsController"/> class.
+        /// </summary>
+        /// <param name="registrationRequestService">Instance of the <see cref="IRegistrationRequestService"/> interface.</param>
         public RequestsController(IRegistrationRequestService registrationRequestService)
         {
             this.registrationRequestService = registrationRequestService;
@@ -22,41 +29,51 @@ namespace JDC.Areas.Admin.Controllers
         [HttpPost]
         public async Task<ActionResult> Accept(int? id)
         {
-            if (!id.HasValue)
+            if (id is null)
             {
-                return this.View("Error");
+                return View("Error");
             }
 
-            await this.registrationRequestService.Accept(id.Value);
+            await registrationRequestService.Accept(id.Value);
 
-            return this.RedirectToAction("Index");
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
         public async Task<ActionResult> Delete(int? id)
         {
-            var request = await this.registrationRequestService.GetById(id);
+            if (id is null)
+            {
+                return View("Error");
+            }
+
+            var request = await registrationRequestService.GetById(id.Value);
 
             if (request is null)
             {
-                return this.View("Error");
+                return View("Error");
             }
 
-            await this.registrationRequestService.Delete(request);
+            await registrationRequestService.Delete(request);
 
-            return this.RedirectToAction("Index");
+            return RedirectToAction("Index");
         }
 
         public async Task<ActionResult> Details(int? id)
         {
-            var request = await this.registrationRequestService.GetById(id);
+            if (id is null)
+            {
+                return View("Error");
+            }
+
+            var request = await registrationRequestService.GetById(id.Value);
 
             if (request is null)
             {
-                return this.View("Error");
+                return View("Error");
             }
 
-            return this.View(request);
+            return View(request);
         }
     }
 }

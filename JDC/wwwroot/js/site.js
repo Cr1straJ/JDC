@@ -43,24 +43,23 @@ $('body').on('input', '.input_number', function () {
     this.value = this.value.substring(0, 4).replace(/[^0-9]/g, '');
 });
 
-
-
 $('#createLessonModal').on('show.bs.modal', function (event) {
     $('#theme').val('');
     $('#homework').val('');
     $('#lessonDuration').val(1);
 });
 
-
-
 $('.request-action').on('click', function () {
-    let action = $(this).data('action');
+    var form = $('#__AjaxAntiForgeryForm');
+    var token = $('input[name="__RequestVerificationToken"]', form).val();
     let id = $(this).data('id');
+    console.log(id, $(this).data('url'));
 
     $.ajax({
+        url: $(this).data('url'),
         type: "POST",
-        url: `Requests/${action}`,
         data: {
+            __RequestVerificationToken: token,
             id: id
         },
         dataType: "text",
