@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using JDC.Common.Entities;
 using JDC.DataAccess.Data;
 using JDC.DataAccess.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace JDC.DataAccess.Repositories
 {
@@ -25,6 +26,15 @@ namespace JDC.DataAccess.Repositories
         public async Task Add(Group group)
         {
             await context.Groups.AddAsync(group);
+
+            var teacher = await context.Teachers
+                .FirstOrDefaultAsync(teacher => teacher.Id == group.TeacherId);
+
+            if (teacher is not null)
+            {
+                teacher.Group = group;
+            }
+
             await context.SaveChangesAsync();
         }
 
@@ -53,7 +63,11 @@ namespace JDC.DataAccess.Repositories
         {
             return Task.Factory.StartNew(() =>
             {
-                return context.Groups.Where(group => group.InstitutionId == institutionId).ToList();
+                return context.Groups
+                    .Include(g => g.Teacher)
+                    .ThenInclude(t => t.User)
+                    .Where(group => group.InstitutionId == institutionId)
+                    .ToList();
             });
         }
     }

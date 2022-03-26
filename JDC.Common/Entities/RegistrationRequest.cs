@@ -1,4 +1,5 @@
 ﻿using System;
+using JDC.Common.Enums;
 
 namespace JDC.Common.Entities
 {
@@ -41,6 +42,11 @@ namespace JDC.Common.Entities
         /// Gets or sets a value indicating whether the email is confirmed.
         /// </summary>
         public bool EmailConfirmed { get; set; } = false;
+
+        /// <summary>
+        /// Gets or sets an institution type.
+        /// </summary>
+        public InstituteType? InstitutionType { get; set; }
 
         /// <summary>
         /// Gets or sets a confirmation code.

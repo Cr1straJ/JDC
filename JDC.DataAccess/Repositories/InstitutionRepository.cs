@@ -38,7 +38,11 @@ namespace JDC.DataAccess.Repositories
 
         public async Task<Institution> GetById(int? id)
         {
-            return await context.Institutions.FindAsync(id);
+            return await context.Institutions
+                .Include(i => i.Teachers)
+                .ThenInclude(t => t.User)
+                .Include(i => i.Specialities)
+                .FirstAsync(i => i.Id == id);
         }
 
         public async Task Remove(Institution entity)

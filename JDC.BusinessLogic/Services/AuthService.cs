@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Security.Claims;
+using System.Threading.Tasks;
 using JDC.BusinessLogic.Interfaces;
 using JDC.BusinessLogic.Models.Requests;
 using JDC.BusinessLogic.Utilities.EmailSender;
@@ -43,7 +44,11 @@ namespace JDC.BusinessLogic.Services
         public async Task<bool> Register(RegistrationRequest request)
         {
             var director = (User)request;
-            var institution = new Institution(director);
+            var institution = new Institution
+            {
+                Director = director,
+                InstituteType = request.InstitutionType,
+            };
             await institutionService.Add(institution);
 
             var password = passwordGenerator.GeneratePassword();
@@ -73,6 +78,18 @@ namespace JDC.BusinessLogic.Services
         public async Task<bool> IsInRole(User user, string role)
         {
             return await signInManager.UserManager.IsInRoleAsync(user, role);
+        }
+
+        /// <inheritdoc/>
+        public async Task SignOut()
+        {
+            await signInManager.SignOutAsync();
+        }
+
+        /// <inheritdoc/>
+        public async Task<User> GetUser(ClaimsPrincipal principal)
+        {
+            return await userManager.GetUserAsync(principal);
         }
     }
 }

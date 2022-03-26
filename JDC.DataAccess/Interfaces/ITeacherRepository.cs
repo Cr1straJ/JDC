@@ -10,22 +10,16 @@ namespace JDC.DataAccess.Interfaces
 {
     public interface ITeacherRepository
     {
-        Task<Teacher> GetById(int? id);
-
-        IEnumerable<Teacher> GetAll();
+        Task<Teacher> GetById(int teacherId);
 
         IEnumerable<Teacher> Find(Expression<Func<Teacher, bool>> expression);
 
-        Task Add(Teacher entity);
+        Task Add(Teacher teacher);
 
-        Task AddRange(IEnumerable<Teacher> entities);
+        Task Remove(Teacher teacher);
 
-        Task Remove(Teacher entity);
+        Task Update(Teacher teacher);
 
-        Task RemoveRange(IEnumerable<Teacher> entities);
-
-        Task Update(Teacher entity);
-
-        Task<List<Teacher>> GetInstitutionTeachers(int id);
+        Task<List<Teacher>> GetInstitutionTeachers(int institutionId);
     }
 }

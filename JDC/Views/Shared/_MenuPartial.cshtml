@@ -15,6 +15,9 @@
     @if (User.IsInRole("Director"))
     {
         <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Institutions" asp-action="Details">Учреждение</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Groups" asp-action="Index">Группы</a>
         </li>
         <li class="nav-item">

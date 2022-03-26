@@ -1,4 +1,6 @@
 ﻿using System.Security.Claims;
+using System.Threading.Tasks;
+using JDC.BusinessLogic.Interfaces;
 using JDC.Common.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -9,10 +11,14 @@ namespace JDC.Areas.Profile.Controllers
     public class HomeController : Controller
     {
         private readonly UserManager<User> userManager;
+        private readonly IStudentService studentService;
 
-        public HomeController(UserManager<User> userManager)
+        public HomeController(
+            UserManager<User> userManager,
+            IStudentService studentService)
         {
             this.userManager = userManager;
+            this.studentService = studentService;
         }
 
         public IActionResult Index(string userId)
@@ -26,17 +32,23 @@ namespace JDC.Areas.Profile.Controllers
             }
 
             return View();
-           /* return View(new User()
+        }
+
+        public async Task<IActionResult> Characteristic(int? studentId)
+        {
+            if (studentId is null)
             {
-                UserName = "ivanov_ivan",
-                FirstName = "Ivan",
-                LastName = "Ivanov",
-                MiddleName = "Ivanovich",
-                Email = "ivanov_ivan@mail.ru",
-                PhoneNumber = "+375291587982",
-                Country = "Belarus",
-                City = "Minsk",
-            });*/
+                return View("Error");
+            }
+
+            var student = await studentService.GetById(studentId.Value);
+
+            if (student is null)
+            {
+                return View("Error");
+            }
+
+            return View();
         }
     }
 }

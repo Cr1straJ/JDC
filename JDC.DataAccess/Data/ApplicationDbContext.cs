@@ -86,6 +86,11 @@ namespace JDC.DataAccess.Data
                 .WithOne(a => a.Institution)
                 .HasForeignKey<User>(c => c.InstitutionId);
 
+            modelBuilder.Entity<Group>()
+                .HasOne(a => a.Teacher)
+                .WithOne(a => a.Group)
+                .HasForeignKey<Teacher>(c => c.GroupId);
+
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using JDC.Common.Enums;
 
 namespace JDC.Areas.Account.Models
 {
@@ -20,6 +21,12 @@ namespace JDC.Areas.Account.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        /// <summary>
+        /// Gets or sets an institution type.
+        /// </summary>
+        [Display(Name = "Тип учреждения")]
+        public InstituteType? InstitutionType { get; set; }
 
         [Required]
         [Display(Name = "Я принимаю условия Соглашения")]

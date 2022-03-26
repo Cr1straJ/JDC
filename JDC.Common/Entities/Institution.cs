@@ -17,13 +17,6 @@ namespace JDC.Common.Entities
         {
         }
 
-        /// <inheritdoc cref="Institution()"/>
-        /// <param name="director">Director of the institution.</param>
-        public Institution(User director)
-        {
-            this.Director = director;
-        }
-
         /// <summary>
         /// Gets or sets an institution id.
         /// </summary>
@@ -62,7 +55,7 @@ namespace JDC.Common.Entities
         /// <summary>
         /// Gets or sets institution groups.
         /// </summary>
-        public List<Group> Groups { get; set; }
+        public List<Group> Groups { get; set; } = new List<Group>();
 
         /// <summary>
         /// Gets or sets institution students.
@@ -72,17 +65,17 @@ namespace JDC.Common.Entities
         /// <summary>
         /// Gets or sets institution teachers.
         /// </summary>
-        public List<Teacher> Teachers { get; set; }
+        public List<Teacher> Teachers { get; set; } = new List<Teacher>();
 
         /// <summary>
         /// Gets or sets institution specialities.
         /// </summary>
-        public List<Speciality> Specialities { get; set; }
+        public List<Speciality> Specialities { get; set; } = new List<Speciality>();
 
         /// <summary>
         /// Gets the type of institution in a written format.
         /// </summary>
         [NotMapped]
-        public string Type => this.InstituteType?.GetDescription() ?? "Не определено";
+        public string Type => InstituteType?.GetDescription() ?? "Не определено";
     }
 }

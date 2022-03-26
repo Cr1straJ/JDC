@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace JDC.Common.Entities
 {
@@ -25,12 +28,34 @@ namespace JDC.Common.Entities
         /// <summary>
         /// Gets or sets a user id.
         /// </summary>
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
 
         /// <summary>
         /// Gets or sets a user account.
         /// </summary>
         public User User { get; set; }
+
+        /// <summary>
+        /// Gets or sets a bool values.
+        /// </summary>
+        public string BoolValues { get; set; }
+
+        /// <summary>
+        /// Gets or sets a characteristics values.
+        /// </summary>
+        [NotMapped]
+        public bool[] CharacteristicValues
+        {
+            get
+            {
+                return Array.ConvertAll(BoolValues.Split(';'), bool.Parse);
+            }
+
+            set
+            {
+                BoolValues = string.Join(";", value.Select(p => p.ToString()).ToArray());
+            }
+        }
 
         /// <summary>
         /// Gets or sets student grades.

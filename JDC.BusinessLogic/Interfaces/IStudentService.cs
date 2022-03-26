@@ -1,29 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using JDC.Common.Entities;
 
 namespace JDC.BusinessLogic.Interfaces
 {
+    /// <summary>
+    /// Group service.
+    /// </summary>
     public interface IStudentService
     {
-        Task<Student> GetById(int? id);
+        /// <summary>
+        /// Gets student by Id.
+        /// </summary>
+        /// <param name="studentId">Student id.</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        Task<Student> GetById(int studentId);
 
-        IEnumerable<Student> GetAll();
+        /// <summary>
+        /// Creates student.
+        /// </summary>
+        /// <param name="student">Student request information.</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        Task Add(Student student);
 
-        IEnumerable<Student> Find(Expression<Func<Student, bool>> expression);
+        /// <summary>
+        /// Deletes a student.
+        /// </summary>
+        /// <param name="student">Student request information.</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        Task Remove(Student student);
 
-        Task Add(Student entity);
-
-        Task AddRange(IEnumerable<Student> entities);
-
-        Task Remove(Student entity);
-
-        Task RemoveRange(IEnumerable<Student> entities);
-
-        Task Update(Student entity);
+        /// <summary>
+        /// Edits student information.
+        /// </summary>
+        /// <param name="student">Student request information.</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        Task Update(Student student);
     }
 }

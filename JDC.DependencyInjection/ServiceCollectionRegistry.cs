@@ -84,7 +84,7 @@ namespace JDC.DependencyInjection
             services.AddTransient<IStudentRepository, StudentRepository>();
 
             services.AddTransient<IEmailSender, EmailSender>();
-            services.AddTransient<IAzureStorage, AzureStorage>();
+            services.AddTransient<IImageStorage, ImageStorage>();
             services.AddTransient<IPasswordGenerator, PasswordGenerator>();
         }
 

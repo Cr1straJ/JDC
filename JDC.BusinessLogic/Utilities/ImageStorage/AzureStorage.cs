@@ -7,12 +7,12 @@ using Azure.Storage.Blobs;
 using JDC.BusinessLogic.Models;
 using Microsoft.AspNetCore.Http;
 
-namespace JDC.BusinessLogic.Utilities.AzureStorage
+namespace JDC.BusinessLogic.Utilities.ImageStorage
 {
     /// <summary>
     /// Provides methods of working with the azure data storage.
     /// </summary>
-    public class AzureStorage : IAzureStorage
+    public class AzureStorage : IImageStorage
     {
         private readonly AzureStorageConfig azureStorageConfig;
 
@@ -63,10 +63,10 @@ namespace JDC.BusinessLogic.Utilities.AzureStorage
         /// <returns>A file path containing the content to upload.</returns>
         public async Task<string> UploadFileToStorage(Stream fileStream, string fileName)
         {
-            var filePath = this.GetImageUrl(fileName);
+            var filePath = GetImageUrl(fileName);
             var blobUri = new Uri(filePath);
 
-            var storageCredentials = new StorageSharedKeyCredential(this.azureStorageConfig.AccountName, this.azureStorageConfig.AccountKey);
+            var storageCredentials = new StorageSharedKeyCredential(azureStorageConfig.AccountName, azureStorageConfig.AccountKey);
 
             var blobClient = new BlobClient(blobUri, storageCredentials);
             await blobClient.UploadAsync(fileStream);
@@ -76,6 +76,6 @@ namespace JDC.BusinessLogic.Utilities.AzureStorage
         }
 
         private string GetImageUrl(string fileName)
-            => $"https://{this.azureStorageConfig.AccountName}.blob.core.windows.net/{this.azureStorageConfig.ImageContainer}/{fileName}";
+            => $"https://{azureStorageConfig.AccountName}.blob.core.windows.net/{azureStorageConfig.ImageContainer}/{fileName}";
     }
 }

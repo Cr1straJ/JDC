@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-namespace JDC.BusinessLogic.Utilities.AzureStorage
+namespace JDC.BusinessLogic.Utilities.ImageStorage
 {
-    public interface IAzureStorage
+    public interface IImageStorage
     {
         bool IsImage(IFormFile file);
 

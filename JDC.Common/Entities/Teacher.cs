@@ -13,7 +13,12 @@
         /// <summary>
         /// Gets or sets a group id.
         /// </summary>
-        public int GroupId { get; set; }
+        public int? GroupId { get; set; }
+
+        /// <summary>
+        /// Gets or sets a teacher group.
+        /// </summary>
+        public Group Group { get; set; }
 
         /// <summary>
         /// Gets or sets a user account.

@@ -4,6 +4,7 @@ using JDC.BusinessLogic.Interfaces;
 using JDC.BusinessLogic.Models.Requests;
 using JDC.BusinessLogic.Utilities.AutoMapper;
 using JDC.Common.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JDC.Areas.Identity.Controllers
@@ -54,7 +55,7 @@ namespace JDC.Areas.Identity.Controllers
 
                 await registrationRequestService.Create(registrationRequest);
 
-                return RedirectToAction("RegisterConfirmation", new { id = registrationRequest.Id, email = model.Email });
+                return RedirectToAction(nameof(RegisterConfirmation), new { id = registrationRequest.Id, email = model.Email });
             }
 
             return View(model);
@@ -84,10 +85,10 @@ namespace JDC.Areas.Identity.Controllers
             {
                 if (await authService.IsInRole(user, "Director"))
                 {
-                    return RedirectToAction("Index", "Groups");
+                    return Redirect("~/Groups");
                 }
 
-                return RedirectToAction("Index", "Admin");
+                return RedirectToAction("~/Admin");
             }
 
             return View(request);
@@ -132,6 +133,18 @@ namespace JDC.Areas.Identity.Controllers
             }
 
             return View(model);
+        }
+
+        /// <summary>
+        /// Logout user.
+        /// </summary>
+        /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
+        [Authorize]
+        public async Task<ActionResult> Logout()
+        {
+            await authService.SignOut();
+
+            return Redirect("~/Home");
         }
     }
 }

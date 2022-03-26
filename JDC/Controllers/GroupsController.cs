@@ -73,7 +73,7 @@ namespace JDC.Controllers
         /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,TeacherId")] Group group)
+        public async Task<IActionResult> Create(Group group)
         {
             var currentUser = await userManager.GetUserAsync(User);
 
@@ -151,7 +151,7 @@ namespace JDC.Controllers
 
             if (group is null)
             {
-                return this.View("Error");
+                return View("Error");
             }
 
             await groupService.Remove(group);
@@ -192,7 +192,7 @@ namespace JDC.Controllers
 
             var institution = await institutionService.GetById(user.InstitutionId.Value);
 
-            ViewData["Specialities"] = new SelectList(institution.Specialities);
+            ViewData["Specialities"] = new SelectList(institution.Specialities, "Id", "Name");
             ViewData["Teachers"] = new SelectList(institution.Teachers, "Id", "User.ShortName");
         }
     }

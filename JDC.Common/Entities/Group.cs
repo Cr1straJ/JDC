@@ -50,7 +50,7 @@ namespace JDC.Common.Entities
         /// <summary>
         /// Gets or sets group students.
         /// </summary>
-        public List<Student> Students { get; set; }
+        public List<Student> Students { get; set; } = new List<Student>();
 
         /// <summary>
         /// Gets or sets group disciplines.

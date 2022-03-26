@@ -1,62 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using JDC.BusinessLogic.Interfaces;
 using JDC.Common.Entities;
 using JDC.DataAccess.Interfaces;
 
 namespace JDC.BusinessLogic.Services
 {
+    /// <inheritdoc/>
     public class StudentService : IStudentService
     {
-        private readonly IStudentRepository sudentRepository;
+        private readonly IStudentRepository studentRepository;
 
-        public StudentService(IStudentRepository sudentRepository)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StudentService"/> class.
+        /// </summary>
+        /// <param name="studentRepository">Student repository.</param>
+        public StudentService(IStudentRepository studentRepository)
         {
-            this.sudentRepository = sudentRepository;
+            this.studentRepository = studentRepository;
         }
 
-        public async Task Add(Student entity)
+        /// <inheritdoc/>
+        public async Task Add(Student student)
         {
-            await this.sudentRepository.Add(entity);
+            await studentRepository.Add(student);
         }
 
-        public async Task AddRange(IEnumerable<Student> entities)
+        /// <inheritdoc/>
+        public async Task<Student> GetById(int studentId)
         {
-            await this.sudentRepository.AddRange(entities);
+            return await studentRepository.GetById(studentId);
         }
 
-        public IEnumerable<Student> Find(Expression<Func<Student, bool>> expression)
+        /// <inheritdoc/>
+        public async Task Remove(Student student)
         {
-            return this.sudentRepository.Find(expression);
+            await studentRepository.Remove(student);
         }
 
-        public IEnumerable<Student> GetAll()
+        /// <inheritdoc/>
+        public async Task Update(Student student)
         {
-            return this.sudentRepository.GetAll();
-        }
-
-        public async Task<Student> GetById(int? id)
-        {
-            return await this.sudentRepository.GetById(id);
-        }
-
-        public async Task Remove(Student entity)
-        {
-            await this.sudentRepository.Remove(entity);
-        }
-
-        public async Task RemoveRange(IEnumerable<Student> entities)
-        {
-            await this.sudentRepository.RemoveRange(entities);
-        }
-
-        public async Task Update(Student entity)
-        {
-            await this.sudentRepository.Update(entity);
+            await studentRepository.Update(student);
         }
     }
 }
